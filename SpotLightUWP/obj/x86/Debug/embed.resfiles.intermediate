@@ -1,0 +1,14 @@
+App.xbf
+Styles\_Colors.xbf
+Styles\_FontSizes.xbf
+Styles\_Thickness.xbf
+Styles\Image.xbf
+Styles\Page.xbf
+Styles\TextBlock.xbf
+Views\FirstRunDialog.xbf
+Views\ImageGalleryDetailPage.xbf
+Views\ImageGalleryPage.xbf
+Views\MainDetailControl.xbf
+Views\MainPage.xbf
+Views\SettingsPage.xbf
+Views\ShellPage.xbf
