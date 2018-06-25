@@ -53,7 +53,7 @@ namespace SpotLightUWP.ViewModels
 
         public ICommand TestingCommand => new RelayCommand(async () =>
         {
-            var wallpaperService = new WallpaperService();
+            var wallpaperService = Locator.WallpaperService;
             await wallpaperService.PickAndSetWallpaper();
         });
     }

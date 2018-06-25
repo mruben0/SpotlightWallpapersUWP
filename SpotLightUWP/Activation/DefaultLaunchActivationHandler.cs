@@ -19,6 +19,7 @@ namespace SpotLightUWP.Activation
             }
         }
 
+
         public DefaultLaunchActivationHandler(Type navElement)
         {
             _navElement = navElement.FullName;

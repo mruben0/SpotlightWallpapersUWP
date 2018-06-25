@@ -14,6 +14,8 @@ namespace SpotLightUWP.ViewModels
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             SimpleIoc.Default.Register(() => new NavigationServiceEx());
+            SimpleIoc.Default.Register(() => new WallpaperService());
+
             SimpleIoc.Default.Register<ShellViewModel>();
             Register<MainViewModel, MainPage>();
             Register<ImageGalleryViewModel, ImageGalleryPage>();
