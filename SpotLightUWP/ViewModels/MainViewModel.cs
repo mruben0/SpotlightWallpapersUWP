@@ -2,18 +2,24 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using GalaSoft.MvvmLight;
-
+using GalaSoft.MvvmLight.Command;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 
 using SpotLightUWP.Models;
 using SpotLightUWP.Services;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.UI.Xaml;
 
 namespace SpotLightUWP.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
+
+
         private SampleOrder _selected;
 
         public SampleOrder Selected
@@ -44,5 +50,11 @@ namespace SpotLightUWP.ViewModels
                 Selected = SampleItems.First();
             }
         }
+
+        public ICommand TestingCommand => new RelayCommand(async () =>
+        {
+            var wallpaperService = new WallpaperService();
+            await wallpaperService.PickAndSetWallpaper();
+        });
     }
 }

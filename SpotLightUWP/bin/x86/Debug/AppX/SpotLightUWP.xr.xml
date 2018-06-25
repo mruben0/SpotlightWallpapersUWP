@@ -85,7 +85,6 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Name" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="Content" />
@@ -120,12 +119,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Children" />
       <RootProperty Name="Background" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Padding" />
-      <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="Margin" />
-      <RootMethod Name="GetColumn" />
-      <RootMethod Name="SetColumn" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.FlipView">
       <RootProperty Name="Visibility" />
@@ -181,21 +175,12 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
-    <RootType FullName="SpotLightUWP.Views.MainDetailControl">
-      <RootProperty Name="MasterMenuItem" />
-    </RootType>
+    <RootType FullName="SpotLightUWP.Views.MainDetailControl" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.NavigationThemeTransition" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
-      <RootProperty Name="Width" />
-    </RootType>
-    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.MasterDetailsView">
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="SelectedItem" />
-      <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="DetailsTemplate" />
-      <RootProperty Name="NoSelectionContentTemplate" />
-      <RootProperty Name="BorderBrush" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Button">
+      <RootProperty Name="Content" />
+      <RootProperty Name="Command" />
     </RootType>
     <RootType FullName="SpotLightUWP.Views.MainPage" />
     <RootType FullName="SpotLightUWP.Helpers.EnumToBooleanConverter">

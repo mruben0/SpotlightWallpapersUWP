@@ -15,17 +15,18 @@
             <NavigationThemeTransition />
         </TransitionCollection>
     </Page.Transitions>
-    <Page.Resources>
-        <DataTemplate x:Key="ItemTemplate"                               >
-            <Grid x:ConnectionId='2' Height="64" Padding="0,8">
+    <!--todo delete-->
+    <!--<Page.Resources>
+        <DataTemplate x:Key="ItemTemplate" x:DataType="model:SampleOrder">
+            <Grid Height="64" Padding="0,8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <FontIcon x:ConnectionId='3' Grid.Column="0" FontSize="40"                         VerticalAlignment="Center" />
+                <FontIcon Grid.Column="0" FontSize="40" Glyph="{x:Bind Symbol}" VerticalAlignment="Center" />
                 <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
-                    <TextBlock x:ConnectionId='4'                         Style="{ThemeResource ListTitleStyle}"/>
-                    <TextBlock x:ConnectionId='5'                        Style="{StaticResource ListSubTitleStyle}"/>
+                    <TextBlock Text="{x:Bind Company}" Style="{ThemeResource ListTitleStyle}"/>
+                    <TextBlock Text="{x:Bind Status}" Style="{StaticResource ListSubTitleStyle}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -37,17 +38,21 @@
         <DataTemplate x:Key="NoSelectionContentTemplate">
             <TextBlock x:Uid="Main_NoSelection" Style="{StaticResource ListNoSelectionTextStyle}" />
         </DataTemplate>
-    </Page.Resources>
+    </Page.Resources>-->
 
-    <Grid x:ConnectionId='6' x:Name="ContentArea">
-        <controls:MasterDetailsView x:ConnectionId='7'
+    <!--<Grid x:Name="ContentArea">
+        <controls:MasterDetailsView
             x:Name="MasterDetailsViewControl"
-                                                        
-                                                                   
+            ItemsSource="{x:Bind ViewModel.SampleItems}"
+            SelectedItem="{x:Bind ViewModel.Selected, Mode=TwoWay}"
             ItemTemplate="{StaticResource ItemTemplate}"
             DetailsTemplate="{StaticResource DetailsTemplate}"
             NoSelectionContentTemplate="{StaticResource NoSelectionContentTemplate}"
             BorderBrush="Transparent" />
-    </Grid>
+    </Grid>-->
+
+    <StackPanel>
+        <Button x:ConnectionId='2' Content="SetAsWallpaper"                                            />
+    </StackPanel>
 </Page>
 

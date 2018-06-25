@@ -15,7 +15,8 @@
             <NavigationThemeTransition />
         </TransitionCollection>
     </Page.Transitions>
-    <Page.Resources>
+    <!--todo delete-->
+    <!--<Page.Resources>
         <DataTemplate x:Key="ItemTemplate" x:DataType="model:SampleOrder">
             <Grid Height="64" Padding="0,8">
                 <Grid.ColumnDefinitions>
@@ -37,9 +38,9 @@
         <DataTemplate x:Key="NoSelectionContentTemplate">
             <TextBlock x:Uid="Main_NoSelection" Style="{StaticResource ListNoSelectionTextStyle}" />
         </DataTemplate>
-    </Page.Resources>
+    </Page.Resources>-->
 
-    <Grid x:Name="ContentArea">
+    <!--<Grid x:Name="ContentArea">
         <controls:MasterDetailsView
             x:Name="MasterDetailsViewControl"
             ItemsSource="{x:Bind ViewModel.SampleItems}"
@@ -48,5 +49,9 @@
             DetailsTemplate="{StaticResource DetailsTemplate}"
             NoSelectionContentTemplate="{StaticResource NoSelectionContentTemplate}"
             BorderBrush="Transparent" />
-    </Grid>
+    </Grid>-->
+
+    <StackPanel>
+        <Button Content="SetAsWallpaper" Command="{x:Bind ViewModel.TestingCommand}"/>
+    </StackPanel>
 </Page>

@@ -129,6 +129,7 @@
     <Compile Include="Services\NavigationServiceEx.cs" />
     <Compile Include="Services\SampleDataService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
+    <Compile Include="Services\WallpaperService.cs" />
     <Compile Include="ViewModels\ImageGalleryDetailViewModel.cs" />
     <Compile Include="ViewModels\ImageGalleryViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

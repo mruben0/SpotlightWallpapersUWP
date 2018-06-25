@@ -1,9 +1,6 @@
 ﻿using System;
-
 using CommonServiceLocator;
-
 using GalaSoft.MvvmLight.Ioc;
-
 using SpotLightUWP.Services;
 using SpotLightUWP.Views;
 
@@ -35,6 +32,8 @@ namespace SpotLightUWP.ViewModels
         public ShellViewModel ShellViewModel => ServiceLocator.Current.GetInstance<ShellViewModel>();
 
         public NavigationServiceEx NavigationService => ServiceLocator.Current.GetInstance<NavigationServiceEx>();
+
+        public WallpaperService WallpaperService => ServiceLocator.Current.GetInstance<WallpaperService>();
 
         public void Register<VM, V>()
             where VM : class

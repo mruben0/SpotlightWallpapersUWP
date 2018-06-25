@@ -17,12 +17,7 @@ namespace SpotLightUWP.Views
         public MainPage()
         {
             InitializeComponent();
-            Loaded += MainPage_Loaded;
         }
 
-        private async void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            await ViewModel.LoadDataAsync(MasterDetailsViewControl.ViewState);
-        }
     }
 }
