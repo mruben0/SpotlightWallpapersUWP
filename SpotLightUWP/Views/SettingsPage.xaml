@@ -53,21 +53,23 @@
                         </RadioButton.CommandParameter>
                     </RadioButton>
                 </StackPanel>
-            </StackPanel>
-
-            <TextBlock
-                x:Uid="Settings_About"
-                Style="{StaticResource SubtitleTextBlockStyle}" />
+            </StackPanel>            
 
             <StackPanel Margin="{StaticResource EightTopMargin}">
                 <TextBlock
-                    Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" />
-                <TextBlock
-                    x:Uid="Settings_AboutDescription"
+                x:Uid="Settings_About"
+                Style="{StaticResource SubtitleTextBlockStyle}" />
+                
+                <TextBlock x:Uid="Description_Text" TextWrapping="WrapWholeWords"/>
+
+                <HyperlinkButton
+                    x:Uid="GithubLink"
+                 
                     Margin="{StaticResource EightTopMargin}" />
 
                 <HyperlinkButton
                     x:Uid="Settings_PrivacyTermsLink"
+                 
                     Margin="{StaticResource EightTopMargin}" />
             </StackPanel>
         </StackPanel>

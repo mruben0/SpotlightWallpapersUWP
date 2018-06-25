@@ -12,7 +12,6 @@ using Windows.UI.Xaml;
 
 namespace SpotLightUWP.ViewModels
 {
-    // TODO WTS: Add other settings as necessary. For help see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/pages/settings.md
     public class SettingsViewModel : ViewModelBase
     {
         private ElementTheme _elementTheme = ThemeSelectorService.Theme;

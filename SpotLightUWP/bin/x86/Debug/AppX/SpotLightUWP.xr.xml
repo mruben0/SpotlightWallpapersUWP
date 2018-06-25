@@ -66,7 +66,6 @@
       <RootProperty Name="MaxLines" />
       <RootProperty Name="Text" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="Inlines" />
       <RootProperty Name="Style" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
@@ -82,8 +81,8 @@
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Orientation" />
       <RootProperty Name="Children" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Name" />
       <RootProperty Name="Padding" />
       <RootProperty Name="VerticalAlignment" />
@@ -95,8 +94,9 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Padding" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Documents.Run" />
-    <RootType FullName="Windows.UI.Xaml.Documents.LineBreak" />
+    <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
+      <RootProperty Name="Margin" />
+    </RootType>
     <RootType FullName="SpotLightUWP.Views.FirstRunDialog" />
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Source" />
@@ -200,9 +200,6 @@
     <RootType FullName="SpotLightUWP.Views.MainPage" />
     <RootType FullName="SpotLightUWP.Helpers.EnumToBooleanConverter">
       <RootProperty Name="EnumType" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
-      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
       <RootProperty Name="GroupName" />

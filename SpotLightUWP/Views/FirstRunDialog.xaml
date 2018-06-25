@@ -17,12 +17,22 @@
         </DataTemplate>
     </ContentDialog.TitleTemplate>
     <ScrollViewer>
-        <StackPanel>
-            <TextBlock x:Uid="FirstRun_Body" TextWrapping="WrapWholeWords">
-                <Run>Replace the content of this dialog with whatever content is appropriate to your app.</Run><LineBreak/>
-                <Run>You might want to explain key features or functionality.</Run><LineBreak/>
-                <Run>Don't feel restricted to just text. You can also include images and animations if you wish too.</Run>
-            </TextBlock>
+        <StackPanel Margin="{StaticResource EightTopMargin}">
+            <TextBlock
+                x:Uid="Settings_About"
+                Style="{StaticResource SubtitleTextBlockStyle}" />
+
+            <TextBlock x:Uid="Description_Text" TextWrapping="WrapWholeWords"/>
+
+            <HyperlinkButton
+                    x:Uid="GithubLink"
+                 
+                    Margin="{StaticResource EightTopMargin}" />
+
+            <HyperlinkButton
+                    x:Uid="Settings_PrivacyTermsLink"
+                 
+                    Margin="{StaticResource EightTopMargin}" />
         </StackPanel>
     </ScrollViewer>
 </ContentDialog>
