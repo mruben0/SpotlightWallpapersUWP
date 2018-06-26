@@ -13,44 +13,53 @@ namespace SpotLightUWP.Services
     {
         private string _downloadPath { get; set; }
         private string _downloadedfolder = "DownloadedFolder";
+        
         public IOManager()
         {
             var appdata = ApplicationData.Current.LocalFolder;
-            _downloadPath = Path.Combine(appdata.ToString(),_downloadedfolder);
-            if (!Directory.Exists(_downloadPath))
+            DownloadPath = Path.Combine(appdata.Path,_downloadedfolder);
+            if (!Directory.Exists(DownloadPath))
             {
-                Directory.CreateDirectory(_downloadPath);
+                Directory.CreateDirectory(DownloadPath);
             }
         }
 
         private string ResultPathGenerator(string url)
         {
             string name = Path.GetFileName(url);
-            string resultPath = Path.Combine(_downloadPath, name);
+            string resultPath = Path.Combine(DownloadPath, name);
             return resultPath;
         }
 
-        public void DownloadImages(List<string> Urls)
+        public async Task DownloadImages(List<string> Urls)
         {
-            if (!Directory.Exists(_downloadPath))
+            if (!Directory.Exists(DownloadPath))
             {
-                Directory.CreateDirectory(_downloadPath);
+                Directory.CreateDirectory(DownloadPath);
             }
             foreach (var url in Urls)
             {
-                DownloadImage(url);
+               await DownloadImage(url);
             }
+            //todo: delete
+            System.Diagnostics.Debug.WriteLine("DownloadPath \n" + DownloadPath);
         }
 
-        private void DownloadImage(string Url)
+        private async Task DownloadImage(string Url)
         {
             using (WebClient client = new WebClient())
             {
                 if (!File.Exists(ResultPathGenerator(Url)))
                 {
-                    client.DownloadFile(new Uri(Url), ResultPathGenerator(Url));
+                  client.DownloadFileAsync(new Uri(Url), ResultPathGenerator(Url));
                 }
             }
+        }
+
+        public string DownloadPath
+        {
+            get { return _downloadPath; }
+            set { _downloadPath = value; }
         }
     }
 }

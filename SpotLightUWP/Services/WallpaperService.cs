@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +35,14 @@ namespace SpotLightUWP.Services
             if (UserProfilePersonalizationSettings.IsSupported())
             {
                 file = image ??  await StorageFile.GetFileFromApplicationUriAsync(Uri) ?? throw new ArgumentNullException(nameof(image));
-                var appdata = ApplicationData.Current.LocalFolder;
-                var copiedFile = await image.CopyAsync(appdata,image.Name,NameCollisionOption.ReplaceExisting);
+                var wallpaperPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Wallpaper");
+                if (!Directory.Exists(wallpaperPath))
+                {
+                    Directory.CreateDirectory(wallpaperPath);
+                }
+
+                IStorageFolder wallpaperFolder = await StorageFolder.GetFolderFromPathAsync(wallpaperPath);
+                var copiedFile = await image.CopyAsync(wallpaperFolder, image.Name,NameCollisionOption.ReplaceExisting);
                 UserProfilePersonalizationSettings profileSettings = UserProfilePersonalizationSettings.Current;
                 if (setAs == SetAs.Wallpaper)
                 {

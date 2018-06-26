@@ -2,14 +2,11 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-
 using SpotLightUWP.Helpers;
 using SpotLightUWP.Services;
 using SpotLightUWP.Views;
-
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -21,10 +18,7 @@ namespace SpotLightUWP.ViewModels
         private NavigationView _navigationView;
         private NavigationViewItem _selected;
         private ICommand _itemInvokedCommand;
-        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-        private HTTPService _hTTPService => Locator.HTTPService;
-        private IOManager IOManager => Locator.IOManager;
-        private DialogService DialogService => Locator.DialogService;
+        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;   
 
         public NavigationServiceEx NavigationService => Locator.NavigationService;
         
@@ -82,6 +76,6 @@ namespace SpotLightUWP.ViewModels
             var navigatedPageKey = NavigationService.GetNameOfRegisteredPage(sourcePageType);
             var pageKey = menuItem.GetValue(NavHelper.NavigateToProperty) as string;
             return pageKey == navigatedPageKey;
-        }
+        }        
     }
 }

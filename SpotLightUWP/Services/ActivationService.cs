@@ -13,7 +13,6 @@ using Windows.UI.Xaml.Navigation;
 
 namespace SpotLightUWP.Services
 {
-    // For more information on application activation see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/activation.md
     internal class ActivationService
     {
         private readonly App _app;
@@ -21,7 +20,9 @@ namespace SpotLightUWP.Services
         private readonly Type _defaultNavItem;
 
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-
+        private HTTPService _hTTPService => Locator.HTTPService;
+        private IOManager IOManager => Locator.IOManager;
+        private DialogService DialogService => Locator.DialogService;
         private NavigationServiceEx NavigationService => Locator.NavigationService;
 
         public ActivationService(App app, Type defaultNavItem, Lazy<UIElement> shell = null)
@@ -35,14 +36,10 @@ namespace SpotLightUWP.Services
         {
             if (IsInteractive(activationArgs))
             {
-                // Initialize things like registering background task before the app is loaded
                 await InitializeAsync();
-
-                // Do not repeat app initialization when the Window already has content,
-                // just ensure that the window is active
+               
                 if (Window.Current.Content == null)
                 {
-                    // Create a Frame to act as the navigation context and navigate to the first page
                     Window.Current.Content = _shell?.Value ?? new Frame();
                     NavigationService.NavigationFailed += (sender, e) =>
                     {
@@ -72,10 +69,8 @@ namespace SpotLightUWP.Services
                     await defaultHandler.HandleAsync(activationArgs);
                 }
 
-                // Ensure the current window is active
                 Window.Current.Activate();
 
-                // Tasks after activation
                 await StartupAsync();
             }
         }
@@ -83,6 +78,7 @@ namespace SpotLightUWP.Services
         private async Task InitializeAsync()
         {
             await ThemeSelectorService.InitializeAsync();
+            await DataService.GetDataFromServerAsync();
         }
 
         private async Task StartupAsync()
@@ -115,5 +111,6 @@ namespace SpotLightUWP.Services
                 e.Handled = true;
             }
         }
+
     }
 }

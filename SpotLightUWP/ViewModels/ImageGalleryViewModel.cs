@@ -38,7 +38,7 @@ namespace SpotLightUWP.ViewModels
         public ImageGalleryViewModel()
         {
             // TODO WTS: Replace this with your actual data
-            Source = SampleDataService.GetGallerySampleData();
+            Source = DataService.GetGallerySampleData();
         }
 
         public void Initialize(GridView imagesGridView)

@@ -12,7 +12,6 @@ namespace SpotLightUWP.Services
 {
    public class HTTPService
     {
-        private string _updatedDate;
 
         private RestClient client = new RestClient("http://spotlight.gear.host/");
         
@@ -26,7 +25,6 @@ namespace SpotLightUWP.Services
 
             JObject o = JObject.Parse(queryResult.Content);
             JArray images = (JArray)o.SelectToken("Images");
-            UpdatedDate = o.SelectToken("Date").ToString();
 
             foreach (var item in images)
             {
@@ -35,10 +33,15 @@ namespace SpotLightUWP.Services
             return ImageDtos;
         }
 
-        public string UpdatedDate
+        public int UpdatedDate()
         {
-            get { return _updatedDate; }
-            set { _updatedDate = value; }
+            var request = new RestRequest("imageuri", Method.GET);
+
+            var queryResult = client.Execute(request);
+
+            JObject o = JObject.Parse(queryResult.Content);
+
+            return  (int)o.SelectToken("Meta.Date");
         }
 
     }

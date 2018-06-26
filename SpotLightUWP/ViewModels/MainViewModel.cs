@@ -38,12 +38,12 @@ namespace SpotLightUWP.ViewModels
         {
             SampleItems.Clear();
 
-            var data = await SampleDataService.GetSampleModelDataAsync();
+            //var data = await SampleDataService.GetSampleModelDataAsync();
 
-            foreach (var item in data)
-            {
-                SampleItems.Add(item);
-            }
+            //foreach (var item in data)
+            //{
+            //    SampleItems.Add(item);
+            //}
 
             if (viewState == MasterDetailsViewState.Both)
             {

@@ -135,7 +135,7 @@
     <Compile Include="Services\FirstRunDisplayService.cs" />
     <Compile Include="Services\IOManager.cs" />
     <Compile Include="Services\NavigationServiceEx.cs" />
-    <Compile Include="Services\SampleDataService.cs" />
+    <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="Services\WallpaperService.cs" />
     <Compile Include="ViewModels\ImageGalleryDetailViewModel.cs" />
