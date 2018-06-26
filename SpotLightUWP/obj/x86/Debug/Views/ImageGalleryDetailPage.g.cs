@@ -348,7 +348,7 @@ namespace SpotLightUWP.Views
                     }
                 }
             }
-            private void Update_ViewModel_Source(global::System.Collections.ObjectModel.ObservableCollection<global::SpotLightUWP.Models.SampleImage> obj, int phase)
+            private void Update_ViewModel_Source(global::System.Collections.ObjectModel.ObservableCollection<global::SpotLightUWP.Models.ImageDTO> obj, int phase)
             {
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {

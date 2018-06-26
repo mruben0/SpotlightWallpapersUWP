@@ -23,11 +23,11 @@ namespace SpotLightUWP.ViewModels
         public const string ImageGalleryAnimationOpen = "ImageGallery_AnimationOpen";
         public const string ImageGalleryAnimationClose = "ImageGallery_AnimationClose";
 
-        private ObservableCollection<SampleImage> _source;
+        private ObservableCollection<ImageDTO> _source;
         private ICommand _itemSelectedCommand;
         private GridView _imagesGridView;
 
-        public ObservableCollection<SampleImage> Source
+        public ObservableCollection<ImageDTO> Source
         {
             get => _source;
             set => Set(ref _source, value);
@@ -37,13 +37,12 @@ namespace SpotLightUWP.ViewModels
 
         public ImageGalleryViewModel()
         {
-            // TODO WTS: Replace this with your actual data
-            Source = DataService.GetGallerySampleData();
+            Source = DataService.Source;
         }
 
         public void Initialize(GridView imagesGridView)
         {
-            _imagesGridView = imagesGridView;
+            _imagesGridView = imagesGridView;            
         }
 
         public async Task LoadAnimationAsync()

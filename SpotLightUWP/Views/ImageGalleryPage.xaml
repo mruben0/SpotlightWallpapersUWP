@@ -25,11 +25,11 @@
                 </ic:EventTriggerBehavior>
             </i:Interaction.Behaviors>
             <GridView.ItemTemplate>
-                <DataTemplate x:DataType="models:SampleImage">
+                <DataTemplate x:DataType="models:ImageDTO">                    
                     <Image
                         x:Name="galleryImage"
                         Style="{StaticResource ThumbnailImageStyle}"
-                        Source="{x:Bind Source}"
+                        Source="{x:Bind URI}"
                         AutomationProperties.Name="{x:Bind Name}"
                         ToolTipService.ToolTip="{x:Bind Name}"/>
                 </DataTemplate>

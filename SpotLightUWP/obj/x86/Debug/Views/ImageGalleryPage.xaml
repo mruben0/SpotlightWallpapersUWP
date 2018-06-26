@@ -25,11 +25,11 @@
                 </ic:EventTriggerBehavior>
             </i:Interaction.Behaviors>
             <GridView.ItemTemplate>
-                <DataTemplate                                >
+                <DataTemplate                             >                    
                     <Image x:ConnectionId='5'
                         x:Name="galleryImage"
                         Style="{StaticResource ThumbnailImageStyle}"
-                                                
+                                             
                                                                  
                                                               />
                 </DataTemplate>
