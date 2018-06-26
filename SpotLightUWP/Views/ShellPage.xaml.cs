@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SpotLightUWP.Services;
 using SpotLightUWP.ViewModels;
 using Windows.Foundation.Metadata;
@@ -17,17 +18,8 @@ namespace SpotLightUWP.Views
         public ShellPage()
         {
             InitializeComponent();
-            //HideNavViewBackButton();
             DataContext = ViewModel;
             ViewModel.Initialize(shellFrame, navigationView);
         }
-
-        //private void HideNavViewBackButton()
-        //{
-        //    if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
-        //    {
-        //        navigationView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
-        //    }
-        //}
     }
 }

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
-
-using CommonServiceLocator;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -23,15 +21,13 @@ namespace SpotLightUWP.ViewModels
         private NavigationView _navigationView;
         private NavigationViewItem _selected;
         private ICommand _itemInvokedCommand;
+        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
+        private HTTPService _hTTPService => Locator.HTTPService;
+        private IOManager IOManager => Locator.IOManager;
+        private DialogService DialogService => Locator.DialogService;
 
-        public NavigationServiceEx NavigationService
-        {
-            get
-            {
-                return CommonServiceLocator.ServiceLocator.Current.GetInstance<NavigationServiceEx>();
-            }
-        }
-
+        public NavigationServiceEx NavigationService => Locator.NavigationService;
+        
         public NavigationViewItem Selected
         {
             get { return _selected; }
@@ -44,11 +40,13 @@ namespace SpotLightUWP.ViewModels
         {
         }
 
-        public void Initialize(Frame frame, NavigationView navigationView)
+        public Task Initialize(Frame frame, NavigationView navigationView)
         {
             _navigationView = navigationView;
             NavigationService.Frame = frame;
             NavigationService.Navigated += Frame_Navigated;
+
+            return Task.FromResult(true);
         }
 
         private void OnItemInvoked(NavigationViewItemInvokedEventArgs args)

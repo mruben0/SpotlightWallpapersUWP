@@ -15,6 +15,9 @@ namespace SpotLightUWP.ViewModels
 
             SimpleIoc.Default.Register(() => new NavigationServiceEx());
             SimpleIoc.Default.Register(() => new WallpaperService());
+            SimpleIoc.Default.Register(() => new IOManager());
+            SimpleIoc.Default.Register(() => new HTTPService());
+            SimpleIoc.Default.Register(() => new DialogService());
 
             SimpleIoc.Default.Register<ShellViewModel>();
             Register<MainViewModel, MainPage>();
@@ -36,6 +39,12 @@ namespace SpotLightUWP.ViewModels
         public NavigationServiceEx NavigationService => ServiceLocator.Current.GetInstance<NavigationServiceEx>();
 
         public WallpaperService WallpaperService => ServiceLocator.Current.GetInstance<WallpaperService>();
+
+        public IOManager IOManager => ServiceLocator.Current.GetInstance<IOManager>();
+
+        public HTTPService HTTPService => ServiceLocator.Current.GetInstance<HTTPService>();
+
+        public DialogService DialogService => ServiceLocator.Current.GetInstance<DialogService>();
 
         public void Register<VM, V>()
             where VM : class
