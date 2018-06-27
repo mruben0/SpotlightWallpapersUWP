@@ -6,6 +6,8 @@
 
         public string Name { get; set; }
 
+        public string TemplateUri { get; set; }
+
         public string URI { get; set; }
 
         public int Date { get; set; }

@@ -4,77 +4,105 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
+using SpotLightUWP.Helpers;
 using SpotLightUWP.Models;
 using Windows.Storage;
 using Windows.UI.Xaml;
 
 namespace SpotLightUWP.Services
-{ 
-    public static class DataService
+{
+    public class DataService
     {
-        private static ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-        private static HTTPService _hTTPService => Locator.HTTPService;
-        private static IOManager IOManager => Locator.IOManager;
-        private static DialogService DialogService => Locator.DialogService;
-        private static ObservableCollection<ImageDTO> _source;
-        private static int _updateDate;
-        public static StorageFolder AppdataFolder => ApplicationData.Current.LocalFolder;
-        private static string _datefilePath => Path.Combine(AppdataFolder.Path, "dt");
+        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
+        private ImageNameManager ImageNameManager => Locator.ImageNameManager;
+        private HTTPService _hTTPService => Locator.HTTPService;
+        private IOManager IOManager => Locator.IOManager;
+        private DialogService DialogService => Locator.DialogService;
+        private ObservableCollection<ImageDTO> _source;
+        private int _updateDate;
+        public StorageFolder AppdataFolder => ApplicationData.Current.LocalFolder;
+        private string _datefilePath => Path.Combine(AppdataFolder.Path, "dt");
 
-        public static async Task<ObservableCollection<ImageDTO>> GetGalleryData()
+        public  async Task<ObservableCollection<ImageDTO>> GetGalleryData(bool IsTemplate = true)
         {
+            StorageFolder dataFolder = await StorageFolder.GetFolderFromPathAsync(IOManager.DownloadPath);            
+
+            if (IsTemplate)
+            {
+               dataFolder = await StorageFolder.GetFolderFromPathAsync(IOManager.TemplatePath);
+            }
+
             var data = new ObservableCollection<ImageDTO>();
-            var dataFolder = await StorageFolder.GetFolderFromPathAsync(IOManager.DownloadPath);
             var items = await dataFolder.GetItemsAsync();
             foreach (var item in items)
             {
                 data.Add(new ImageDTO()
                 {
                     URI = item.Path,
-                    Name = item.Name,
+                    Id = ImageNameManager.GetId(item.Name),
+                    Name = ImageNameManager.CreateName(item.Name),
                 });
-            }
-            
+            }            
             return data;
         }
 
-        public static async Task GetDataFromServerAsync()
+        public async Task GetAllDataFromServerAsync(bool IsTemplate = true)
         {
-
             var dataDate = _hTTPService.UpdatedDate();
             UpdateDate = GetBaseDate();
             if (dataDate > UpdateDate)
             {
                 UpdateDate = dataDate;
                 var imageDTOs = _hTTPService.URLParser();
-                await IOManager.DownloadImages(imageDTOs.Select(i => i.URI).ToList());
-                SaveBaseDate();
+                if (imageDTOs != null)
+                {
+                    if (IsTemplate)
+                    {
+                        await IOManager.DownloadImages(imageDTOs.Select(i => i.TemplateUri).ToList(), true);
+                    }
+                    else
+                    {
+                        await IOManager.DownloadImages(imageDTOs.Select(i => i.URI).ToList(), false);
+                    }
+                    SaveBaseDate();
+                }
+                else
+                {
+                    //notif about internet connection
+                }
+            }
+            else
+            {
+                //todo notif about up to date
             }
             Source = await GetGalleryData();
         }
 
-        private static void SaveBaseDate()
-        {            
-            if (!File.Exists(_datefilePath))
-            {
-                File.Create(_datefilePath);
-            }
-            var dd = UpdateDate.ToString();
-            File.WriteAllLines(_datefilePath, new string[] { dd});
+        public  async Task DownloadById(int ID)
+        {
+            var image = Source.FirstOrDefault(i => i.Id == ID);
+            await  IOManager.DownloadImage(image.URI);
         }
 
-        private static int GetBaseDate()
+        private  void SaveBaseDate()
+        {  
+            File.WriteAllLines(_datefilePath, new string[] { UpdateDate.ToString() });
+        }
+
+        private  int GetBaseDate()
         {
             if (File.Exists(_datefilePath))
             {
-                var date = File.ReadAllLines(_datefilePath).FirstOrDefault();
-                return Convert.ToInt32(date);
+                using (var tr = new StreamReader(_datefilePath))
+                {
+                    var date = File.ReadAllLines(_datefilePath).FirstOrDefault();
+                    return Convert.ToInt32(date);
+                }                
             }
             return 0;
         }
 
-        public static ObservableCollection<ImageDTO> Source
+        public  ObservableCollection<ImageDTO> Source
         {
             get => _source;
             set
@@ -83,7 +111,7 @@ namespace SpotLightUWP.Services
             }
         }
 
-        public static int UpdateDate
+        public  int UpdateDate
         {
             get { return _updateDate; }
             set { _updateDate = value; }

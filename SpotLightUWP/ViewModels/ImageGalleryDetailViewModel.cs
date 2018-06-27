@@ -18,6 +18,8 @@ namespace SpotLightUWP.ViewModels
 {
     public class ImageGalleryDetailViewModel : ViewModelBase
     {
+        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
+        private DataService DataService => Locator.DataService;
         private static UIElement _image;
         private object _selectedImage;
         private ObservableCollection<ImageDTO> _source;

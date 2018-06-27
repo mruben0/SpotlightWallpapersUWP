@@ -12,6 +12,8 @@ using SpotLightUWP.Models;
 using SpotLightUWP.Services;
 
 using Windows.Storage;
+using Windows.UI.Xaml;
+
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
@@ -19,6 +21,8 @@ namespace SpotLightUWP.ViewModels
 {
     public class ImageGalleryViewModel : ViewModelBase
     {
+        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
+        private DataService DataService => Locator.DataService;
         public const string ImageGallerySelectedIdKey = "ImageGallerySelectedIdKey";
         public const string ImageGalleryAnimationOpen = "ImageGallery_AnimationOpen";
         public const string ImageGalleryAnimationClose = "ImageGallery_AnimationClose";

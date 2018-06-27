@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
 using SpotLightUWP.Activation;
 
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -24,6 +26,10 @@ namespace SpotLightUWP.Services
         private IOManager IOManager => Locator.IOManager;
         private DialogService DialogService => Locator.DialogService;
         private NavigationServiceEx NavigationService => Locator.NavigationService;
+        private DataService DataService => Locator.DataService;
+        public StorageFolder AppdataFolder => ApplicationData.Current.LocalFolder;
+        private string _datefilePath => Path.Combine(AppdataFolder.Path, "dt");
+
 
         public ActivationService(App app, Type defaultNavItem, Lazy<UIElement> shell = null)
         {
@@ -77,8 +83,13 @@ namespace SpotLightUWP.Services
 
         private async Task InitializeAsync()
         {
+
+            if (!File.Exists(_datefilePath))
+            {
+                File.Create(_datefilePath);
+            }
             await ThemeSelectorService.InitializeAsync();
-            await DataService.GetDataFromServerAsync();
+            await DataService.GetAllDataFromServerAsync();
         }
 
         private async Task StartupAsync()

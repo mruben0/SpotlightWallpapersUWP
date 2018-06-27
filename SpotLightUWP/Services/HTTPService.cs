@@ -17,31 +17,39 @@ namespace SpotLightUWP.Services
         
         public List<ImageDTO> URLParser()
         {
-            List<ImageDTO> ImageDtos = new List<ImageDTO >();
+            List<ImageDTO> ImageDtos = new List<ImageDTO>();
 
             var request = new RestRequest("imageuri", Method.GET);
 
             var queryResult = client.Execute(request);
 
-            JObject o = JObject.Parse(queryResult.Content);
-            JArray images = (JArray)o.SelectToken("Images");
-
-            foreach (var item in images)
+            if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                ImageDtos.Add(JsonConvert.DeserializeObject<ImageDTO>(item.ToString()));
+                JObject o = JObject.Parse(queryResult.Content);
+                JArray images = (JArray)o.SelectToken("Images");
+
+                foreach (var item in images)
+                {
+                    ImageDtos.Add(JsonConvert.DeserializeObject<ImageDTO>(item.ToString()));
+                }
+                return ImageDtos;
             }
-            return ImageDtos;
+
+            else return null;
         }
 
         public int UpdatedDate()
         {
             var request = new RestRequest("imageuri", Method.GET);
-
             var queryResult = client.Execute(request);
 
-            JObject o = JObject.Parse(queryResult.Content);
+            if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                JObject o = JObject.Parse(queryResult.Content);
 
-            return  (int)o.SelectToken("Meta.Date");
+                return (int)o.SelectToken("Meta.Date");
+            }
+            return 0;
         }
 
     }
