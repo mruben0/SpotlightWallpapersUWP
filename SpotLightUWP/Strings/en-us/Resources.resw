@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>SpotLightUWP</value>
+    <value>Spotlight Wallpapers</value>
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>SpotLightUWP</value>
+    <value>Spotlight Wallpapers</value>
     <comment>Application description</comment>
   </data>
   <data name="ExceptionNavigationServiceExPageNotFound" xml:space="preserve">
@@ -173,31 +173,30 @@
     <value>Light</value>
     <comment>Light theme text for Settings</comment>
   </data>
-  <data name="Settings_About.Text" xml:space="preserve">    
+  <data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
     <comment>About this application title for Settings</comment>
   </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">    
+  <data name="Settings_AboutDescription.Text" xml:space="preserve">
     <value>UWP app able to find windows spotlight photos</value>
     <comment>About this application description for Settings</comment>
-  </data>  
-    
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">    
+  </data>
+  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Privacy Statement</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">  
+  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://github.com/mruben0/SpotlightWallpapersUWP/blob/master/PRIVACY_POLICY.md</value>
   </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">   
+  <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
     <comment>Personalization text for Settings</comment>
   </data>
-  <data name="ExceptionEnumToBooleanConverterValueMustBeAnEnum" xml:space="preserve">   
+  <data name="ExceptionEnumToBooleanConverterValueMustBeAnEnum" xml:space="preserve">
     <value>value must be an Enum!</value>
     <comment>Value must be an Enum in enum to boolean converter</comment>
   </data>
-  <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">   
+  <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">
     <value>parameter must be an Enum name!</value>
     <comment>Parameter must be an Enum name in enum to boolean converter</comment>
   </data>
@@ -212,16 +211,14 @@ We are looking forward to your feedback. You can rate in Microsoft store or fork
 New features are coming...
     </value>
     <comment>First use prompt message body</comment>
-  </data>  
-  
-    <data name="GithubLink.Content" xml:space="preserve">    
+  </data>
+  <data name="GithubLink.Content" xml:space="preserve">
     <value>Source on github</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
-  <data name="GithubLink.NavigateUri" xml:space="preserve">  
+  <data name="GithubLink.NavigateUri" xml:space="preserve">
     <value>https://github.com/mruben0/SpotlightWallpapersUWP</value>
   </data>
- 
   <data name="FirstRun_Title.Text" xml:space="preserve">
     <value>Welcome</value>
     <comment>First use prompt message title</comment>
