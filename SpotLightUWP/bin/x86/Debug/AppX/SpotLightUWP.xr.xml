@@ -67,6 +67,7 @@
       <RootProperty Name="Text" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Style" />
+      <RootProperty Name="Inlines" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
@@ -185,6 +186,14 @@
     <RootType FullName="SpotLightUWP.Views.MainPage" />
     <RootType FullName="SpotLightUWP.Helpers.EnumToBooleanConverter">
       <RootProperty Name="EnumType" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Documents.Span">
+      <RootProperty Name="Inlines" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Documents.Run" />
+    <RootType FullName="Windows.UI.Xaml.Documents.Hyperlink">
+      <RootProperty Name="NavigateUri" />
+      <RootProperty Name="Inlines" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
       <RootProperty Name="GroupName" />

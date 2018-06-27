@@ -71,6 +71,10 @@
                     x:Uid="Settings_PrivacyTermsLink"
                  
                     Margin="{StaticResource EightTopMargin}" />
+
+                <TextBlock  Margin="{StaticResource EightTopMargin}">
+                <Span xml:space="preserve"><Run> Contact us: </Run><Hyperlink NavigateUri="mailto:mruben0@outlook.com">mruben0@outlook.com</Hyperlink></Span>
+                </TextBlock>
             </StackPanel>
         </StackPanel>
     </Grid>    
