@@ -43,7 +43,7 @@ namespace SpotLightUWP.ViewModels
         public ImageGalleryDetailViewModel()
         {
             // TODO WTS: Replace this with your actual data
-            Source = DataService.GetGalleryData().Result;
+            Source = DataService.Source;
         }
 
         public void SetImage(UIElement image) => _image = image;

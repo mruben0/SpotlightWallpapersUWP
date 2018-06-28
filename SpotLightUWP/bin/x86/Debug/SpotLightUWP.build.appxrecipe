@@ -649,6 +649,48 @@
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\SpotLightUWP.xr.xml">
       <PackagePath>SpotLightUWP.xr.xml</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\Image.xbf">
+      <PackagePath>Styles\Image.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\Page.xbf">
+      <PackagePath>Styles\Page.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\_Colors.xbf">
+      <PackagePath>Styles\_Colors.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\_FontSizes.xbf">
+      <PackagePath>Styles\_FontSizes.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\_Thickness.xbf">
+      <PackagePath>Styles\_Thickness.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\TextBlock.xbf">
+      <PackagePath>Styles\TextBlock.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\FirstRunDialog.xbf">
+      <PackagePath>Views\FirstRunDialog.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\ImageGalleryDetailPage.xbf">
+      <PackagePath>Views\ImageGalleryDetailPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\ImageGalleryPage.xbf">
+      <PackagePath>Views\ImageGalleryPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\MainDetailControl.xbf">
+      <PackagePath>Views\MainDetailControl.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\MainPage.xbf">
+      <PackagePath>Views\MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\SettingsPage.xbf">
+      <PackagePath>Views\SettingsPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\ShellPage.xbf">
+      <PackagePath>Views\ShellPage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
@@ -819,33 +861,25 @@
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.25830.2</Version>
+      <Version>14.0.26428.1</Version>
       <Architecture>ARM</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.25830.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26428.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
       <MoreInfo></MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.25830.2</Version>
-      <Architecture>ARM64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.25830.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM64\Microsoft.VCLibs.ARM64.Debug.14.00.appx</AppxLocation>
-      <MoreInfo></MoreInfo>
-    </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
-      <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.25830.2</Version>
+      <Version>14.0.26428.1</Version>
       <Architecture>x64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.25830.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26428.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
       <MoreInfo></MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.25830.2</Version>
+      <Version>14.0.26428.1</Version>
       <Architecture>x86</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.25830.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26428.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
       <MoreInfo></MoreInfo>
     </ResolvedSDKReference>

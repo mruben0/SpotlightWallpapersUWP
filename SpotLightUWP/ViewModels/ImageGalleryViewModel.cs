@@ -51,13 +51,13 @@ namespace SpotLightUWP.ViewModels
 
         public async Task LoadAnimationAsync()
         {
-            var selectedImageId = await ApplicationData.Current.LocalSettings.ReadAsync<string>(ImageGallerySelectedIdKey);
-            if (!string.IsNullOrEmpty(selectedImageId))
+            var selectedImageId = await ApplicationData.Current.LocalSettings.ReadAsync<int>(ImageGallerySelectedIdKey);
+            if (selectedImageId != 0)
             {
                 var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(ImageGalleryAnimationClose);
                 if (animation != null)
                 {
-                    var item = _imagesGridView.Items.FirstOrDefault(i => ((SampleImage)i).ID == selectedImageId);
+                    var item = _imagesGridView.Items.FirstOrDefault(i => ((ImageDTO)i).Id == selectedImageId);
                     _imagesGridView.ScrollIntoView(item);
                     await _imagesGridView.TryStartConnectedAnimationAsync(animation, item, "galleryImage");
                 }
@@ -76,9 +76,9 @@ namespace SpotLightUWP.ViewModels
 
         private void OnsItemSelected(ItemClickEventArgs args)
         {
-            var selected = args.ClickedItem as SampleImage;
+            var selected = args.ClickedItem as ImageDTO;
             _imagesGridView.PrepareConnectedAnimation(ImageGalleryAnimationOpen, selected, "galleryImage");
-            NavigationService.Navigate(typeof(ImageGalleryDetailViewModel).FullName, selected.ID);
+            NavigationService.Navigate(typeof(ImageGalleryDetailViewModel).FullName, selected.Id);
         }
     }
 }

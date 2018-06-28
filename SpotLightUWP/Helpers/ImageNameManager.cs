@@ -13,7 +13,7 @@ namespace SpotLightUWP.Helpers
             if (name.Contains("__"))
             {
                 var substrings = name.Split("__");
-                return Convert.ToInt32(substrings[0]);
+                return Convert.ToInt32(substrings[1]);
             }
             else return 0;  
         }

@@ -1,4 +1,5 @@
 ﻿using SpotLightUWP.Helpers;
+using SpotLightUWP.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,7 +26,7 @@ namespace SpotLightUWP.Services
             var appdata = ApplicationData.Current.LocalFolder;
             DownloadPath = Path.Combine(appdata.Path,_downloadedfolder);
             TemplatePath = Path.Combine(appdata.Path, _templateFolder);
-            if (!Directory.Exists(DownloadPath))
+           if (!Directory.Exists(DownloadPath))
             {
                 Directory.CreateDirectory(DownloadPath);
             }
@@ -35,15 +36,15 @@ namespace SpotLightUWP.Services
             }
         }
 
-        private string ResultPathGenerator(string url, string path)
+        private string ResultPathGenerator(string url, string path, string name = null)
         {
-            string name = Path.GetFileName(url);
-            var cleanName = ImageNameManager.CleanName(name);
+            string _name = name ?? Path.GetFileName(url);
+            var cleanName = ImageNameManager.CleanName(_name);
             string resultPath = Path.Combine(path, cleanName);
             return resultPath;
         }
 
-        public async Task DownloadImages(List<string> Urls, bool AsTemplate = true)
+        public async Task DownloadImages(List<ImageDTO> imageDTOs, bool AsTemplate = true)
         {
             string downloadFolder;
             if (AsTemplate)
@@ -54,22 +55,20 @@ namespace SpotLightUWP.Services
             {
                 downloadFolder = DownloadPath;
             }
-            foreach (var url in Urls)
+            foreach (var imagedto in imageDTOs)
             {
-               await DownloadImage(url, downloadFolder);
+               await DownloadImage(imagedto.URI, imagedto.Name, downloadFolder);
             }
-            //todo: delete
-            System.Diagnostics.Debug.WriteLine("DownloadPath \n" + DownloadPath);
         }        
 
-        public async Task DownloadImage(string Url, string Path = null)
+        public async Task DownloadImage(string Url, string name = null, string Path = null)
         {
             string _path = Path ?? DownloadPath;
             using (WebClient client = new WebClient())
             {
-                if (!File.Exists(ResultPathGenerator(Url, _path)))
+                if (!File.Exists(ResultPathGenerator(Url, _path, name)))
                 {
-                 await client.DownloadFileTaskAsync(new Uri(Url), ResultPathGenerator(Url, _path));
+                 await client.DownloadFileTaskAsync(new Uri(Url), ResultPathGenerator(Url, _path, name));
                 }
             }
         }

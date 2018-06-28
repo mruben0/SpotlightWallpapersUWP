@@ -58,11 +58,11 @@ namespace SpotLightUWP.Services
                 {
                     if (IsTemplate)
                     {
-                        await IOManager.DownloadImages(imageDTOs.Select(i => i.TemplateUri).ToList(), true);
+                        await IOManager.DownloadImages(imageDTOs, true);
                     }
                     else
                     {
-                        await IOManager.DownloadImages(imageDTOs.Select(i => i.URI).ToList(), false);
+                        await IOManager.DownloadImages(imageDTOs, false);
                     }
                     SaveBaseDate();
                 }
@@ -85,21 +85,29 @@ namespace SpotLightUWP.Services
         }
 
         private  void SaveBaseDate()
-        {  
-            File.WriteAllLines(_datefilePath, new string[] { UpdateDate.ToString() });
+        {
+            if (File.Exists(_datefilePath))
+             using (var sw = new StreamWriter(_datefilePath))
+            {
+                 sw.WriteLine(UpdateDate.ToString());
+            }
         }
 
         private  int GetBaseDate()
         {
             if (File.Exists(_datefilePath))
             {
-                using (var tr = new StreamReader(_datefilePath))
+                using (var sr = new StreamReader(_datefilePath))
                 {
-                    var date = File.ReadAllLines(_datefilePath).FirstOrDefault();
+                    var date = sr.ReadLine();
                     return Convert.ToInt32(date);
                 }                
             }
-            return 0;
+            else
+            {
+                File.Create(_datefilePath).Dispose();
+                return 0;
+            }               
         }
 
         public  ObservableCollection<ImageDTO> Source

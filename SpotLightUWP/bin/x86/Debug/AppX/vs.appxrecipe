@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>D958F089DE7E3ED36AB8BB20602BF33857206A27FA5CBB583B3060177B300E62</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>9BE7C13949325BCD58DFD20744043E479BC2D66656A77546364BC415B22D1FD6</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>643584DC-F38D-4CB9-A8D5-2BC0D0F513AB_1.0.0.0_x86__f9b252pmsmjfa</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>643584DC-F38D-4CB9-A8D5-2BC0D0F513AB_f9b252pmsmjfa!App</RegisteredUserModeAppID>
     <RegisteredPackageID>643584DC-F38D-4CB9-A8D5-2BC0D0F513AB</RegisteredPackageID>
@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-06-27T06:46:28.649</Modified>
+      <Modified>2018-06-28T05:32:41.147</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\SpotLightUWP.exe">
       <PackagePath>entrypoint\SpotLightUWP.exe</PackagePath>
-      <Modified>2018-06-27T06:46:23.845</Modified>
+      <Modified>2018-06-28T05:32:38.648</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\.nuget\packages\colorcode.core\2.0.3\lib\netstandard1.4\ColorCode.Core.dll">
       <PackagePath>ColorCode.Core.dll</PackagePath>
@@ -865,6 +865,62 @@
       <PackagePath>SpotLightUWP.xr.xml</PackagePath>
       <Modified>2018-06-27T06:40:14.446</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.760</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\Image.xbf">
+      <PackagePath>Styles\Image.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.750</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\Page.xbf">
+      <PackagePath>Styles\Page.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.752</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\_Colors.xbf">
+      <PackagePath>Styles\_Colors.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.753</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\_FontSizes.xbf">
+      <PackagePath>Styles\_FontSizes.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.755</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\_Thickness.xbf">
+      <PackagePath>Styles\_Thickness.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.757</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\TextBlock.xbf">
+      <PackagePath>Styles\TextBlock.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.758</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\FirstRunDialog.xbf">
+      <PackagePath>Views\FirstRunDialog.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.762</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\ImageGalleryDetailPage.xbf">
+      <PackagePath>Views\ImageGalleryDetailPage.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.763</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\ImageGalleryPage.xbf">
+      <PackagePath>Views\ImageGalleryPage.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.766</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\MainDetailControl.xbf">
+      <PackagePath>Views\MainDetailControl.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.767</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\MainPage.xbf">
+      <PackagePath>Views\MainPage.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.769</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\SettingsPage.xbf">
+      <PackagePath>Views\SettingsPage.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.770</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\ShellPage.xbf">
+      <PackagePath>Views\ShellPage.xbf</PackagePath>
+      <Modified>2018-06-28T05:32:37.772</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2017-09-28T13:28:16.000</Modified>
@@ -1048,11 +1104,11 @@
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-06-27T06:46:26.885</Modified>
+      <Modified>2018-06-28T04:42:55.908</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Core\SpotLightUWP.exe">
       <PackagePath>SpotLightUWP.exe</PackagePath>
-      <Modified>2018-06-27T06:46:28.637</Modified>
+      <Modified>2018-06-28T05:32:41.134</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
@@ -1085,36 +1141,27 @@
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.25830.2</Version>
+      <Version>14.0.26428.1</Version>
       <Architecture>ARM</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.25830.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26428.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.25830.2</Version>
-      <Architecture>ARM64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.25830.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM64\Microsoft.VCLibs.ARM64.Debug.14.00.appx</AppxLocation>
-      <MoreInfo>
-      </MoreInfo>
-    </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
-      <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.25830.2</Version>
+      <Version>14.0.26428.1</Version>
       <Architecture>x64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.25830.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26428.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.25830.2</Version>
+      <Version>14.0.26428.1</Version>
       <Architecture>x86</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.25830.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26428.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>

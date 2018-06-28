@@ -1911,6 +1911,503 @@
         }
       }
     },
+    "UAP,Version=v10.0.16299/win10-arm64-aot": {
+      "ColorCode.Core/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.4/ColorCode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/ColorCode.Core.dll": {}
+        }
+      },
+      "ColorCode.UWP/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "ColorCode.Core": "2.0.3",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.2"
+        },
+        "compile": {
+          "lib/uap10.0/ColorCode.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/ColorCode.UWP.dll": {}
+        }
+      },
+      "CommonServiceLocator/2.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/CommonServiceLocator.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/CommonServiceLocator.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.1.2-preview0008": {
+        "type": "package",
+        "compile": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
+        }
+      },
+      "Microsoft.Net.Native.Compiler/2.1.8": {
+        "type": "package",
+        "dependencies": {
+          "runtime.win10-arm.Microsoft.Net.Native.Compiler": "2.1.8",
+          "runtime.win10-x64.Microsoft.Net.Native.Compiler": "2.1.8",
+          "runtime.win10-x86.Microsoft.Net.Native.Compiler": "2.1.8"
+        },
+        "build": {
+          "build/Microsoft.Net.Native.Compiler.props": {},
+          "build/Microsoft.Net.Native.Compiler.targets": {}
+        }
+      },
+      "Microsoft.Net.UWPCoreRuntimeSdk/2.1.2": {
+        "type": "package",
+        "dependencies": {
+          "runtime.win10-arm.Microsoft.Net.UWPCoreRuntimeSdk": "2.1.2",
+          "runtime.win10-x64.Microsoft.Net.UWPCoreRuntimeSdk": "2.1.2",
+          "runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk": "2.1.2"
+        },
+        "build": {
+          "build/Microsoft.Net.UWPCoreRuntimeSdk.props": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "Microsoft.NETCore.UniversalWindowsPlatform/6.1.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0",
+          "Microsoft.Net.Native.Compiler": "2.1.8",
+          "Microsoft.Net.UWPCoreRuntimeSdk": "2.1.2",
+          "NETStandard.Library": "2.0.3"
+        },
+        "compile": {
+          "ref/uap10.0.15138/Microsoft.CSharp.dll": {},
+          "ref/uap10.0.15138/Microsoft.VisualBasic.dll": {},
+          "ref/uap10.0.15138/Microsoft.Win32.Primitives.dll": {},
+          "ref/uap10.0.15138/System.AppContext.dll": {},
+          "ref/uap10.0.15138/System.Buffers.dll": {},
+          "ref/uap10.0.15138/System.Collections.Concurrent.dll": {},
+          "ref/uap10.0.15138/System.Collections.Immutable.dll": {},
+          "ref/uap10.0.15138/System.Collections.NonGeneric.dll": {},
+          "ref/uap10.0.15138/System.Collections.Specialized.dll": {},
+          "ref/uap10.0.15138/System.Collections.dll": {},
+          "ref/uap10.0.15138/System.ComponentModel.Annotations.dll": {},
+          "ref/uap10.0.15138/System.ComponentModel.Composition.dll": {},
+          "ref/uap10.0.15138/System.ComponentModel.DataAnnotations.dll": {},
+          "ref/uap10.0.15138/System.ComponentModel.EventBasedAsync.dll": {},
+          "ref/uap10.0.15138/System.ComponentModel.Primitives.dll": {},
+          "ref/uap10.0.15138/System.ComponentModel.TypeConverter.dll": {},
+          "ref/uap10.0.15138/System.ComponentModel.dll": {},
+          "ref/uap10.0.15138/System.Configuration.dll": {},
+          "ref/uap10.0.15138/System.Console.dll": {},
+          "ref/uap10.0.15138/System.Core.dll": {},
+          "ref/uap10.0.15138/System.Data.Common.dll": {},
+          "ref/uap10.0.15138/System.Data.SqlClient.dll": {},
+          "ref/uap10.0.15138/System.Data.dll": {},
+          "ref/uap10.0.15138/System.Diagnostics.Contracts.dll": {},
+          "ref/uap10.0.15138/System.Diagnostics.Debug.dll": {},
+          "ref/uap10.0.15138/System.Diagnostics.FileVersionInfo.dll": {},
+          "ref/uap10.0.15138/System.Diagnostics.Process.dll": {},
+          "ref/uap10.0.15138/System.Diagnostics.StackTrace.dll": {},
+          "ref/uap10.0.15138/System.Diagnostics.TextWriterTraceListener.dll": {},
+          "ref/uap10.0.15138/System.Diagnostics.Tools.dll": {},
+          "ref/uap10.0.15138/System.Diagnostics.TraceSource.dll": {},
+          "ref/uap10.0.15138/System.Diagnostics.Tracing.dll": {},
+          "ref/uap10.0.15138/System.Drawing.Primitives.dll": {},
+          "ref/uap10.0.15138/System.Drawing.dll": {},
+          "ref/uap10.0.15138/System.Dynamic.Runtime.dll": {},
+          "ref/uap10.0.15138/System.Globalization.Calendars.dll": {},
+          "ref/uap10.0.15138/System.Globalization.Extensions.dll": {},
+          "ref/uap10.0.15138/System.Globalization.dll": {},
+          "ref/uap10.0.15138/System.IO.Compression.FileSystem.dll": {},
+          "ref/uap10.0.15138/System.IO.Compression.ZipFile.dll": {},
+          "ref/uap10.0.15138/System.IO.Compression.dll": {},
+          "ref/uap10.0.15138/System.IO.FileSystem.DriveInfo.dll": {},
+          "ref/uap10.0.15138/System.IO.FileSystem.Primitives.dll": {},
+          "ref/uap10.0.15138/System.IO.FileSystem.Watcher.dll": {},
+          "ref/uap10.0.15138/System.IO.FileSystem.dll": {},
+          "ref/uap10.0.15138/System.IO.IsolatedStorage.dll": {},
+          "ref/uap10.0.15138/System.IO.MemoryMappedFiles.dll": {},
+          "ref/uap10.0.15138/System.IO.Pipes.dll": {},
+          "ref/uap10.0.15138/System.IO.Ports.dll": {},
+          "ref/uap10.0.15138/System.IO.UnmanagedMemoryStream.dll": {},
+          "ref/uap10.0.15138/System.IO.dll": {},
+          "ref/uap10.0.15138/System.Linq.Expressions.dll": {},
+          "ref/uap10.0.15138/System.Linq.Parallel.dll": {},
+          "ref/uap10.0.15138/System.Linq.Queryable.dll": {},
+          "ref/uap10.0.15138/System.Linq.dll": {},
+          "ref/uap10.0.15138/System.Net.Http.Rtc.dll": {},
+          "ref/uap10.0.15138/System.Net.Http.dll": {},
+          "ref/uap10.0.15138/System.Net.HttpListener.dll": {},
+          "ref/uap10.0.15138/System.Net.Mail.dll": {},
+          "ref/uap10.0.15138/System.Net.NameResolution.dll": {},
+          "ref/uap10.0.15138/System.Net.NetworkInformation.dll": {},
+          "ref/uap10.0.15138/System.Net.Ping.dll": {},
+          "ref/uap10.0.15138/System.Net.Primitives.dll": {},
+          "ref/uap10.0.15138/System.Net.Requests.dll": {},
+          "ref/uap10.0.15138/System.Net.Security.dll": {},
+          "ref/uap10.0.15138/System.Net.ServicePoint.dll": {},
+          "ref/uap10.0.15138/System.Net.Sockets.dll": {},
+          "ref/uap10.0.15138/System.Net.WebClient.dll": {},
+          "ref/uap10.0.15138/System.Net.WebHeaderCollection.dll": {},
+          "ref/uap10.0.15138/System.Net.WebProxy.dll": {},
+          "ref/uap10.0.15138/System.Net.WebSockets.Client.dll": {},
+          "ref/uap10.0.15138/System.Net.WebSockets.dll": {},
+          "ref/uap10.0.15138/System.Net.dll": {},
+          "ref/uap10.0.15138/System.Numerics.Vectors.WindowsRuntime.dll": {},
+          "ref/uap10.0.15138/System.Numerics.Vectors.dll": {},
+          "ref/uap10.0.15138/System.Numerics.dll": {},
+          "ref/uap10.0.15138/System.ObjectModel.dll": {},
+          "ref/uap10.0.15138/System.Reflection.Context.dll": {},
+          "ref/uap10.0.15138/System.Reflection.DispatchProxy.dll": {},
+          "ref/uap10.0.15138/System.Reflection.Extensions.dll": {},
+          "ref/uap10.0.15138/System.Reflection.Metadata.dll": {},
+          "ref/uap10.0.15138/System.Reflection.Primitives.dll": {},
+          "ref/uap10.0.15138/System.Reflection.TypeExtensions.dll": {},
+          "ref/uap10.0.15138/System.Reflection.dll": {},
+          "ref/uap10.0.15138/System.Resources.Reader.dll": {},
+          "ref/uap10.0.15138/System.Resources.ResourceManager.dll": {},
+          "ref/uap10.0.15138/System.Resources.Writer.dll": {},
+          "ref/uap10.0.15138/System.Runtime.CompilerServices.VisualC.dll": {},
+          "ref/uap10.0.15138/System.Runtime.Extensions.dll": {},
+          "ref/uap10.0.15138/System.Runtime.Handles.dll": {},
+          "ref/uap10.0.15138/System.Runtime.InteropServices.RuntimeInformation.dll": {},
+          "ref/uap10.0.15138/System.Runtime.InteropServices.WindowsRuntime.dll": {},
+          "ref/uap10.0.15138/System.Runtime.InteropServices.dll": {},
+          "ref/uap10.0.15138/System.Runtime.Numerics.dll": {},
+          "ref/uap10.0.15138/System.Runtime.Serialization.Formatters.dll": {},
+          "ref/uap10.0.15138/System.Runtime.Serialization.Json.dll": {},
+          "ref/uap10.0.15138/System.Runtime.Serialization.Primitives.dll": {},
+          "ref/uap10.0.15138/System.Runtime.Serialization.Xml.dll": {},
+          "ref/uap10.0.15138/System.Runtime.Serialization.dll": {},
+          "ref/uap10.0.15138/System.Runtime.WindowsRuntime.UI.Xaml.dll": {},
+          "ref/uap10.0.15138/System.Runtime.WindowsRuntime.dll": {},
+          "ref/uap10.0.15138/System.Runtime.dll": {},
+          "ref/uap10.0.15138/System.Security.AccessControl.dll": {},
+          "ref/uap10.0.15138/System.Security.Claims.dll": {},
+          "ref/uap10.0.15138/System.Security.Cryptography.Algorithms.dll": {},
+          "ref/uap10.0.15138/System.Security.Cryptography.Cng.dll": {},
+          "ref/uap10.0.15138/System.Security.Cryptography.Csp.dll": {},
+          "ref/uap10.0.15138/System.Security.Cryptography.Encoding.dll": {},
+          "ref/uap10.0.15138/System.Security.Cryptography.Primitives.dll": {},
+          "ref/uap10.0.15138/System.Security.Cryptography.X509Certificates.dll": {},
+          "ref/uap10.0.15138/System.Security.Principal.Windows.dll": {},
+          "ref/uap10.0.15138/System.Security.Principal.dll": {},
+          "ref/uap10.0.15138/System.Security.SecureString.dll": {},
+          "ref/uap10.0.15138/System.Security.dll": {},
+          "ref/uap10.0.15138/System.ServiceModel.Duplex.dll": {},
+          "ref/uap10.0.15138/System.ServiceModel.Http.dll": {},
+          "ref/uap10.0.15138/System.ServiceModel.NetTcp.dll": {},
+          "ref/uap10.0.15138/System.ServiceModel.Primitives.dll": {},
+          "ref/uap10.0.15138/System.ServiceModel.Security.dll": {},
+          "ref/uap10.0.15138/System.ServiceModel.Web.dll": {},
+          "ref/uap10.0.15138/System.ServiceModel.dll": {},
+          "ref/uap10.0.15138/System.ServiceProcess.dll": {},
+          "ref/uap10.0.15138/System.Text.Encoding.CodePages.dll": {},
+          "ref/uap10.0.15138/System.Text.Encoding.Extensions.dll": {},
+          "ref/uap10.0.15138/System.Text.Encoding.dll": {},
+          "ref/uap10.0.15138/System.Text.RegularExpressions.dll": {},
+          "ref/uap10.0.15138/System.Threading.Overlapped.dll": {},
+          "ref/uap10.0.15138/System.Threading.Tasks.Dataflow.dll": {},
+          "ref/uap10.0.15138/System.Threading.Tasks.Parallel.dll": {},
+          "ref/uap10.0.15138/System.Threading.Tasks.dll": {},
+          "ref/uap10.0.15138/System.Threading.Thread.dll": {},
+          "ref/uap10.0.15138/System.Threading.ThreadPool.dll": {},
+          "ref/uap10.0.15138/System.Threading.Timer.dll": {},
+          "ref/uap10.0.15138/System.Threading.dll": {},
+          "ref/uap10.0.15138/System.Transactions.Local.dll": {},
+          "ref/uap10.0.15138/System.Transactions.dll": {},
+          "ref/uap10.0.15138/System.ValueTuple.dll": {},
+          "ref/uap10.0.15138/System.Web.HttpUtility.dll": {},
+          "ref/uap10.0.15138/System.Web.dll": {},
+          "ref/uap10.0.15138/System.Windows.dll": {},
+          "ref/uap10.0.15138/System.Xml.Linq.dll": {},
+          "ref/uap10.0.15138/System.Xml.ReaderWriter.dll": {},
+          "ref/uap10.0.15138/System.Xml.Serialization.dll": {},
+          "ref/uap10.0.15138/System.Xml.XDocument.dll": {},
+          "ref/uap10.0.15138/System.Xml.XPath.XDocument.dll": {},
+          "ref/uap10.0.15138/System.Xml.XPath.dll": {},
+          "ref/uap10.0.15138/System.Xml.XmlDocument.dll": {},
+          "ref/uap10.0.15138/System.Xml.XmlSerializer.dll": {},
+          "ref/uap10.0.15138/System.Xml.dll": {},
+          "ref/uap10.0.15138/System.dll": {},
+          "ref/uap10.0.15138/WindowsBase.dll": {},
+          "ref/uap10.0.15138/mscorlib.dll": {},
+          "ref/uap10.0.15138/netstandard.dll": {}
+        }
+      },
+      "Microsoft.Toolkit/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Parsers/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit": "3.0.0",
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Toolkit.Parsers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Toolkit.Parsers.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Identity.Client": "1.1.2-preview0008",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.8",
+          "Microsoft.Toolkit": "3.0.0",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.UI/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.8",
+          "Microsoft.Toolkit.Uwp": "3.0.0",
+          "Win2D.uwp": "1.21.0"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.UI.Animations/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.8",
+          "Microsoft.Toolkit.Uwp.UI": "3.0.0",
+          "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
+          "System.ValueTuple": "4.4.0",
+          "Win2D.uwp": "1.21.0"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.UI.Controls/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "ColorCode.UWP": "2.0.3",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.8",
+          "Microsoft.Toolkit.Parsers": "3.0.0",
+          "Microsoft.Toolkit.Uwp.UI.Animations": "3.0.0",
+          "Robmikh.CompositionSurfaceFactory": "0.7.3",
+          "System.ValueTuple": "4.4.0"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.dll": {}
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Uwp.Managed/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
+        }
+      },
+      "MvvmLight/5.4.1": {
+        "type": "package",
+        "dependencies": {
+          "MvvmLightLibs": "5.4.1"
+        }
+      },
+      "MvvmLightLibs/5.4.1": {
+        "type": "package",
+        "dependencies": {
+          "CommonServiceLocator": "2.0.2"
+        },
+        "compile": {
+          "lib/uap10.0/GalaSoft.MvvmLight.Extras.dll": {},
+          "lib/uap10.0/GalaSoft.MvvmLight.Platform.dll": {},
+          "lib/uap10.0/GalaSoft.MvvmLight.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/GalaSoft.MvvmLight.Extras.dll": {},
+          "lib/uap10.0/GalaSoft.MvvmLight.Platform.dll": {},
+          "lib/uap10.0/GalaSoft.MvvmLight.dll": {}
+        }
+      },
+      "NETStandard.Library/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "build": {
+          "build/netstandard2.0/NETStandard.Library.targets": {}
+        }
+      },
+      "Newtonsoft.Json/11.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "RestSharp/106.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RestSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RestSharp.dll": {}
+        }
+      },
+      "Robmikh.CompositionSurfaceFactory/0.7.3": {
+        "type": "package",
+        "dependencies": {
+          "Win2D.uwp": "1.21.0"
+        },
+        "compile": {
+          "lib/uap10.0/Robmikh.CompositionSurfaceFactory.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Robmikh.CompositionSurfaceFactory.winmd": {}
+        }
+      },
+      "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.1.8": {
+        "type": "package",
+        "dependencies": {
+          "runtime.win10-arm.Microsoft.Net.Native.SharedLibrary": "2.1.8"
+        },
+        "build": {
+          "build/runtime.win10-arm.Microsoft.Net.Native.Compiler.props": {},
+          "build/runtime.win10-arm.Microsoft.Net.Native.Compiler.targets": {}
+        }
+      },
+      "runtime.win10-arm.Microsoft.Net.Native.SharedLibrary/2.1.8": {
+        "type": "package",
+        "build": {
+          "build/runtime.win10-arm.Microsoft.Net.Native.SharedLibrary.props": {},
+          "build/runtime.win10-arm.Microsoft.Net.Native.SharedLibrary.targets": {}
+        }
+      },
+      "runtime.win10-arm.Microsoft.Net.UWPCoreRuntimeSdk/2.1.2": {
+        "type": "package",
+        "build": {
+          "build/runtime.win10-arm.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
+          "build/runtime.win10-arm.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
+        }
+      },
+      "runtime.win10-x64.Microsoft.Net.Native.Compiler/2.1.8": {
+        "type": "package",
+        "dependencies": {
+          "runtime.win10-x64.Microsoft.Net.Native.SharedLibrary": "2.1.8"
+        },
+        "build": {
+          "build/runtime.win10-x64.Microsoft.Net.Native.Compiler.props": {},
+          "build/runtime.win10-x64.Microsoft.Net.Native.Compiler.targets": {}
+        }
+      },
+      "runtime.win10-x64.Microsoft.Net.Native.SharedLibrary/2.1.8": {
+        "type": "package",
+        "build": {
+          "build/runtime.win10-x64.Microsoft.Net.Native.SharedLibrary.props": {},
+          "build/runtime.win10-x64.Microsoft.Net.Native.SharedLibrary.targets": {}
+        }
+      },
+      "runtime.win10-x64.Microsoft.Net.UWPCoreRuntimeSdk/2.1.2": {
+        "type": "package",
+        "build": {
+          "build/runtime.win10-x64.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
+          "build/runtime.win10-x64.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
+        }
+      },
+      "runtime.win10-x86.Microsoft.Net.Native.Compiler/2.1.8": {
+        "type": "package",
+        "dependencies": {
+          "runtime.win10-x86.Microsoft.Net.Native.SharedLibrary": "2.1.8"
+        },
+        "build": {
+          "build/runtime.win10-x86.Microsoft.Net.Native.Compiler.props": {},
+          "build/runtime.win10-x86.Microsoft.Net.Native.Compiler.targets": {}
+        }
+      },
+      "runtime.win10-x86.Microsoft.Net.Native.SharedLibrary/2.1.8": {
+        "type": "package",
+        "build": {
+          "build/runtime.win10-x86.Microsoft.Net.Native.SharedLibrary.props": {},
+          "build/runtime.win10-x86.Microsoft.Net.Native.SharedLibrary.targets": {}
+        }
+      },
+      "runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk/2.1.2": {
+        "type": "package",
+        "build": {
+          "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
+          "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
+        }
+      },
+      "System.ValueTuple/4.4.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        }
+      },
+      "Win2D.uwp/1.21.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        }
+      }
+    },
     "UAP,Version=v10.0.16299/win10-x64": {
       "ColorCode.Core/2.0.3": {
         "type": "package",
@@ -8766,7 +9263,7 @@
   },
   "packageFolders": {
     "C:\\Users\\mrube\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
+    "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -8779,12 +9276,11 @@
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
+        "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
         "C:\\Users\\mrube\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "uap10.0.16299"
@@ -8848,6 +9344,9 @@
         "#import": []
       },
       "win10-arm-aot": {
+        "#import": []
+      },
+      "win10-arm64-aot": {
         "#import": []
       },
       "win10-x64": {

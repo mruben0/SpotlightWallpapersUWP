@@ -31,12 +31,12 @@
                                                    
                                                                         >
             <FlipView.ItemTemplate>
-                <DataTemplate                                >
+                <DataTemplate                             >
                     <Viewbox x:ConnectionId='6' StretchDirection="DownOnly">
                         <Image x:ConnectionId='7'
                             x:Name="detailImage"
                             Stretch="None"
-                                                                  />
+                                                               />
                     </Viewbox>
                 </DataTemplate>
             </FlipView.ItemTemplate>
@@ -47,7 +47,7 @@
         <Image x:ConnectionId='5'
             x:Name="previewImage"
             Style="{StaticResource DetailImageStyle}"
-                                                                                               />
+                                                                                         />
     </Grid>
 </Page>
 

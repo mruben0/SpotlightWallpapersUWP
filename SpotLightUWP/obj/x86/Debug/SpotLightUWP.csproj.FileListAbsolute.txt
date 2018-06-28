@@ -374,5 +374,6 @@ C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Microsoft.Xa
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Microsoft.Xaml.Interactivity.pri.xml
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\GalaSoft.MvvmLight.Platform.pri.xml
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\ProjectArchitectures.txt
-C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\SpotLightUWP.csprojResolveAssemblyReference.cache
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\RestSharp.dll
+C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\SpotLightUWP.csprojAssemblyReference.cache
+C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\SpotLightUWP.csproj.CopyComplete
