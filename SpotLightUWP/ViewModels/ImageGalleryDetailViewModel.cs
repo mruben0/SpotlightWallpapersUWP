@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,11 +46,17 @@ namespace SpotLightUWP.ViewModels
 
         public void SetImage(UIElement image) => _image = image;
 
-        public async Task InitializeAsync(string ImageId, NavigationMode navigationMode)
+        public async Task InitializeAsync(ImageDetailNavigationArgs imageDetailNavigationArgs, NavigationMode navigationMode)
         {
-            if (!string.IsNullOrEmpty(ImageId) && navigationMode == NavigationMode.New)
+            Source = imageDetailNavigationArgs.Source;
+
+            if (!string.IsNullOrEmpty(imageDetailNavigationArgs.Id) && navigationMode == NavigationMode.New)
             {
-                SelectedImage = Source.FirstOrDefault(i => i.Id == ImageId);
+                SelectedImage = Source.FirstOrDefault(i => i.Id == imageDetailNavigationArgs.Id);
+            }
+            else if (!string.IsNullOrEmpty(imageDetailNavigationArgs.Name) && navigationMode == NavigationMode.New)
+            {
+                SelectedImage = Source.FirstOrDefault(i => i.Name == imageDetailNavigationArgs.Name);
             }
             else
             {

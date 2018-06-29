@@ -73,7 +73,7 @@ namespace SpotLightUWP.ViewModels
         {
             var selected = args.ClickedItem as ImageDTO;
             _imagesGridView.PrepareConnectedAnimation(ImageGalleryAnimationOpen, selected, "galleryImage");
-            NavigationService.Navigate(typeof(ImageGalleryDetailViewModel).FullName, selected.Id);
+            NavigationService.Navigate(typeof(ImageGalleryDetailViewModel).FullName, new ImageDetailNavigationArgs(DataService.Source, selected.Id));
         }
 
 
