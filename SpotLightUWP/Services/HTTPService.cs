@@ -12,15 +12,15 @@ namespace SpotLightUWP.Services
 {
    public class HTTPService
     {
+        RestClient client = new RestClient("http://spotlight.gear.host/imageuri");
 
-        private RestClient client = new RestClient("http://spotlight.gear.host/");
-        
+
         public List<ImageDTO> URLParser()
         {
             List<ImageDTO> ImageDtos = new List<ImageDTO>();
 
-            var request = new RestRequest("imageuri", Method.GET);
-
+            var request = new RestRequest(Method.GET);
+            
             var queryResult = client.Execute(request);
 
             if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)

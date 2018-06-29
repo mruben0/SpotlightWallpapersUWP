@@ -16,9 +16,9 @@
         Header="{x:Bind ViewModel.Selected.Content, Mode=OneWay}"
         IsSettingsVisible="True"
         Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
-        <NavigationView.MenuItems>           
-            <NavigationViewItem x:Uid="Shell_Main" Icon="OpenLocal" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.MainViewModel" />
-            <NavigationViewItem x:Uid="Shell_ImageGallery" Icon="Document" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.ImageGalleryViewModel" />
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Uid="Shell_Spotlight" Icon="OpenLocal" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.MainViewModel" />
+            <NavigationViewItem x:Uid="Shell_Bing" Icon="Document" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.ImageGalleryViewModel" />
         </NavigationView.MenuItems>
         <NavigationView.HeaderTemplate>
             <DataTemplate>

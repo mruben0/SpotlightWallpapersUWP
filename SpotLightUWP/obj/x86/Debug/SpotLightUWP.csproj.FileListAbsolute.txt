@@ -6,10 +6,6 @@ C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\ImageG
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\ImageGalleryDetailPage.g.cs
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\ImageGalleryPage.g.i.cs
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\ImageGalleryPage.g.cs
-C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\MainDetailControl.g.i.cs
-C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\MainDetailControl.g.cs
-C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\MainPage.g.i.cs
-C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\MainPage.g.cs
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\SettingsPage.g.i.cs
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\SettingsPage.g.cs
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\ShellPage.g.i.cs
@@ -25,8 +21,6 @@ C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Styles\TextB
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\FirstRunDialog.xaml
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\ImageGalleryDetailPage.xaml
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\ImageGalleryPage.xaml
-C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\MainDetailControl.xaml
-C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\MainPage.xaml
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\SettingsPage.xaml
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\ShellPage.xaml
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\App.xbf
@@ -39,8 +33,6 @@ C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Styles\TextB
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\FirstRunDialog.xbf
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\ImageGalleryDetailPage.xbf
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\ImageGalleryPage.xbf
-C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\MainDetailControl.xbf
-C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\MainPage.xbf
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\SettingsPage.xbf
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\ShellPage.xbf
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\XamlSaveStateFile.xml
@@ -54,8 +46,6 @@ C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\TextB
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\FirstRunDialog.xbf
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\ImageGalleryDetailPage.xbf
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\ImageGalleryPage.xbf
-C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\MainDetailControl.xbf
-C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\MainPage.xbf
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\SettingsPage.xbf
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\ShellPage.xbf
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\SpotLightUWP.xr.xml

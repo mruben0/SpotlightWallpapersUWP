@@ -28,8 +28,6 @@ Styles\TextBlock.xbf
 Views\FirstRunDialog.xbf
 Views\ImageGalleryDetailPage.xbf
 Views\ImageGalleryPage.xbf
-Views\MainDetailControl.xbf
-Views\MainPage.xbf
 Views\SettingsPage.xbf
 Views\ShellPage.xbf
 Properties\Default.rd.xml

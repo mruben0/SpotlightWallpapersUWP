@@ -6,7 +6,6 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="ImageGalleryDetailViewModel" />
     <RootPropertyPathName Name="ImageGalleryViewModel" />
-    <RootPropertyPathName Name="MainViewModel" />
     <RootPropertyPathName Name="SettingsViewModel" />
     <RootPropertyPathName Name="ShellViewModel" />
   </Roots.PropertyPathNames>
@@ -44,7 +43,6 @@
       <RootProperty Name="Content" />
       <RootProperty Name="Style" />
       <RootProperty Name="NavigationCacheMode" />
-      <RootProperty Name="Transitions" />
       <RootEvent Name="KeyDown" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
@@ -83,16 +81,9 @@
       <RootProperty Name="Orientation" />
       <RootProperty Name="Children" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Name" />
-      <RootProperty Name="Padding" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="Content" />
-      <RootProperty Name="Name" />
-      <RootProperty Name="VerticalScrollMode" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Padding" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
       <RootProperty Name="Margin" />
@@ -166,24 +157,6 @@
       <RootMethod Name="SetToolTip" />
     </RootType>
     <RootType FullName="SpotLightUWP.Views.ImageGalleryPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
-      <RootProperty Name="Background" />
-      <RootProperty Name="Content" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.FontIcon">
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="Glyph" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-    </RootType>
-    <RootType FullName="SpotLightUWP.Views.MainDetailControl" />
-    <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
-    <RootType FullName="Windows.UI.Xaml.Media.Animation.NavigationThemeTransition" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Button">
-      <RootProperty Name="Content" />
-      <RootProperty Name="Command" />
-    </RootType>
-    <RootType FullName="SpotLightUWP.Views.MainPage" />
     <RootType FullName="SpotLightUWP.Helpers.EnumToBooleanConverter">
       <RootProperty Name="EnumType" />
     </RootType>

@@ -16,8 +16,9 @@
             </StackPanel>
         </DataTemplate>
     </ContentDialog.TitleTemplate>
-    <ScrollViewer>
-        <StackPanel Margin="{StaticResource EightTopMargin}">
+    <ScrollViewer>        
+        <StackPanel Margin="{StaticResource EightTopMargin}">           
+            
             <TextBlock
                 x:Uid="Settings_About"
                 Style="{StaticResource SubtitleTextBlockStyle}" />

@@ -23,7 +23,6 @@ namespace SpotLightUWP.ViewModels
             SimpleIoc.Default.Register(() => new DataService());
 
             SimpleIoc.Default.Register<ShellViewModel>();
-            Register<MainViewModel, MainPage>();
             Register<ImageGalleryViewModel, ImageGalleryPage>();
             Register<ImageGalleryDetailViewModel, ImageGalleryDetailPage>();
             Register<SettingsViewModel, SettingsPage>();
@@ -34,9 +33,7 @@ namespace SpotLightUWP.ViewModels
         public ImageGalleryDetailViewModel ImageGalleryDetailViewModel => ServiceLocator.Current.GetInstance<ImageGalleryDetailViewModel>();
 
         public ImageGalleryViewModel ImageGalleryViewModel => ServiceLocator.Current.GetInstance<ImageGalleryViewModel>();
-
-        public MainViewModel MainViewModel => ServiceLocator.Current.GetInstance<MainViewModel>();
-
+    
         public ShellViewModel ShellViewModel => ServiceLocator.Current.GetInstance<ShellViewModel>();
 
         public NavigationServiceEx NavigationService => ServiceLocator.Current.GetInstance<NavigationServiceEx>();
