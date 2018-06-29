@@ -8,14 +8,14 @@ namespace SpotLightUWP.Helpers
 {
     public class ImageNameManager
     {
-        public int GetId(string name)
+        public string GetId(string name)
         {
             if (name.Contains("__"))
             {
                 var substrings = name.Split("__");
-                return Convert.ToInt32(substrings[1]);
+                return substrings[1];
             }
-            else return 0;  
+            else return name;  
         }
 
         public string CleanName(string name)

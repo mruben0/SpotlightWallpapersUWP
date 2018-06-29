@@ -15,13 +15,13 @@
     <Grid x:ConnectionId='2' x:Name="ContentArea">
         <GridView x:ConnectionId='3'
             x:Name="gridView"
-                                                   
+                                                                            
             IsItemClickEnabled="True"
             Padding="{StaticResource MediumLeftRightMargin}"
             SelectionMode="None">
             <i:Interaction.Behaviors>
                 <ic:EventTriggerBehavior EventName="ItemClick">
-                    <ic:InvokeCommandAction x:ConnectionId='4'                                                  />
+                    <ic:InvokeCommandAction x:ConnectionId='4'                                                               />
                 </ic:EventTriggerBehavior>
             </i:Interaction.Behaviors>
             <GridView.ItemTemplate>
@@ -29,9 +29,9 @@
                     <Image x:ConnectionId='5'
                         x:Name="galleryImage"
                         Style="{StaticResource ThumbnailImageStyle}"
-                                             
-                                                                 
-                                                              />
+                                                          
+                                                                              
+                                                                           />
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

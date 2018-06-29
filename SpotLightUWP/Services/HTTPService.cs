@@ -40,7 +40,7 @@ namespace SpotLightUWP.Services
 
         public int UpdatedDate()
         {
-            var request = new RestRequest("imageuri", Method.GET);
+            var request = new RestRequest(Method.GET);
             var queryResult = client.Execute(request);
 
             if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)

@@ -19,7 +19,6 @@ namespace SpotLightUWP.ViewModels
     public class ImageGalleryDetailViewModel : ViewModelBase
     {
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-        private DataService DataService => Locator.DataService;
         private static UIElement _image;
         private object _selectedImage;
         private ObservableCollection<ImageDTO> _source;
@@ -30,7 +29,7 @@ namespace SpotLightUWP.ViewModels
             set
             {
                 Set(ref _selectedImage, value);
-                ApplicationData.Current.LocalSettings.SaveString(ImageGalleryViewModel.ImageGallerySelectedIdKey, ((ImageDTO)SelectedImage).Id.ToString());
+                ApplicationData.Current.LocalSettings.SaveString(ImageGalleryViewModel.ImageGallerySelectedIdKey, ((ImageDTO)SelectedImage).Id);
             }
         }
 
@@ -42,8 +41,6 @@ namespace SpotLightUWP.ViewModels
 
         public ImageGalleryDetailViewModel()
         {
-            // TODO WTS: Replace this with your actual data
-            Source = DataService.Source;
         }
 
         public void SetImage(UIElement image) => _image = image;
@@ -52,14 +49,14 @@ namespace SpotLightUWP.ViewModels
         {
             if (!string.IsNullOrEmpty(ImageId) && navigationMode == NavigationMode.New)
             {
-                SelectedImage = Source.FirstOrDefault(i => i.Id.ToString() == ImageId);
+                SelectedImage = Source.FirstOrDefault(i => i.Id == ImageId);
             }
             else
             {
                 var selectedImageId = await ApplicationData.Current.LocalSettings.ReadAsync<string>(ImageGalleryViewModel.ImageGallerySelectedIdKey);
                 if (!string.IsNullOrEmpty(selectedImageId))
                 {
-                    SelectedImage = Source.FirstOrDefault(i => i.Id.ToString() == selectedImageId);
+                    SelectedImage = Source.FirstOrDefault(i => i.Id == selectedImageId);
                 }
             }
 

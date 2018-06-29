@@ -22,37 +22,32 @@ namespace SpotLightUWP.ViewModels
     public class ImageGalleryViewModel : ViewModelBase
     {
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-        private DataService DataService => Locator.DataService;
         public const string ImageGallerySelectedIdKey = "ImageGallerySelectedIdKey";
         public const string ImageGalleryAnimationOpen = "ImageGallery_AnimationOpen";
         public const string ImageGalleryAnimationClose = "ImageGallery_AnimationClose";
+        private DataService _dataService;
 
-        private ObservableCollection<ImageDTO> _source;
+
         private ICommand _itemSelectedCommand;
         private GridView _imagesGridView;
-
-        public ObservableCollection<ImageDTO> Source
-        {
-            get => _source;
-            set => Set(ref _source, value);
-        }
 
         public ICommand ItemSelectedCommand => _itemSelectedCommand ?? (_itemSelectedCommand = new RelayCommand<ItemClickEventArgs>(OnsItemSelected));
 
         public ImageGalleryViewModel()
         {
-            Source = DataService.Source;
+            DataService = new DataService();
         }
 
-        public void Initialize(GridView imagesGridView)
+        public async Task InitializeAsync(GridView imagesGridView)
         {
-            _imagesGridView = imagesGridView;            
+            await DataService.InitializeAsync();
+           _imagesGridView = imagesGridView;            
         }
 
         public async Task LoadAnimationAsync()
         {
-            var selectedImageId = await ApplicationData.Current.LocalSettings.ReadAsync<int>(ImageGallerySelectedIdKey);
-            if (selectedImageId != 0)
+            var selectedImageId = await ApplicationData.Current.LocalSettings.ReadAsync<string>(ImageGallerySelectedIdKey);
+            if (selectedImageId != null)
             {
                 var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(ImageGalleryAnimationClose);
                 if (animation != null)
@@ -80,5 +75,13 @@ namespace SpotLightUWP.ViewModels
             _imagesGridView.PrepareConnectedAnimation(ImageGalleryAnimationOpen, selected, "galleryImage");
             NavigationService.Navigate(typeof(ImageGalleryDetailViewModel).FullName, selected.Id);
         }
+
+
+        public DataService DataService
+        {
+            get { return _dataService; }
+            set { _dataService = value; }
+        }
+
     }
 }

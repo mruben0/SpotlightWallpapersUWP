@@ -20,7 +20,6 @@ namespace SpotLightUWP.ViewModels
             SimpleIoc.Default.Register(() => new HTTPService());
             SimpleIoc.Default.Register(() => new DialogService());
             SimpleIoc.Default.Register(() => new ImageNameManager());
-            SimpleIoc.Default.Register(() => new DataService());
 
             SimpleIoc.Default.Register<ShellViewModel>();
             Register<ImageGalleryViewModel, ImageGalleryPage>();
@@ -47,8 +46,6 @@ namespace SpotLightUWP.ViewModels
         public DialogService DialogService => ServiceLocator.Current.GetInstance<DialogService>();
 
         public ImageNameManager ImageNameManager => ServiceLocator.Current.GetInstance<ImageNameManager>();
-
-        public DataService DataService => ServiceLocator.Current.GetInstance<DataService>();
 
         public void Register<VM, V>()
             where VM : class

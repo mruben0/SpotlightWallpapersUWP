@@ -204,7 +204,7 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[52];
+            _typeNameTable = new string[51];
             _typeNameTable[0] = "SpotLightUWP.ViewModels.ViewModelLocator";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "SpotLightUWP.ViewModels.SettingsViewModel";
@@ -219,46 +219,45 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
             _typeNameTable[11] = "SpotLightUWP.Services.HTTPService";
             _typeNameTable[12] = "SpotLightUWP.Services.DialogService";
             _typeNameTable[13] = "SpotLightUWP.Helpers.ImageNameManager";
-            _typeNameTable[14] = "SpotLightUWP.Services.DataService";
-            _typeNameTable[15] = "SpotLightUWP.Views.FirstRunDialog";
-            _typeNameTable[16] = "Windows.UI.Xaml.Controls.ContentDialog";
-            _typeNameTable[17] = "Windows.UI.Xaml.Controls.ContentControl";
-            _typeNameTable[18] = "SpotLightUWP.Views.ImageGalleryDetailPage";
-            _typeNameTable[19] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[20] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[21] = "Microsoft.Xaml.Interactivity.Interaction";
-            _typeNameTable[22] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
-            _typeNameTable[23] = "Windows.UI.Xaml.DependencyObjectCollection";
-            _typeNameTable[24] = "Windows.UI.Xaml.DependencyObject";
-            _typeNameTable[25] = "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior";
-            _typeNameTable[26] = "Microsoft.Xaml.Interactivity.Trigger";
-            _typeNameTable[27] = "Microsoft.Xaml.Interactivity.Behavior";
-            _typeNameTable[28] = "Microsoft.Xaml.Interactivity.ActionCollection";
-            _typeNameTable[29] = "String";
-            _typeNameTable[30] = "Microsoft.Xaml.Interactions.Core.InvokeCommandAction";
-            _typeNameTable[31] = "System.Windows.Input.ICommand";
-            _typeNameTable[32] = "Windows.UI.Xaml.Data.IValueConverter";
-            _typeNameTable[33] = "SpotLightUWP.Views.ImageGalleryPage";
-            _typeNameTable[34] = "SpotLightUWP.Helpers.EnumToBooleanConverter";
-            _typeNameTable[35] = "System.Type";
-            _typeNameTable[36] = "System.Reflection.MemberInfo";
-            _typeNameTable[37] = "SpotLightUWP.Views.SettingsPage";
-            _typeNameTable[38] = "SpotLightUWP.Helpers.NavHelper";
-            _typeNameTable[39] = "Windows.UI.Xaml.Controls.NavigationViewItem";
-            _typeNameTable[40] = "SpotLightUWP.Views.ShellPage";
-            _typeNameTable[41] = "Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid";
-            _typeNameTable[42] = "Windows.UI.Xaml.Controls.Grid";
-            _typeNameTable[43] = "Windows.UI.Xaml.Controls.Panel";
-            _typeNameTable[44] = "Int32";
-            _typeNameTable[45] = "Windows.UI.Xaml.Controls.Orientation";
-            _typeNameTable[46] = "System.Nullable`1<Boolean>";
-            _typeNameTable[47] = "System.ValueType";
-            _typeNameTable[48] = "Windows.UI.Xaml.FrameworkElement";
-            _typeNameTable[49] = "Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool";
-            _typeNameTable[50] = "Windows.UI.Xaml.Markup.MarkupExtension";
-            _typeNameTable[51] = "Boolean";
+            _typeNameTable[14] = "SpotLightUWP.Views.FirstRunDialog";
+            _typeNameTable[15] = "Windows.UI.Xaml.Controls.ContentDialog";
+            _typeNameTable[16] = "Windows.UI.Xaml.Controls.ContentControl";
+            _typeNameTable[17] = "SpotLightUWP.Views.ImageGalleryDetailPage";
+            _typeNameTable[18] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[19] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[20] = "Microsoft.Xaml.Interactivity.Interaction";
+            _typeNameTable[21] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
+            _typeNameTable[22] = "Windows.UI.Xaml.DependencyObjectCollection";
+            _typeNameTable[23] = "Windows.UI.Xaml.DependencyObject";
+            _typeNameTable[24] = "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior";
+            _typeNameTable[25] = "Microsoft.Xaml.Interactivity.Trigger";
+            _typeNameTable[26] = "Microsoft.Xaml.Interactivity.Behavior";
+            _typeNameTable[27] = "Microsoft.Xaml.Interactivity.ActionCollection";
+            _typeNameTable[28] = "String";
+            _typeNameTable[29] = "Microsoft.Xaml.Interactions.Core.InvokeCommandAction";
+            _typeNameTable[30] = "System.Windows.Input.ICommand";
+            _typeNameTable[31] = "Windows.UI.Xaml.Data.IValueConverter";
+            _typeNameTable[32] = "SpotLightUWP.Views.ImageGalleryPage";
+            _typeNameTable[33] = "SpotLightUWP.Helpers.EnumToBooleanConverter";
+            _typeNameTable[34] = "System.Type";
+            _typeNameTable[35] = "System.Reflection.MemberInfo";
+            _typeNameTable[36] = "SpotLightUWP.Views.SettingsPage";
+            _typeNameTable[37] = "SpotLightUWP.Helpers.NavHelper";
+            _typeNameTable[38] = "Windows.UI.Xaml.Controls.NavigationViewItem";
+            _typeNameTable[39] = "SpotLightUWP.Views.ShellPage";
+            _typeNameTable[40] = "Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid";
+            _typeNameTable[41] = "Windows.UI.Xaml.Controls.Grid";
+            _typeNameTable[42] = "Windows.UI.Xaml.Controls.Panel";
+            _typeNameTable[43] = "Int32";
+            _typeNameTable[44] = "Windows.UI.Xaml.Controls.Orientation";
+            _typeNameTable[45] = "System.Nullable`1<Boolean>";
+            _typeNameTable[46] = "System.ValueType";
+            _typeNameTable[47] = "Windows.UI.Xaml.FrameworkElement";
+            _typeNameTable[48] = "Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool";
+            _typeNameTable[49] = "Windows.UI.Xaml.Markup.MarkupExtension";
+            _typeNameTable[50] = "Boolean";
 
-            _typeTable = new global::System.Type[52];
+            _typeTable = new global::System.Type[51];
             _typeTable[0] = typeof(global::SpotLightUWP.ViewModels.ViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::SpotLightUWP.ViewModels.SettingsViewModel);
@@ -273,44 +272,43 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
             _typeTable[11] = typeof(global::SpotLightUWP.Services.HTTPService);
             _typeTable[12] = typeof(global::SpotLightUWP.Services.DialogService);
             _typeTable[13] = typeof(global::SpotLightUWP.Helpers.ImageNameManager);
-            _typeTable[14] = typeof(global::SpotLightUWP.Services.DataService);
-            _typeTable[15] = typeof(global::SpotLightUWP.Views.FirstRunDialog);
-            _typeTable[16] = typeof(global::Windows.UI.Xaml.Controls.ContentDialog);
-            _typeTable[17] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
-            _typeTable[18] = typeof(global::SpotLightUWP.Views.ImageGalleryDetailPage);
-            _typeTable[19] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[20] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[21] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
-            _typeTable[22] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
-            _typeTable[23] = typeof(global::Windows.UI.Xaml.DependencyObjectCollection);
-            _typeTable[24] = typeof(global::Windows.UI.Xaml.DependencyObject);
-            _typeTable[25] = typeof(global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior);
-            _typeTable[26] = typeof(global::Microsoft.Xaml.Interactivity.Trigger);
-            _typeTable[27] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
-            _typeTable[28] = typeof(global::Microsoft.Xaml.Interactivity.ActionCollection);
-            _typeTable[29] = typeof(global::System.String);
-            _typeTable[30] = typeof(global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction);
-            _typeTable[31] = typeof(global::System.Windows.Input.ICommand);
-            _typeTable[32] = typeof(global::Windows.UI.Xaml.Data.IValueConverter);
-            _typeTable[33] = typeof(global::SpotLightUWP.Views.ImageGalleryPage);
-            _typeTable[34] = typeof(global::SpotLightUWP.Helpers.EnumToBooleanConverter);
-            _typeTable[35] = typeof(global::System.Type);
-            _typeTable[36] = typeof(global::System.Reflection.MemberInfo);
-            _typeTable[37] = typeof(global::SpotLightUWP.Views.SettingsPage);
-            _typeTable[38] = typeof(global::SpotLightUWP.Helpers.NavHelper);
-            _typeTable[39] = typeof(global::Windows.UI.Xaml.Controls.NavigationViewItem);
-            _typeTable[40] = typeof(global::SpotLightUWP.Views.ShellPage);
-            _typeTable[41] = typeof(global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid);
-            _typeTable[42] = typeof(global::Windows.UI.Xaml.Controls.Grid);
-            _typeTable[43] = typeof(global::Windows.UI.Xaml.Controls.Panel);
-            _typeTable[44] = typeof(global::System.Int32);
-            _typeTable[45] = typeof(global::Windows.UI.Xaml.Controls.Orientation);
-            _typeTable[46] = typeof(global::System.Nullable<global::System.Boolean>);
-            _typeTable[47] = typeof(global::System.ValueType);
-            _typeTable[48] = typeof(global::Windows.UI.Xaml.FrameworkElement);
-            _typeTable[49] = typeof(global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool);
-            _typeTable[50] = typeof(global::Windows.UI.Xaml.Markup.MarkupExtension);
-            _typeTable[51] = typeof(global::System.Boolean);
+            _typeTable[14] = typeof(global::SpotLightUWP.Views.FirstRunDialog);
+            _typeTable[15] = typeof(global::Windows.UI.Xaml.Controls.ContentDialog);
+            _typeTable[16] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
+            _typeTable[17] = typeof(global::SpotLightUWP.Views.ImageGalleryDetailPage);
+            _typeTable[18] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[19] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[20] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
+            _typeTable[21] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
+            _typeTable[22] = typeof(global::Windows.UI.Xaml.DependencyObjectCollection);
+            _typeTable[23] = typeof(global::Windows.UI.Xaml.DependencyObject);
+            _typeTable[24] = typeof(global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior);
+            _typeTable[25] = typeof(global::Microsoft.Xaml.Interactivity.Trigger);
+            _typeTable[26] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
+            _typeTable[27] = typeof(global::Microsoft.Xaml.Interactivity.ActionCollection);
+            _typeTable[28] = typeof(global::System.String);
+            _typeTable[29] = typeof(global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction);
+            _typeTable[30] = typeof(global::System.Windows.Input.ICommand);
+            _typeTable[31] = typeof(global::Windows.UI.Xaml.Data.IValueConverter);
+            _typeTable[32] = typeof(global::SpotLightUWP.Views.ImageGalleryPage);
+            _typeTable[33] = typeof(global::SpotLightUWP.Helpers.EnumToBooleanConverter);
+            _typeTable[34] = typeof(global::System.Type);
+            _typeTable[35] = typeof(global::System.Reflection.MemberInfo);
+            _typeTable[36] = typeof(global::SpotLightUWP.Views.SettingsPage);
+            _typeTable[37] = typeof(global::SpotLightUWP.Helpers.NavHelper);
+            _typeTable[38] = typeof(global::Windows.UI.Xaml.Controls.NavigationViewItem);
+            _typeTable[39] = typeof(global::SpotLightUWP.Views.ShellPage);
+            _typeTable[40] = typeof(global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid);
+            _typeTable[41] = typeof(global::Windows.UI.Xaml.Controls.Grid);
+            _typeTable[42] = typeof(global::Windows.UI.Xaml.Controls.Panel);
+            _typeTable[43] = typeof(global::System.Int32);
+            _typeTable[44] = typeof(global::Windows.UI.Xaml.Controls.Orientation);
+            _typeTable[45] = typeof(global::System.Nullable<global::System.Boolean>);
+            _typeTable[46] = typeof(global::System.ValueType);
+            _typeTable[47] = typeof(global::Windows.UI.Xaml.FrameworkElement);
+            _typeTable[48] = typeof(global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool);
+            _typeTable[49] = typeof(global::Windows.UI.Xaml.Markup.MarkupExtension);
+            _typeTable[50] = typeof(global::System.Boolean);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -357,27 +355,26 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
         private object Activate_11_HTTPService() { return new global::SpotLightUWP.Services.HTTPService(); }
         private object Activate_12_DialogService() { return new global::SpotLightUWP.Services.DialogService(); }
         private object Activate_13_ImageNameManager() { return new global::SpotLightUWP.Helpers.ImageNameManager(); }
-        private object Activate_14_DataService() { return new global::SpotLightUWP.Services.DataService(); }
-        private object Activate_15_FirstRunDialog() { return new global::SpotLightUWP.Views.FirstRunDialog(); }
-        private object Activate_18_ImageGalleryDetailPage() { return new global::SpotLightUWP.Views.ImageGalleryDetailPage(); }
-        private object Activate_22_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
-        private object Activate_25_EventTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior(); }
-        private object Activate_28_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
-        private object Activate_30_InvokeCommandAction() { return new global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction(); }
-        private object Activate_33_ImageGalleryPage() { return new global::SpotLightUWP.Views.ImageGalleryPage(); }
-        private object Activate_34_EnumToBooleanConverter() { return new global::SpotLightUWP.Helpers.EnumToBooleanConverter(); }
-        private object Activate_37_SettingsPage() { return new global::SpotLightUWP.Views.SettingsPage(); }
-        private object Activate_38_NavHelper() { return new global::SpotLightUWP.Helpers.NavHelper(); }
-        private object Activate_40_ShellPage() { return new global::SpotLightUWP.Views.ShellPage(); }
-        private object Activate_41_UniformGrid() { return new global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid(); }
-        private object Activate_49_NullableBool() { return new global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool(); }
-        private void VectorAdd_22_BehaviorCollection(object instance, object item)
+        private object Activate_14_FirstRunDialog() { return new global::SpotLightUWP.Views.FirstRunDialog(); }
+        private object Activate_17_ImageGalleryDetailPage() { return new global::SpotLightUWP.Views.ImageGalleryDetailPage(); }
+        private object Activate_21_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
+        private object Activate_24_EventTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior(); }
+        private object Activate_27_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
+        private object Activate_29_InvokeCommandAction() { return new global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction(); }
+        private object Activate_32_ImageGalleryPage() { return new global::SpotLightUWP.Views.ImageGalleryPage(); }
+        private object Activate_33_EnumToBooleanConverter() { return new global::SpotLightUWP.Helpers.EnumToBooleanConverter(); }
+        private object Activate_36_SettingsPage() { return new global::SpotLightUWP.Views.SettingsPage(); }
+        private object Activate_37_NavHelper() { return new global::SpotLightUWP.Helpers.NavHelper(); }
+        private object Activate_39_ShellPage() { return new global::SpotLightUWP.Views.ShellPage(); }
+        private object Activate_40_UniformGrid() { return new global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid(); }
+        private object Activate_48_NullableBool() { return new global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool(); }
+        private void VectorAdd_21_BehaviorCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_28_ActionCollection(object instance, object item)
+        private void VectorAdd_27_ActionCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
@@ -407,7 +404,6 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 userType.AddMemberName("HTTPService");
                 userType.AddMemberName("DialogService");
                 userType.AddMemberName("ImageNameManager");
-                userType.AddMemberName("DataService");
                 userType.SetIsBindable();
                 userType.SetIsLocalType();
                 xamlType = userType;
@@ -498,101 +494,94 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 14:   //  SpotLightUWP.Services.DataService
-                userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.SetIsReturnTypeStub();
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 15:   //  SpotLightUWP.Views.FirstRunDialog
+            case 14:   //  SpotLightUWP.Views.FirstRunDialog
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
-                userType.Activator = Activate_15_FirstRunDialog;
+                userType.Activator = Activate_14_FirstRunDialog;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 16:   //  Windows.UI.Xaml.Controls.ContentDialog
+            case 15:   //  Windows.UI.Xaml.Controls.ContentDialog
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 17:   //  Windows.UI.Xaml.Controls.ContentControl
+            case 16:   //  Windows.UI.Xaml.Controls.ContentControl
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 18:   //  SpotLightUWP.Views.ImageGalleryDetailPage
+            case 17:   //  SpotLightUWP.Views.ImageGalleryDetailPage
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_18_ImageGalleryDetailPage;
+                userType.Activator = Activate_17_ImageGalleryDetailPage;
                 userType.AddMemberName("NavigationService");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 19:   //  Windows.UI.Xaml.Controls.Page
+            case 18:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 20:   //  Windows.UI.Xaml.Controls.UserControl
+            case 19:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 21:   //  Microsoft.Xaml.Interactivity.Interaction
+            case 20:   //  Microsoft.Xaml.Interactivity.Interaction
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.AddMemberName("Behaviors");
                 xamlType = userType;
                 break;
 
-            case 22:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
+            case 21:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
-                userType.CollectionAdd = VectorAdd_22_BehaviorCollection;
+                userType.CollectionAdd = VectorAdd_21_BehaviorCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 23:   //  Windows.UI.Xaml.DependencyObjectCollection
+            case 22:   //  Windows.UI.Xaml.DependencyObjectCollection
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 24:   //  Windows.UI.Xaml.DependencyObject
+            case 23:   //  Windows.UI.Xaml.DependencyObject
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 25:   //  Microsoft.Xaml.Interactions.Core.EventTriggerBehavior
+            case 24:   //  Microsoft.Xaml.Interactions.Core.EventTriggerBehavior
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Trigger"));
-                userType.Activator = Activate_25_EventTriggerBehavior;
+                userType.Activator = Activate_24_EventTriggerBehavior;
                 userType.SetContentPropertyName("Microsoft.Xaml.Interactivity.Trigger.Actions");
                 userType.AddMemberName("EventName");
                 userType.AddMemberName("SourceObject");
                 xamlType = userType;
                 break;
 
-            case 26:   //  Microsoft.Xaml.Interactivity.Trigger
+            case 25:   //  Microsoft.Xaml.Interactivity.Trigger
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior"));
                 userType.SetContentPropertyName("Microsoft.Xaml.Interactivity.Trigger.Actions");
                 userType.AddMemberName("Actions");
                 xamlType = userType;
                 break;
 
-            case 27:   //  Microsoft.Xaml.Interactivity.Behavior
+            case 26:   //  Microsoft.Xaml.Interactivity.Behavior
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
                 userType.AddMemberName("AssociatedObject");
                 xamlType = userType;
                 break;
 
-            case 28:   //  Microsoft.Xaml.Interactivity.ActionCollection
+            case 27:   //  Microsoft.Xaml.Interactivity.ActionCollection
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
-                userType.CollectionAdd = VectorAdd_28_ActionCollection;
+                userType.CollectionAdd = VectorAdd_27_ActionCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 29:   //  String
+            case 28:   //  String
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 30:   //  Microsoft.Xaml.Interactions.Core.InvokeCommandAction
+            case 29:   //  Microsoft.Xaml.Interactions.Core.InvokeCommandAction
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_30_InvokeCommandAction;
+                userType.Activator = Activate_29_InvokeCommandAction;
                 userType.AddMemberName("Command");
                 userType.AddMemberName("CommandParameter");
                 userType.AddMemberName("InputConverter");
@@ -601,71 +590,71 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 31:   //  System.Windows.Input.ICommand
+            case 30:   //  System.Windows.Input.ICommand
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, null);
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 32:   //  Windows.UI.Xaml.Data.IValueConverter
+            case 31:   //  Windows.UI.Xaml.Data.IValueConverter
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 33:   //  SpotLightUWP.Views.ImageGalleryPage
+            case 32:   //  SpotLightUWP.Views.ImageGalleryPage
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_33_ImageGalleryPage;
+                userType.Activator = Activate_32_ImageGalleryPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 34:   //  SpotLightUWP.Helpers.EnumToBooleanConverter
+            case 33:   //  SpotLightUWP.Helpers.EnumToBooleanConverter
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_34_EnumToBooleanConverter;
+                userType.Activator = Activate_33_EnumToBooleanConverter;
                 userType.AddMemberName("EnumType");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 35:   //  System.Type
+            case 34:   //  System.Type
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Reflection.MemberInfo"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 36:   //  System.Reflection.MemberInfo
+            case 35:   //  System.Reflection.MemberInfo
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 37:   //  SpotLightUWP.Views.SettingsPage
+            case 36:   //  SpotLightUWP.Views.SettingsPage
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_37_SettingsPage;
+                userType.Activator = Activate_36_SettingsPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 38:   //  SpotLightUWP.Helpers.NavHelper
+            case 37:   //  SpotLightUWP.Helpers.NavHelper
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_38_NavHelper;
+                userType.Activator = Activate_37_NavHelper;
                 userType.AddMemberName("NavigateTo");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 39:   //  Windows.UI.Xaml.Controls.NavigationViewItem
+            case 38:   //  Windows.UI.Xaml.Controls.NavigationViewItem
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 40:   //  SpotLightUWP.Views.ShellPage
+            case 39:   //  SpotLightUWP.Views.ShellPage
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_40_ShellPage;
+                userType.Activator = Activate_39_ShellPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 41:   //  Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid
+            case 40:   //  Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Grid"));
-                userType.Activator = Activate_41_UniformGrid;
+                userType.Activator = Activate_40_UniformGrid;
                 userType.AddMemberName("Columns");
                 userType.AddMemberName("FirstColumn");
                 userType.AddMemberName("Orientation");
@@ -675,40 +664,40 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 42:   //  Windows.UI.Xaml.Controls.Grid
+            case 41:   //  Windows.UI.Xaml.Controls.Grid
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 43:   //  Windows.UI.Xaml.Controls.Panel
+            case 42:   //  Windows.UI.Xaml.Controls.Panel
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 44:   //  Int32
+            case 43:   //  Int32
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 45:   //  Windows.UI.Xaml.Controls.Orientation
+            case 44:   //  Windows.UI.Xaml.Controls.Orientation
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 46:   //  System.Nullable`1<Boolean>
+            case 45:   //  System.Nullable`1<Boolean>
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 47:   //  System.ValueType
+            case 46:   //  System.ValueType
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 48:   //  Windows.UI.Xaml.FrameworkElement
+            case 47:   //  Windows.UI.Xaml.FrameworkElement
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 49:   //  Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool
+            case 48:   //  Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Markup.MarkupExtension"));
-                userType.Activator = Activate_49_NullableBool;
+                userType.Activator = Activate_48_NullableBool;
                 userType.AddMemberName("Value");
                 userType.AddMemberName("IsNull");
                 userType.SetIsBindable();
@@ -716,11 +705,11 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 50:   //  Windows.UI.Xaml.Markup.MarkupExtension
+            case 49:   //  Windows.UI.Xaml.Markup.MarkupExtension
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 51:   //  Boolean
+            case 50:   //  Boolean
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -834,186 +823,181 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
             var that = (global::SpotLightUWP.ViewModels.ViewModelLocator)instance;
             return that.ImageNameManager;
         }
-        private object get_10_ViewModelLocator_DataService(object instance)
-        {
-            var that = (global::SpotLightUWP.ViewModels.ViewModelLocator)instance;
-            return that.DataService;
-        }
-        private object get_11_ImageGalleryDetailPage_NavigationService(object instance)
+        private object get_10_ImageGalleryDetailPage_NavigationService(object instance)
         {
             var that = (global::SpotLightUWP.Views.ImageGalleryDetailPage)instance;
             return that.NavigationService;
         }
-        private object get_12_Interaction_Behaviors(object instance)
+        private object get_11_Interaction_Behaviors(object instance)
         {
             return global::Microsoft.Xaml.Interactivity.Interaction.GetBehaviors((global::Windows.UI.Xaml.DependencyObject)instance);
         }
-        private void set_12_Interaction_Behaviors(object instance, object Value)
+        private void set_11_Interaction_Behaviors(object instance, object Value)
         {
             global::Microsoft.Xaml.Interactivity.Interaction.SetBehaviors((global::Windows.UI.Xaml.DependencyObject)instance, (global::Microsoft.Xaml.Interactivity.BehaviorCollection)Value);
         }
-        private object get_13_Trigger_Actions(object instance)
+        private object get_12_Trigger_Actions(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactivity.Trigger)instance;
             return that.Actions;
         }
-        private object get_14_EventTriggerBehavior_EventName(object instance)
+        private object get_13_EventTriggerBehavior_EventName(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
             return that.EventName;
         }
-        private void set_14_EventTriggerBehavior_EventName(object instance, object Value)
+        private void set_13_EventTriggerBehavior_EventName(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
             that.EventName = (global::System.String)Value;
         }
-        private object get_15_EventTriggerBehavior_SourceObject(object instance)
+        private object get_14_EventTriggerBehavior_SourceObject(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
             return that.SourceObject;
         }
-        private void set_15_EventTriggerBehavior_SourceObject(object instance, object Value)
+        private void set_14_EventTriggerBehavior_SourceObject(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
             that.SourceObject = (global::System.Object)Value;
         }
-        private object get_16_Behavior_AssociatedObject(object instance)
+        private object get_15_Behavior_AssociatedObject(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactivity.Behavior)instance;
             return that.AssociatedObject;
         }
-        private object get_17_InvokeCommandAction_Command(object instance)
+        private object get_16_InvokeCommandAction_Command(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             return that.Command;
         }
-        private void set_17_InvokeCommandAction_Command(object instance, object Value)
+        private void set_16_InvokeCommandAction_Command(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             that.Command = (global::System.Windows.Input.ICommand)Value;
         }
-        private object get_18_InvokeCommandAction_CommandParameter(object instance)
+        private object get_17_InvokeCommandAction_CommandParameter(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             return that.CommandParameter;
         }
-        private void set_18_InvokeCommandAction_CommandParameter(object instance, object Value)
+        private void set_17_InvokeCommandAction_CommandParameter(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             that.CommandParameter = (global::System.Object)Value;
         }
-        private object get_19_InvokeCommandAction_InputConverter(object instance)
+        private object get_18_InvokeCommandAction_InputConverter(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             return that.InputConverter;
         }
-        private void set_19_InvokeCommandAction_InputConverter(object instance, object Value)
+        private void set_18_InvokeCommandAction_InputConverter(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             that.InputConverter = (global::Windows.UI.Xaml.Data.IValueConverter)Value;
         }
-        private object get_20_InvokeCommandAction_InputConverterParameter(object instance)
+        private object get_19_InvokeCommandAction_InputConverterParameter(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             return that.InputConverterParameter;
         }
-        private void set_20_InvokeCommandAction_InputConverterParameter(object instance, object Value)
+        private void set_19_InvokeCommandAction_InputConverterParameter(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             that.InputConverterParameter = (global::System.Object)Value;
         }
-        private object get_21_InvokeCommandAction_InputConverterLanguage(object instance)
+        private object get_20_InvokeCommandAction_InputConverterLanguage(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             return that.InputConverterLanguage;
         }
-        private void set_21_InvokeCommandAction_InputConverterLanguage(object instance, object Value)
+        private void set_20_InvokeCommandAction_InputConverterLanguage(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             that.InputConverterLanguage = (global::System.String)Value;
         }
-        private object get_22_EnumToBooleanConverter_EnumType(object instance)
+        private object get_21_EnumToBooleanConverter_EnumType(object instance)
         {
             var that = (global::SpotLightUWP.Helpers.EnumToBooleanConverter)instance;
             return that.EnumType;
         }
-        private void set_22_EnumToBooleanConverter_EnumType(object instance, object Value)
+        private void set_21_EnumToBooleanConverter_EnumType(object instance, object Value)
         {
             var that = (global::SpotLightUWP.Helpers.EnumToBooleanConverter)instance;
             that.EnumType = (global::System.Type)Value;
         }
-        private object get_23_NavHelper_NavigateTo(object instance)
+        private object get_22_NavHelper_NavigateTo(object instance)
         {
             return global::SpotLightUWP.Helpers.NavHelper.GetNavigateTo((global::Windows.UI.Xaml.Controls.NavigationViewItem)instance);
         }
-        private void set_23_NavHelper_NavigateTo(object instance, object Value)
+        private void set_22_NavHelper_NavigateTo(object instance, object Value)
         {
             global::SpotLightUWP.Helpers.NavHelper.SetNavigateTo((global::Windows.UI.Xaml.Controls.NavigationViewItem)instance, (global::System.String)Value);
         }
-        private object get_24_UniformGrid_Columns(object instance)
+        private object get_23_UniformGrid_Columns(object instance)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid)instance;
             return that.Columns;
         }
-        private void set_24_UniformGrid_Columns(object instance, object Value)
+        private void set_23_UniformGrid_Columns(object instance, object Value)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid)instance;
             that.Columns = (global::System.Int32)Value;
         }
-        private object get_25_UniformGrid_FirstColumn(object instance)
+        private object get_24_UniformGrid_FirstColumn(object instance)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid)instance;
             return that.FirstColumn;
         }
-        private void set_25_UniformGrid_FirstColumn(object instance, object Value)
+        private void set_24_UniformGrid_FirstColumn(object instance, object Value)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid)instance;
             that.FirstColumn = (global::System.Int32)Value;
         }
-        private object get_26_UniformGrid_Orientation(object instance)
+        private object get_25_UniformGrid_Orientation(object instance)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid)instance;
             return that.Orientation;
         }
-        private void set_26_UniformGrid_Orientation(object instance, object Value)
+        private void set_25_UniformGrid_Orientation(object instance, object Value)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid)instance;
             that.Orientation = (global::Windows.UI.Xaml.Controls.Orientation)Value;
         }
-        private object get_27_UniformGrid_Rows(object instance)
+        private object get_26_UniformGrid_Rows(object instance)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid)instance;
             return that.Rows;
         }
-        private void set_27_UniformGrid_Rows(object instance, object Value)
+        private void set_26_UniformGrid_Rows(object instance, object Value)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid)instance;
             that.Rows = (global::System.Int32)Value;
         }
-        private object get_28_UniformGrid_AutoLayout(object instance)
+        private object get_27_UniformGrid_AutoLayout(object instance)
         {
             return global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.GetAutoLayout((global::Windows.UI.Xaml.FrameworkElement)instance);
         }
-        private void set_28_UniformGrid_AutoLayout(object instance, object Value)
+        private void set_27_UniformGrid_AutoLayout(object instance, object Value)
         {
             global::Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.SetAutoLayout((global::Windows.UI.Xaml.FrameworkElement)instance, (global::System.Nullable<global::System.Boolean>)Value);
         }
-        private object get_29_NullableBool_Value(object instance)
+        private object get_28_NullableBool_Value(object instance)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool)instance;
             return that.Value;
         }
-        private void set_29_NullableBool_Value(object instance, object Value)
+        private void set_28_NullableBool_Value(object instance, object Value)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool)instance;
             that.Value = (global::System.Boolean)Value;
         }
-        private object get_30_NullableBool_IsNull(object instance)
+        private object get_29_NullableBool_IsNull(object instance)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool)instance;
             return that.IsNull;
         }
-        private void set_30_NullableBool_IsNull(object instance, object Value)
+        private void set_29_NullableBool_IsNull(object instance, object Value)
         {
             var that = (global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool)instance;
             that.IsNull = (global::System.Boolean)Value;
@@ -1086,16 +1070,10 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 xamlMember.Getter = get_9_ViewModelLocator_ImageNameManager;
                 xamlMember.SetIsReadOnly();
                 break;
-            case "SpotLightUWP.ViewModels.ViewModelLocator.DataService":
-                userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SpotLightUWP.ViewModels.ViewModelLocator");
-                xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "DataService", "SpotLightUWP.Services.DataService");
-                xamlMember.Getter = get_10_ViewModelLocator_DataService;
-                xamlMember.SetIsReadOnly();
-                break;
             case "SpotLightUWP.Views.ImageGalleryDetailPage.NavigationService":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SpotLightUWP.Views.ImageGalleryDetailPage");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "NavigationService", "SpotLightUWP.Services.NavigationServiceEx");
-                xamlMember.Getter = get_11_ImageGalleryDetailPage_NavigationService;
+                xamlMember.Getter = get_10_ImageGalleryDetailPage_NavigationService;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.Xaml.Interactivity.Interaction.Behaviors":
@@ -1103,112 +1081,112 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "Behaviors", "Microsoft.Xaml.Interactivity.BehaviorCollection");
                 xamlMember.SetTargetTypeName("Windows.UI.Xaml.DependencyObject");
                 xamlMember.SetIsAttachable();
-                xamlMember.Getter = get_12_Interaction_Behaviors;
-                xamlMember.Setter = set_12_Interaction_Behaviors;
+                xamlMember.Getter = get_11_Interaction_Behaviors;
+                xamlMember.Setter = set_11_Interaction_Behaviors;
                 break;
             case "Microsoft.Xaml.Interactivity.Trigger.Actions":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactivity.Trigger");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "Actions", "Microsoft.Xaml.Interactivity.ActionCollection");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_13_Trigger_Actions;
+                xamlMember.Getter = get_12_Trigger_Actions;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.EventName":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "EventName", "String");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_14_EventTriggerBehavior_EventName;
-                xamlMember.Setter = set_14_EventTriggerBehavior_EventName;
+                xamlMember.Getter = get_13_EventTriggerBehavior_EventName;
+                xamlMember.Setter = set_13_EventTriggerBehavior_EventName;
                 break;
             case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.SourceObject":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "SourceObject", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_15_EventTriggerBehavior_SourceObject;
-                xamlMember.Setter = set_15_EventTriggerBehavior_SourceObject;
+                xamlMember.Getter = get_14_EventTriggerBehavior_SourceObject;
+                xamlMember.Setter = set_14_EventTriggerBehavior_SourceObject;
                 break;
             case "Microsoft.Xaml.Interactivity.Behavior.AssociatedObject":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "AssociatedObject", "Windows.UI.Xaml.DependencyObject");
-                xamlMember.Getter = get_16_Behavior_AssociatedObject;
+                xamlMember.Getter = get_15_Behavior_AssociatedObject;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.Command":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "Command", "System.Windows.Input.ICommand");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_17_InvokeCommandAction_Command;
-                xamlMember.Setter = set_17_InvokeCommandAction_Command;
+                xamlMember.Getter = get_16_InvokeCommandAction_Command;
+                xamlMember.Setter = set_16_InvokeCommandAction_Command;
                 break;
             case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.CommandParameter":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "CommandParameter", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_18_InvokeCommandAction_CommandParameter;
-                xamlMember.Setter = set_18_InvokeCommandAction_CommandParameter;
+                xamlMember.Getter = get_17_InvokeCommandAction_CommandParameter;
+                xamlMember.Setter = set_17_InvokeCommandAction_CommandParameter;
                 break;
             case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.InputConverter":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "InputConverter", "Windows.UI.Xaml.Data.IValueConverter");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_19_InvokeCommandAction_InputConverter;
-                xamlMember.Setter = set_19_InvokeCommandAction_InputConverter;
+                xamlMember.Getter = get_18_InvokeCommandAction_InputConverter;
+                xamlMember.Setter = set_18_InvokeCommandAction_InputConverter;
                 break;
             case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.InputConverterParameter":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "InputConverterParameter", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_20_InvokeCommandAction_InputConverterParameter;
-                xamlMember.Setter = set_20_InvokeCommandAction_InputConverterParameter;
+                xamlMember.Getter = get_19_InvokeCommandAction_InputConverterParameter;
+                xamlMember.Setter = set_19_InvokeCommandAction_InputConverterParameter;
                 break;
             case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.InputConverterLanguage":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "InputConverterLanguage", "String");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_21_InvokeCommandAction_InputConverterLanguage;
-                xamlMember.Setter = set_21_InvokeCommandAction_InputConverterLanguage;
+                xamlMember.Getter = get_20_InvokeCommandAction_InputConverterLanguage;
+                xamlMember.Setter = set_20_InvokeCommandAction_InputConverterLanguage;
                 break;
             case "SpotLightUWP.Helpers.EnumToBooleanConverter.EnumType":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SpotLightUWP.Helpers.EnumToBooleanConverter");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "EnumType", "System.Type");
-                xamlMember.Getter = get_22_EnumToBooleanConverter_EnumType;
-                xamlMember.Setter = set_22_EnumToBooleanConverter_EnumType;
+                xamlMember.Getter = get_21_EnumToBooleanConverter_EnumType;
+                xamlMember.Setter = set_21_EnumToBooleanConverter_EnumType;
                 break;
             case "SpotLightUWP.Helpers.NavHelper.NavigateTo":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SpotLightUWP.Helpers.NavHelper");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "NavigateTo", "String");
                 xamlMember.SetTargetTypeName("Windows.UI.Xaml.Controls.NavigationViewItem");
                 xamlMember.SetIsAttachable();
-                xamlMember.Getter = get_23_NavHelper_NavigateTo;
-                xamlMember.Setter = set_23_NavHelper_NavigateTo;
+                xamlMember.Getter = get_22_NavHelper_NavigateTo;
+                xamlMember.Setter = set_22_NavHelper_NavigateTo;
                 break;
             case "Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.Columns":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "Columns", "Int32");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_24_UniformGrid_Columns;
-                xamlMember.Setter = set_24_UniformGrid_Columns;
+                xamlMember.Getter = get_23_UniformGrid_Columns;
+                xamlMember.Setter = set_23_UniformGrid_Columns;
                 break;
             case "Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.FirstColumn":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "FirstColumn", "Int32");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_25_UniformGrid_FirstColumn;
-                xamlMember.Setter = set_25_UniformGrid_FirstColumn;
+                xamlMember.Getter = get_24_UniformGrid_FirstColumn;
+                xamlMember.Setter = set_24_UniformGrid_FirstColumn;
                 break;
             case "Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.Orientation":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "Orientation", "Windows.UI.Xaml.Controls.Orientation");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_26_UniformGrid_Orientation;
-                xamlMember.Setter = set_26_UniformGrid_Orientation;
+                xamlMember.Getter = get_25_UniformGrid_Orientation;
+                xamlMember.Setter = set_25_UniformGrid_Orientation;
                 break;
             case "Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.Rows":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "Rows", "Int32");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_27_UniformGrid_Rows;
-                xamlMember.Setter = set_27_UniformGrid_Rows;
+                xamlMember.Getter = get_26_UniformGrid_Rows;
+                xamlMember.Setter = set_26_UniformGrid_Rows;
                 break;
             case "Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.AutoLayout":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid");
@@ -1216,20 +1194,20 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 xamlMember.SetTargetTypeName("Windows.UI.Xaml.FrameworkElement");
                 xamlMember.SetIsDependencyProperty();
                 xamlMember.SetIsAttachable();
-                xamlMember.Getter = get_28_UniformGrid_AutoLayout;
-                xamlMember.Setter = set_28_UniformGrid_AutoLayout;
+                xamlMember.Getter = get_27_UniformGrid_AutoLayout;
+                xamlMember.Setter = set_27_UniformGrid_AutoLayout;
                 break;
             case "Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool.Value":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "Value", "Boolean");
-                xamlMember.Getter = get_29_NullableBool_Value;
-                xamlMember.Setter = set_29_NullableBool_Value;
+                xamlMember.Getter = get_28_NullableBool_Value;
+                xamlMember.Setter = set_28_NullableBool_Value;
                 break;
             case "Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool.IsNull":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "IsNull", "Boolean");
-                xamlMember.Getter = get_30_NullableBool_IsNull;
-                xamlMember.Setter = set_30_NullableBool_IsNull;
+                xamlMember.Getter = get_29_NullableBool_IsNull;
+                xamlMember.Setter = set_29_NullableBool_IsNull;
                 break;
             }
             return xamlMember;

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight;
 using SpotLightUWP.Helpers;
 using SpotLightUWP.Models;
 using Windows.Storage;
@@ -11,7 +12,7 @@ using Windows.UI.Xaml;
 
 namespace SpotLightUWP.Services
 {
-    public class DataService
+    public class DataService : ObservableObject
     {
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
         private ImageNameManager ImageNameManager => Locator.ImageNameManager;
@@ -23,7 +24,14 @@ namespace SpotLightUWP.Services
         public StorageFolder AppdataFolder => ApplicationData.Current.LocalFolder;
         private string _datefilePath => Path.Combine(AppdataFolder.Path, "dt");
 
-        public  async Task<ObservableCollection<ImageDTO>> GetGalleryData(bool IsTemplate = true)
+
+        public async Task InitializeAsync()
+        {
+            await GetAllDataFromServerAsync();
+            Source = await GetGalleryDataAsync();
+        }
+
+        public  async Task<ObservableCollection<ImageDTO>> GetGalleryDataAsync(bool IsTemplate = true)
         {
             StorageFolder dataFolder = await StorageFolder.GetFolderFromPathAsync(IOManager.DownloadPath);            
 
@@ -73,12 +81,11 @@ namespace SpotLightUWP.Services
             }
             else
             {
-                //todo notif about up to date
+                // up to date
             }
-            Source = await GetGalleryData();
         }
 
-        public  async Task DownloadById(int ID)
+        public  async Task DownloadById(string ID)
         {
             var image = Source.FirstOrDefault(i => i.Id == ID);
             await  IOManager.DownloadImage(image.URI);
@@ -113,10 +120,7 @@ namespace SpotLightUWP.Services
         public  ObservableCollection<ImageDTO> Source
         {
             get => _source;
-            set
-            {
-                _source = value;
-            }
+            set => Set(ref _source, value);
         }
 
         public  int UpdateDate

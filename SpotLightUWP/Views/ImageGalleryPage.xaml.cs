@@ -18,7 +18,7 @@ namespace SpotLightUWP.Views
         public ImageGalleryPage()
         {
             InitializeComponent();
-            ViewModel.Initialize(gridView);
+            ViewModel.InitializeAsync(gridView);
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)

@@ -26,8 +26,6 @@ namespace SpotLightUWP.Services
         private IOManager IOManager => Locator.IOManager;
         private DialogService DialogService => Locator.DialogService;
         private NavigationServiceEx NavigationService => Locator.NavigationService;
-        private DataService DataService => Locator.DataService;
-
 
         public ActivationService(App app, Type defaultNavItem, Lazy<UIElement> shell = null)
         {
@@ -82,7 +80,6 @@ namespace SpotLightUWP.Services
         private async Task InitializeAsync()
         {
             await ThemeSelectorService.InitializeAsync();
-            await DataService.GetAllDataFromServerAsync();
         }
 
         private async Task StartupAsync()

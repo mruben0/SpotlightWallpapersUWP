@@ -15,13 +15,13 @@
     <Grid x:Name="ContentArea">
         <GridView
             x:Name="gridView"
-            ItemsSource="{x:Bind ViewModel.Source}"
+            ItemsSource="{x:Bind ViewModel.DataService.Source, Mode=OneWay}"
             IsItemClickEnabled="True"
             Padding="{StaticResource MediumLeftRightMargin}"
             SelectionMode="None">
             <i:Interaction.Behaviors>
                 <ic:EventTriggerBehavior EventName="ItemClick">
-                    <ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemSelectedCommand}" />
+                    <ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemSelectedCommand, Mode=OneWay}" />
                 </ic:EventTriggerBehavior>
             </i:Interaction.Behaviors>
             <GridView.ItemTemplate>
@@ -29,9 +29,9 @@
                     <Image
                         x:Name="galleryImage"
                         Style="{StaticResource ThumbnailImageStyle}"
-                        Source="{x:Bind URI}"
-                        AutomationProperties.Name="{x:Bind Name}"
-                        ToolTipService.ToolTip="{x:Bind Name}"/>
+                        Source="{x:Bind URI, Mode=OneWay}"
+                        AutomationProperties.Name="{x:Bind Name, Mode=OneWay}"
+                        ToolTipService.ToolTip="{x:Bind Name, Mode=OneWay}"/>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
