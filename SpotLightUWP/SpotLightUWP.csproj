@@ -120,12 +120,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
-    <Compile Include="Helpers\EnumToBooleanConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\EnumToBooleanConverter.cs" />
     <Compile Include="Helpers\ImageNameManager.cs" />
     <Compile Include="Helpers\Json.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
-    <Compile Include="Models\ImageDetailNavigationArgs.cs" />
+    <Compile Include="Models\ImageDetailNavigationParams.cs" />
     <Compile Include="Models\ImageDTO.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultLaunchActivationHandler.cs" />
@@ -138,7 +139,7 @@
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="Services\WallpaperService.cs" />
     <Compile Include="ViewModels\ImageGalleryDetailViewModel.cs" />
-    <Compile Include="ViewModels\ImageGalleryViewModel.cs" />
+    <Compile Include="ViewModels\SpotlightViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
@@ -148,8 +149,8 @@
     <Compile Include="Views\ImageGalleryDetailPage.xaml.cs">
       <DependentUpon>ImageGalleryDetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ImageGalleryPage.xaml.cs">
-      <DependentUpon>ImageGalleryPage.xaml</DependentUpon>
+    <Compile Include="Views\SpotlightPage.xaml.cs">
+      <DependentUpon>SpotlightPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -197,7 +198,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ImageGalleryPage.xaml">
+    <Page Include="Views\SpotlightPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

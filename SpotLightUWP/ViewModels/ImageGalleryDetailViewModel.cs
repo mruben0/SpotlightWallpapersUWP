@@ -30,7 +30,7 @@ namespace SpotLightUWP.ViewModels
             set
             {
                 Set(ref _selectedImage, value);
-                ApplicationData.Current.LocalSettings.SaveString(ImageGalleryViewModel.ImageGallerySelectedIdKey, ((ImageDTO)SelectedImage).Id);
+                ApplicationData.Current.LocalSettings.SaveString(SpotlightViewModel.ImageGallerySelectedIdKey, ((ImageDTO)SelectedImage).Id);
             }
         }
 
@@ -46,7 +46,7 @@ namespace SpotLightUWP.ViewModels
 
         public void SetImage(UIElement image) => _image = image;
 
-        public async Task InitializeAsync(ImageDetailNavigationArgs imageDetailNavigationArgs, NavigationMode navigationMode)
+        public async Task InitializeAsync(ImageDetailNavigationParams imageDetailNavigationArgs, NavigationMode navigationMode)
         {
             Source = imageDetailNavigationArgs.Source;
 
@@ -60,20 +60,20 @@ namespace SpotLightUWP.ViewModels
             }
             else
             {
-                var selectedImageId = await ApplicationData.Current.LocalSettings.ReadAsync<string>(ImageGalleryViewModel.ImageGallerySelectedIdKey);
+                var selectedImageId = await ApplicationData.Current.LocalSettings.ReadAsync<string>(SpotlightViewModel.ImageGallerySelectedIdKey);
                 if (!string.IsNullOrEmpty(selectedImageId))
                 {
                     SelectedImage = Source.FirstOrDefault(i => i.Id == selectedImageId);
                 }
             }
 
-            var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(ImageGalleryViewModel.ImageGalleryAnimationOpen);
+            var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(SpotlightViewModel.ImageGalleryAnimationOpen);
             animation?.TryStart(_image);
         }
 
         public void SetAnimation()
         {
-            ConnectedAnimationService.GetForCurrentView()?.PrepareToAnimate(ImageGalleryViewModel.ImageGalleryAnimationClose, _image);
+            ConnectedAnimationService.GetForCurrentView()?.PrepareToAnimate(SpotlightViewModel.ImageGalleryAnimationClose, _image);
         }
     }
 }

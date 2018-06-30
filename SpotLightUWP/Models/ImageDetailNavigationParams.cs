@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SpotLightUWP.Models
 {
-    public class ImageDetailNavigationArgs
+    public class ImageDetailNavigationParams
     {
-        public ImageDetailNavigationArgs(ObservableCollection<ImageDTO> source = null, string id = null, string name = null)
+        public ImageDetailNavigationParams(ObservableCollection<ImageDTO> source = null, string id = null, string name = null)
         {
             Source = source;
             Id = id;

@@ -19,7 +19,7 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace SpotLightUWP.ViewModels
 {
-    public class ImageGalleryViewModel : ViewModelBase
+    public class SpotlightViewModel : ViewModelBase
     {
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
         public const string ImageGallerySelectedIdKey = "ImageGallerySelectedIdKey";
@@ -33,7 +33,7 @@ namespace SpotLightUWP.ViewModels
 
         public ICommand ItemSelectedCommand => _itemSelectedCommand ?? (_itemSelectedCommand = new RelayCommand<ItemClickEventArgs>(OnsItemSelected));
 
-        public ImageGalleryViewModel()
+        public SpotlightViewModel()
         {
             DataService = new DataService();
         }
@@ -73,7 +73,7 @@ namespace SpotLightUWP.ViewModels
         {
             var selected = args.ClickedItem as ImageDTO;
             _imagesGridView.PrepareConnectedAnimation(ImageGalleryAnimationOpen, selected, "galleryImage");
-            NavigationService.Navigate(typeof(ImageGalleryDetailViewModel).FullName, new ImageDetailNavigationArgs(DataService.Source, selected.Id));
+            NavigationService.Navigate(typeof(ImageGalleryDetailViewModel).FullName, new ImageDetailNavigationParams(DataService.Source, selected.Id));
         }
 
 
@@ -83,5 +83,6 @@ namespace SpotLightUWP.ViewModels
             set { _dataService = value; }
         }
 
+        public bool IsLoaded => true;
     }
 }

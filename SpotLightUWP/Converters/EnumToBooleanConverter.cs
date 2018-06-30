@@ -1,8 +1,9 @@
-﻿using System;
+﻿using SpotLightUWP.Helpers;
+using System;
 
 using Windows.UI.Xaml.Data;
 
-namespace SpotLightUWP.Helpers
+namespace SpotLightUWP.Converters
 {
     public class EnumToBooleanConverter : IValueConverter
     {

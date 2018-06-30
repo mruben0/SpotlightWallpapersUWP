@@ -211,7 +211,7 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
             _typeNameTable[3] = "GalaSoft.MvvmLight.ViewModelBase";
             _typeNameTable[4] = "GalaSoft.MvvmLight.ObservableObject";
             _typeNameTable[5] = "SpotLightUWP.ViewModels.ImageGalleryDetailViewModel";
-            _typeNameTable[6] = "SpotLightUWP.ViewModels.ImageGalleryViewModel";
+            _typeNameTable[6] = "SpotLightUWP.ViewModels.SpotlightViewModel";
             _typeNameTable[7] = "SpotLightUWP.ViewModels.ShellViewModel";
             _typeNameTable[8] = "SpotLightUWP.Services.NavigationServiceEx";
             _typeNameTable[9] = "SpotLightUWP.Services.WallpaperService";
@@ -237,8 +237,8 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
             _typeNameTable[29] = "Microsoft.Xaml.Interactions.Core.InvokeCommandAction";
             _typeNameTable[30] = "System.Windows.Input.ICommand";
             _typeNameTable[31] = "Windows.UI.Xaml.Data.IValueConverter";
-            _typeNameTable[32] = "SpotLightUWP.Views.ImageGalleryPage";
-            _typeNameTable[33] = "SpotLightUWP.Helpers.EnumToBooleanConverter";
+            _typeNameTable[32] = "SpotLightUWP.Views.SpotlightPage";
+            _typeNameTable[33] = "SpotLightUWP.Converters.EnumToBooleanConverter";
             _typeNameTable[34] = "System.Type";
             _typeNameTable[35] = "System.Reflection.MemberInfo";
             _typeNameTable[36] = "SpotLightUWP.Views.SettingsPage";
@@ -264,7 +264,7 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
             _typeTable[3] = typeof(global::GalaSoft.MvvmLight.ViewModelBase);
             _typeTable[4] = typeof(global::GalaSoft.MvvmLight.ObservableObject);
             _typeTable[5] = typeof(global::SpotLightUWP.ViewModels.ImageGalleryDetailViewModel);
-            _typeTable[6] = typeof(global::SpotLightUWP.ViewModels.ImageGalleryViewModel);
+            _typeTable[6] = typeof(global::SpotLightUWP.ViewModels.SpotlightViewModel);
             _typeTable[7] = typeof(global::SpotLightUWP.ViewModels.ShellViewModel);
             _typeTable[8] = typeof(global::SpotLightUWP.Services.NavigationServiceEx);
             _typeTable[9] = typeof(global::SpotLightUWP.Services.WallpaperService);
@@ -290,8 +290,8 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
             _typeTable[29] = typeof(global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction);
             _typeTable[30] = typeof(global::System.Windows.Input.ICommand);
             _typeTable[31] = typeof(global::Windows.UI.Xaml.Data.IValueConverter);
-            _typeTable[32] = typeof(global::SpotLightUWP.Views.ImageGalleryPage);
-            _typeTable[33] = typeof(global::SpotLightUWP.Helpers.EnumToBooleanConverter);
+            _typeTable[32] = typeof(global::SpotLightUWP.Views.SpotlightPage);
+            _typeTable[33] = typeof(global::SpotLightUWP.Converters.EnumToBooleanConverter);
             _typeTable[34] = typeof(global::System.Type);
             _typeTable[35] = typeof(global::System.Reflection.MemberInfo);
             _typeTable[36] = typeof(global::SpotLightUWP.Views.SettingsPage);
@@ -347,7 +347,7 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
         private object Activate_2_SettingsViewModel() { return new global::SpotLightUWP.ViewModels.SettingsViewModel(); }
         private object Activate_4_ObservableObject() { return new global::GalaSoft.MvvmLight.ObservableObject(); }
         private object Activate_5_ImageGalleryDetailViewModel() { return new global::SpotLightUWP.ViewModels.ImageGalleryDetailViewModel(); }
-        private object Activate_6_ImageGalleryViewModel() { return new global::SpotLightUWP.ViewModels.ImageGalleryViewModel(); }
+        private object Activate_6_SpotlightViewModel() { return new global::SpotLightUWP.ViewModels.SpotlightViewModel(); }
         private object Activate_7_ShellViewModel() { return new global::SpotLightUWP.ViewModels.ShellViewModel(); }
         private object Activate_8_NavigationServiceEx() { return new global::SpotLightUWP.Services.NavigationServiceEx(); }
         private object Activate_9_WallpaperService() { return new global::SpotLightUWP.Services.WallpaperService(); }
@@ -361,8 +361,8 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
         private object Activate_24_EventTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior(); }
         private object Activate_27_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
         private object Activate_29_InvokeCommandAction() { return new global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction(); }
-        private object Activate_32_ImageGalleryPage() { return new global::SpotLightUWP.Views.ImageGalleryPage(); }
-        private object Activate_33_EnumToBooleanConverter() { return new global::SpotLightUWP.Helpers.EnumToBooleanConverter(); }
+        private object Activate_32_SpotlightPage() { return new global::SpotLightUWP.Views.SpotlightPage(); }
+        private object Activate_33_EnumToBooleanConverter() { return new global::SpotLightUWP.Converters.EnumToBooleanConverter(); }
         private object Activate_36_SettingsPage() { return new global::SpotLightUWP.Views.SettingsPage(); }
         private object Activate_37_NavHelper() { return new global::SpotLightUWP.Helpers.NavHelper(); }
         private object Activate_39_ShellPage() { return new global::SpotLightUWP.Views.ShellPage(); }
@@ -396,7 +396,7 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 userType.Activator = Activate_0_ViewModelLocator;
                 userType.AddMemberName("SettingsViewModel");
                 userType.AddMemberName("ImageGalleryDetailViewModel");
-                userType.AddMemberName("ImageGalleryViewModel");
+                userType.AddMemberName("SpotlightViewModel");
                 userType.AddMemberName("ShellViewModel");
                 userType.AddMemberName("NavigationService");
                 userType.AddMemberName("WallpaperService");
@@ -438,7 +438,7 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 6:   //  SpotLightUWP.ViewModels.ImageGalleryViewModel
+            case 6:   //  SpotLightUWP.ViewModels.SpotlightViewModel
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("GalaSoft.MvvmLight.ViewModelBase"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
@@ -600,14 +600,14 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 xamlType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 32:   //  SpotLightUWP.Views.ImageGalleryPage
+            case 32:   //  SpotLightUWP.Views.SpotlightPage
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_32_ImageGalleryPage;
+                userType.Activator = Activate_32_SpotlightPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 33:   //  SpotLightUWP.Helpers.EnumToBooleanConverter
+            case 33:   //  SpotLightUWP.Converters.EnumToBooleanConverter
                 userType = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_33_EnumToBooleanConverter;
                 userType.AddMemberName("EnumType");
@@ -783,10 +783,10 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
             var that = (global::SpotLightUWP.ViewModels.ViewModelLocator)instance;
             return that.ImageGalleryDetailViewModel;
         }
-        private object get_2_ViewModelLocator_ImageGalleryViewModel(object instance)
+        private object get_2_ViewModelLocator_SpotlightViewModel(object instance)
         {
             var that = (global::SpotLightUWP.ViewModels.ViewModelLocator)instance;
-            return that.ImageGalleryViewModel;
+            return that.SpotlightViewModel;
         }
         private object get_3_ViewModelLocator_ShellViewModel(object instance)
         {
@@ -918,12 +918,12 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
         }
         private object get_21_EnumToBooleanConverter_EnumType(object instance)
         {
-            var that = (global::SpotLightUWP.Helpers.EnumToBooleanConverter)instance;
+            var that = (global::SpotLightUWP.Converters.EnumToBooleanConverter)instance;
             return that.EnumType;
         }
         private void set_21_EnumToBooleanConverter_EnumType(object instance, object Value)
         {
-            var that = (global::SpotLightUWP.Helpers.EnumToBooleanConverter)instance;
+            var that = (global::SpotLightUWP.Converters.EnumToBooleanConverter)instance;
             that.EnumType = (global::System.Type)Value;
         }
         private object get_22_NavHelper_NavigateTo(object instance)
@@ -1022,10 +1022,10 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 xamlMember.Getter = get_1_ViewModelLocator_ImageGalleryDetailViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
-            case "SpotLightUWP.ViewModels.ViewModelLocator.ImageGalleryViewModel":
+            case "SpotLightUWP.ViewModels.ViewModelLocator.SpotlightViewModel":
                 userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SpotLightUWP.ViewModels.ViewModelLocator");
-                xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "ImageGalleryViewModel", "SpotLightUWP.ViewModels.ImageGalleryViewModel");
-                xamlMember.Getter = get_2_ViewModelLocator_ImageGalleryViewModel;
+                xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "SpotlightViewModel", "SpotLightUWP.ViewModels.SpotlightViewModel");
+                xamlMember.Getter = get_2_ViewModelLocator_SpotlightViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "SpotLightUWP.ViewModels.ViewModelLocator.ShellViewModel":
@@ -1146,8 +1146,8 @@ namespace SpotLightUWP.SpotLightUWP_XamlTypeInfo
                 xamlMember.Getter = get_20_InvokeCommandAction_InputConverterLanguage;
                 xamlMember.Setter = set_20_InvokeCommandAction_InputConverterLanguage;
                 break;
-            case "SpotLightUWP.Helpers.EnumToBooleanConverter.EnumType":
-                userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SpotLightUWP.Helpers.EnumToBooleanConverter");
+            case "SpotLightUWP.Converters.EnumToBooleanConverter.EnumType":
+                userType = (global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SpotLightUWP.Converters.EnumToBooleanConverter");
                 xamlMember = new global::SpotLightUWP.SpotLightUWP_XamlTypeInfo.XamlMember(this, "EnumType", "System.Type");
                 xamlMember.Getter = get_21_EnumToBooleanConverter_EnumType;
                 xamlMember.Setter = set_21_EnumToBooleanConverter_EnumType;

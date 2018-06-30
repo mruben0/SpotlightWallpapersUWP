@@ -38,7 +38,7 @@ namespace SpotLightUWP
 
         private ActivationService CreateActivationService()
         {
-            return new ActivationService(this, typeof(ViewModels.ImageGalleryViewModel), new Lazy<UIElement>(CreateShell));
+            return new ActivationService(this, typeof(ViewModels.SpotlightViewModel), new Lazy<UIElement>(CreateShell));
         }
 
         private UIElement CreateShell()

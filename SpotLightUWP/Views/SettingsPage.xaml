@@ -7,10 +7,11 @@
     Style="{StaticResource PageStyle}"
     DataContext="{Binding SettingsViewModel, Source={StaticResource Locator}}"
     xmlns:helper="using:SpotLightUWP.Helpers"
+    xmlns:converters="using:SpotLightUWP.Converters"
     xmlns:xaml="using:Windows.UI.Xaml"
     mc:Ignorable="d">
     <Page.Resources>
-        <helper:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
+        <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
     </Page.Resources>
 
     <Grid Margin="{StaticResource MediumLeftRightMargin}">

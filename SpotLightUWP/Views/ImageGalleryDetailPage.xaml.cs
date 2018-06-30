@@ -36,7 +36,7 @@ namespace SpotLightUWP.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            await ViewModel.InitializeAsync(e.Parameter as ImageDetailNavigationArgs, e.NavigationMode);
+            await ViewModel.InitializeAsync(e.Parameter as ImageDetailNavigationParams, e.NavigationMode);
             showFlipView.Begin();
         }
 

@@ -1,24 +1,26 @@
-﻿using System;
-
-using SpotLightUWP.ViewModels;
-
+﻿using SpotLightUWP.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace SpotLightUWP.Views
 {
-    public sealed partial class ImageGalleryPage : Page
+    public sealed partial class SpotlightPage : Page
     {
-        private ImageGalleryViewModel ViewModel
+        private SpotlightViewModel ViewModel
         {
-            get { return DataContext as ImageGalleryViewModel; }
+            get { return DataContext as SpotlightViewModel; }
         }
 
-        public ImageGalleryPage()
+        public SpotlightPage()
         {
             InitializeComponent();
-            ViewModel.InitializeAsync(gridView);
+            Loaded += SpotlightPage_Loaded;
+        }
+
+        private async void SpotlightPage_Loaded(object sender, RoutedEventArgs e)
+        {
+          await ViewModel.InitializeAsync(gridView);
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)

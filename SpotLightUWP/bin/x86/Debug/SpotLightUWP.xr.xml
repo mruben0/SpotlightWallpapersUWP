@@ -5,7 +5,7 @@
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="ImageGalleryDetailViewModel" />
-    <RootPropertyPathName Name="ImageGalleryViewModel" />
+    <RootPropertyPathName Name="SpotlightViewModel" />
     <RootPropertyPathName Name="SettingsViewModel" />
     <RootPropertyPathName Name="ShellViewModel" />
   </Roots.PropertyPathNames>
@@ -111,7 +111,10 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Children" />
       <RootProperty Name="Background" />
+      <RootProperty Name="RowDefinitions" />
       <RootProperty Name="Margin" />
+      <RootMethod Name="GetColumn" />
+      <RootMethod Name="SetColumn" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.FlipView">
       <RootProperty Name="Visibility" />
@@ -130,7 +133,16 @@
       <RootProperty Name="Child" />
     </RootType>
     <RootType FullName="SpotLightUWP.Views.ImageGalleryDetailPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
+      <RootProperty Name="Height" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
+      <RootProperty Name="IsIndeterminate" />
+      <RootProperty Name="ShowError" />
+      <RootProperty Name="ShowPaused" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.GridView">
+      <RootProperty Name="Visibility" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="IsItemClickEnabled" />
       <RootProperty Name="Padding" />
@@ -156,8 +168,8 @@
       <RootMethod Name="GetToolTip" />
       <RootMethod Name="SetToolTip" />
     </RootType>
-    <RootType FullName="SpotLightUWP.Views.ImageGalleryPage" />
-    <RootType FullName="SpotLightUWP.Helpers.EnumToBooleanConverter">
+    <RootType FullName="SpotLightUWP.Views.SpotlightPage" />
+    <RootType FullName="SpotLightUWP.Converters.EnumToBooleanConverter">
       <RootProperty Name="EnumType" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Documents.Span">
