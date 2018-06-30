@@ -26,12 +26,11 @@ namespace SpotLightUWP.ViewModels
         public const string ImageGalleryAnimationOpen = "ImageGallery_AnimationOpen";
         public const string ImageGalleryAnimationClose = "ImageGallery_AnimationClose";
         private DataService _dataService;
+        private bool _isLoaded;
 
-
-        private ICommand _itemSelectedCommand;
         private GridView _imagesGridView;
 
-        public ICommand ItemSelectedCommand => _itemSelectedCommand ?? (_itemSelectedCommand = new RelayCommand<ItemClickEventArgs>(OnsItemSelected));
+        public ICommand ItemSelectedCommand => new RelayCommand<ItemClickEventArgs>(OnsItemSelected);
 
         public SpotlightViewModel()
         {
@@ -82,7 +81,16 @@ namespace SpotLightUWP.ViewModels
             get { return _dataService; }
             set { _dataService = value; }
         }
+        
+        public bool IsLoaded
+        {
+            get { return _isLoaded; }
+            set
+            {
+                _isLoaded = value;
+                RaisePropertyChanged(nameof(IsLoaded));
+            }
+        }
 
-        public bool IsLoaded => true;
     }
 }

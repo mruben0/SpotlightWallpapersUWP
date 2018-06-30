@@ -113,6 +113,8 @@
       <RootProperty Name="Background" />
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="Margin" />
+      <RootMethod Name="GetRow" />
+      <RootMethod Name="SetRow" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
     </RootType>
@@ -133,10 +135,13 @@
       <RootProperty Name="Child" />
     </RootType>
     <RootType FullName="SpotLightUWP.Views.ImageGalleryDetailPage" />
+    <RootType FullName="SpotLightUWP.Converters.BoolToVisibilityConverter" />
+    <RootType FullName="SpotLightUWP.Converters.InvertedBoolToVisibilityConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
+      <RootProperty Name="Visibility" />
       <RootProperty Name="IsIndeterminate" />
       <RootProperty Name="ShowError" />
       <RootProperty Name="ShowPaused" />
