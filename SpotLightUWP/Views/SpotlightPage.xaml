@@ -6,16 +6,28 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Style="{StaticResource PageStyle}"
     DataContext="{Binding SpotlightViewModel, Source={StaticResource Locator}}"
+    xmlns:l="using:SpotLightUWP.ViewModels"
     xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:converters="using:SpotLightUWP.Converters"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:models="using:SpotLightUWP.Models"
+    xmlns:x1="using:System"
     NavigationCacheMode="Required"
     mc:Ignorable="d">
     <Page.Resources>
         <converters:BoolToVisibilityConverter x:Key="boolToVis"/>
         <converters:InvertedBoolToVisibilityConverter x:Key="invertedBoolToVis"/>
+        <Style x:Key="ImageButtonStyle"
+                       TargetType="Button">
+            <Setter Property = "Template" >
+                <Setter.Value >
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
         
     <Grid x:Name="ContentArea">
@@ -25,29 +37,36 @@
         </Grid.RowDefinitions>
 
         <ProgressBar Grid.Row="0" Visibility="{x:Bind ViewModel.IsLoaded, Mode=OneWay, Converter={StaticResource invertedBoolToVis}}" IsIndeterminate="True" ShowError="False" ShowPaused="False" Grid.Column="0"/>
-
         <GridView
             Visibility="{x:Bind ViewModel.IsLoaded, Mode=OneWay, Converter={StaticResource boolToVis}}"
             Grid.Row="1"
             x:Name="gridView"
             ItemsSource="{x:Bind ViewModel.DataService.Source, Mode=OneWay}"
             IsItemClickEnabled="True"
+            SelectedItem="{x:Bind ViewModel.Selected, Mode=TwoWay}"
             Padding="{StaticResource MediumLeftRightMargin}"
-            SelectionMode="None">
+            SelectionMode="Single">
+            
             <i:Interaction.Behaviors>
                 <ic:EventTriggerBehavior EventName="ItemClick">
                     <ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemSelectedCommand, Mode=OneWay}" />
                 </ic:EventTriggerBehavior>
-
-            </i:Interaction.Behaviors>
+            </i:Interaction.Behaviors>         
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:ImageDTO">
                     <Image
+                        Grid.Row="0"
                         x:Name="galleryImage"
                         Style="{StaticResource ThumbnailImageStyle}"
                         Source="{x:Bind URI, Mode=OneWay}"
                         AutomationProperties.Name="{x:Bind Name, Mode=OneWay}"
-                        ToolTipService.ToolTip="{x:Bind Name, Mode=OneWay}"/>
+                        ToolTipService.ToolTip="{x:Bind Name, Mode=OneWay}">
+                            <Image.ContextFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="{x:Bind URI, Mode=OneWay}"/>
+                                </MenuFlyout>
+                            </Image.ContextFlyout>
+                        </Image>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

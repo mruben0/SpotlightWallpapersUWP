@@ -26,7 +26,9 @@ namespace SpotLightUWP.ViewModels
         public const string ImageGalleryAnimationOpen = "ImageGallery_AnimationOpen";
         public const string ImageGalleryAnimationClose = "ImageGallery_AnimationClose";
         private DataService _dataService;
+        private object _selected;
         private bool _isLoaded;
+        private IOManager _iOManager => Locator.IOManager;
 
         private GridView _imagesGridView;
 
@@ -40,7 +42,8 @@ namespace SpotLightUWP.ViewModels
         public async Task InitializeAsync(GridView imagesGridView)
         {
             await DataService.InitializeAsync();
-           _imagesGridView = imagesGridView;            
+           _imagesGridView = imagesGridView;
+            IsLoaded = true;
         }
 
         public async Task LoadAnimationAsync()
@@ -75,6 +78,11 @@ namespace SpotLightUWP.ViewModels
             NavigationService.Navigate(typeof(ImageGalleryDetailViewModel).FullName, new ImageDetailNavigationParams(DataService.Source, selected.Id));
         }
 
+        public object Selected
+        {
+            get  { return _selected; }
+            set { _selected = value;}
+        }
 
         public DataService DataService
         {

@@ -24,6 +24,10 @@
     </Page.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         <FlipView x:ConnectionId='3'
             x:Name="flipView"
             Visibility="Collapsed"
@@ -32,8 +36,8 @@
                                                                         >
             <FlipView.ItemTemplate>
                 <DataTemplate                             >
-                    <Viewbox x:ConnectionId='6' StretchDirection="DownOnly">
-                        <Image x:ConnectionId='7'
+                    <Viewbox x:ConnectionId='9' StretchDirection="DownOnly">
+                        <Image x:ConnectionId='10'
                             x:Name="detailImage"
                             Stretch="None"
                                                                />
@@ -48,6 +52,31 @@
             x:Name="previewImage"
             Style="{StaticResource DetailImageStyle}"
                                                                                          />
+        
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Orientation="Horizontal">
+            <Button x:ConnectionId='6' HorizontalAlignment="Center"                                         >
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE896;"/>
+            </Button>
+            <Button Margin="2,0,0,0" >
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEDE3;" FlowDirection="LeftToRight"/>
+
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem x:ConnectionId='7' Text="Set As Wallpaper"                                            >
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BA;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem x:ConnectionId='8' Text="Set As Lockscreen"                                             >
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEE3F;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+        </StackPanel>
     </Grid>
 </Page>
 

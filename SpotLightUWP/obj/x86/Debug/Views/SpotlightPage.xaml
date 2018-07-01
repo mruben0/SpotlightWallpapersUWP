@@ -6,16 +6,28 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Style="{StaticResource PageStyle}"
     DataContext="{Binding SpotlightViewModel, Source={StaticResource Locator}}"
+    xmlns:l="using:SpotLightUWP.ViewModels"
     xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:converters="using:SpotLightUWP.Converters"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:models="using:SpotLightUWP.Models"
+    xmlns:x1="using:System"
     NavigationCacheMode="Required"
     mc:Ignorable="d">
     <Page.Resources>
         <converters:BoolToVisibilityConverter x:Key="boolToVis"/>
         <converters:InvertedBoolToVisibilityConverter x:Key="invertedBoolToVis"/>
+        <Style x:Key="ImageButtonStyle"
+                       TargetType="Button">
+            <Setter Property = "Template" >
+                <Setter.Value >
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
         
     <Grid x:ConnectionId='2' x:Name="ContentArea">
@@ -25,29 +37,36 @@
         </Grid.RowDefinitions>
 
         <ProgressBar x:ConnectionId='3' Grid.Row="0"                                                                                                     IsIndeterminate="True" ShowError="False" ShowPaused="False" Grid.Column="0"/>
-
         <GridView x:ConnectionId='4'
                                                                                                        
             Grid.Row="1"
             x:Name="gridView"
                                                                             
             IsItemClickEnabled="True"
+                                                                   
             Padding="{StaticResource MediumLeftRightMargin}"
-            SelectionMode="None">
+            SelectionMode="Single">
+            
             <i:Interaction.Behaviors>
                 <ic:EventTriggerBehavior EventName="ItemClick">
                     <ic:InvokeCommandAction x:ConnectionId='5'                                                               />
                 </ic:EventTriggerBehavior>
-
-            </i:Interaction.Behaviors>
+            </i:Interaction.Behaviors>         
             <GridView.ItemTemplate>
                 <DataTemplate                             >
                     <Image x:ConnectionId='6'
+                        Grid.Row="0"
                         x:Name="galleryImage"
                         Style="{StaticResource ThumbnailImageStyle}"
                                                           
                                                                               
-                                                                           />
+                                                                           >
+                            <Image.ContextFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem x:ConnectionId='7'                                 />
+                                </MenuFlyout>
+                            </Image.ContextFlyout>
+                        </Image>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

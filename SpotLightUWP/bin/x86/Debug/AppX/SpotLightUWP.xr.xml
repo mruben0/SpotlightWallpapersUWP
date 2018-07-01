@@ -25,6 +25,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Style" />
       <RootProperty Name="Stretch" />
+      <RootProperty Name="ContextFlyout" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
       <RootProperty Name="Width" />
@@ -47,6 +48,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
       <RootProperty Name="Background" />
+      <RootProperty Name="Template" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
@@ -81,6 +83,8 @@
       <RootProperty Name="Orientation" />
       <RootProperty Name="Children" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="Content" />
@@ -109,14 +113,17 @@
       <RootProperty Name="Value" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
+      <RootProperty Name="RowDefinitions" />
       <RootProperty Name="Children" />
       <RootProperty Name="Background" />
-      <RootProperty Name="RowDefinitions" />
       <RootProperty Name="Margin" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
+      <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.FlipView">
       <RootProperty Name="Visibility" />
@@ -124,6 +131,26 @@
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="SelectedItem" />
       <RootProperty Name="ItemTemplate" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Button">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Flyout" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.FontIcon">
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="Glyph" />
+      <RootProperty Name="FlowDirection" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyout">
+      <RootProperty Name="Items" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
+      <RootProperty Name="Text" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="Icon" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
       <RootProperty Name="Mode" />
@@ -137,9 +164,11 @@
     <RootType FullName="SpotLightUWP.Views.ImageGalleryDetailPage" />
     <RootType FullName="SpotLightUWP.Converters.BoolToVisibilityConverter" />
     <RootType FullName="SpotLightUWP.Converters.InvertedBoolToVisibilityConverter" />
-    <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
-      <RootProperty Name="Height" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
+      <RootProperty Name="TargetType" />
+      <RootProperty Name="Template" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ContentPresenter" />
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
       <RootProperty Name="Visibility" />
       <RootProperty Name="IsIndeterminate" />
@@ -150,6 +179,7 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="IsItemClickEnabled" />
+      <RootProperty Name="SelectedItem" />
       <RootProperty Name="Padding" />
       <RootProperty Name="SelectionMode" />
       <RootProperty Name="ItemTemplate" />

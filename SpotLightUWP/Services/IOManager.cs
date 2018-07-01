@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 
 namespace SpotLightUWP.Services
@@ -71,6 +72,29 @@ namespace SpotLightUWP.Services
                  await client.DownloadFileTaskAsync(new Uri(Url), ResultPathGenerator(Url, _path, name));
                 }
             }
+        }
+
+        public async Task SaveImageAs(ImageDTO image)
+        {
+           StorageFile currentImage = await StorageFile.GetFileFromPathAsync(image.URI);
+           byte[] buffer;
+           Stream stream = await currentImage.OpenStreamForReadAsync();
+           buffer = new byte[stream.Length];
+           await stream.ReadAsync(buffer, 0, (int)stream.Length);
+           var savePicker = new FileSavePicker();
+           savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+           savePicker.FileTypeChoices.Add("JPEG-Image", new List<string>() { ".jpg" });
+           savePicker.FileTypeChoices.Add("PNG-Image", new List<string>() { ".png" });
+           savePicker.SuggestedSaveFile = currentImage;
+           savePicker.SuggestedFileName = currentImage.Name;
+           var file = await savePicker.PickSaveFileAsync();
+           if (file != null)
+           {
+               CachedFileManager.DeferUpdates(file);
+               await FileIO.WriteBytesAsync(file, buffer);
+              await CachedFileManager.CompleteUpdatesAsync(file);
+           }
+           
         }
 
         public string DownloadPath

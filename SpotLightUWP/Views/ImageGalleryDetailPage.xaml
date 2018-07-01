@@ -24,6 +24,10 @@
     </Page.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         <FlipView
             x:Name="flipView"
             Visibility="Collapsed"
@@ -48,5 +52,30 @@
             x:Name="previewImage"
             Style="{StaticResource DetailImageStyle}"
             Source="{x:Bind ViewModel.SelectedImage.(models:ImageDTO.URI), Mode=OneWay}" />
+        
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Orientation="Horizontal">
+            <Button HorizontalAlignment="Center" Command="{x:Bind ViewModel.SaveImageAs}">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE896;"/>
+            </Button>
+            <Button Margin="2,0,0,0" >
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEDE3;" FlowDirection="LeftToRight"/>
+
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Set As Wallpaper" Command="{x:Bind ViewModel.SetAsWallpaper}">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BA;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem Text="Set As Lockscreen" Command="{x:Bind ViewModel.SetAsLockscreen}">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEE3F;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+        </StackPanel>
     </Grid>
 </Page>

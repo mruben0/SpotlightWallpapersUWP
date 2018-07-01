@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-06-30T04:42:14.142</Modified>
+      <Modified>2018-07-01T08:31:37.731</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\SpotLightUWP.exe">
       <PackagePath>entrypoint\SpotLightUWP.exe</PackagePath>
-      <Modified>2018-06-30T04:42:10.970</Modified>
+      <Modified>2018-07-01T08:31:35.218</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\.nuget\packages\colorcode.core\2.0.3\lib\netstandard1.4\ColorCode.Core.dll">
       <PackagePath>ColorCode.Core.dll</PackagePath>
@@ -863,55 +863,55 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\SpotLightUWP.xr.xml">
       <PackagePath>SpotLightUWP.xr.xml</PackagePath>
-      <Modified>2018-06-30T04:42:09.389</Modified>
+      <Modified>2018-07-01T08:14:28.790</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.611</Modified>
+      <Modified>2018-07-01T08:31:34.240</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\Image.xbf">
       <PackagePath>Styles\Image.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.572</Modified>
+      <Modified>2018-07-01T08:31:34.229</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\Page.xbf">
       <PackagePath>Styles\Page.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.574</Modified>
+      <Modified>2018-07-01T08:31:34.230</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\_Colors.xbf">
       <PackagePath>Styles\_Colors.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.576</Modified>
+      <Modified>2018-07-01T08:31:34.232</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\_FontSizes.xbf">
       <PackagePath>Styles\_FontSizes.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.579</Modified>
+      <Modified>2018-07-01T08:31:34.234</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\_Thickness.xbf">
       <PackagePath>Styles\_Thickness.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.583</Modified>
+      <Modified>2018-07-01T08:31:34.236</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\TextBlock.xbf">
       <PackagePath>Styles\TextBlock.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.588</Modified>
+      <Modified>2018-07-01T08:31:34.238</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\FirstRunDialog.xbf">
       <PackagePath>Views\FirstRunDialog.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.625</Modified>
+      <Modified>2018-07-01T08:31:34.242</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\ImageGalleryDetailPage.xbf">
       <PackagePath>Views\ImageGalleryDetailPage.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.644</Modified>
+      <Modified>2018-07-01T08:31:34.244</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\SpotlightPage.xbf">
       <PackagePath>Views\SpotlightPage.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.653</Modified>
+      <Modified>2018-07-01T08:31:34.246</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\SettingsPage.xbf">
       <PackagePath>Views\SettingsPage.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.665</Modified>
+      <Modified>2018-07-01T08:31:34.248</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\ShellPage.xbf">
       <PackagePath>Views\ShellPage.xbf</PackagePath>
-      <Modified>2018-06-30T04:42:09.669</Modified>
+      <Modified>2018-07-01T08:31:34.250</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -1100,7 +1100,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Core\SpotLightUWP.exe">
       <PackagePath>SpotLightUWP.exe</PackagePath>
-      <Modified>2018-06-30T04:42:14.117</Modified>
+      <Modified>2018-07-01T08:31:37.719</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

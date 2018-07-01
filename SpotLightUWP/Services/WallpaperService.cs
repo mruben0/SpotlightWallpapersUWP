@@ -28,13 +28,23 @@ namespace SpotLightUWP.Services
             }
         }
 
-        public async Task<bool> SetAsAsync(Uri Uri = null,StorageFile image = null , SetAs setAs = SetAs.Wallpaper)
+        public async Task<bool> SetAsAsync(string Uri = null,StorageFile image = null , SetAs setAs = SetAs.Wallpaper)
         {
             bool success = false;
             StorageFile file;
             if (UserProfilePersonalizationSettings.IsSupported())
             {
-                file = image ??  await StorageFile.GetFileFromApplicationUriAsync(Uri) ?? throw new ArgumentNullException(nameof(image));
+                try
+                {
+                    file = image ?? await StorageFile.GetFileFromPathAsync(Uri) ?? throw new ArgumentNullException(nameof(image));
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
+                }
+               
                 var wallpaperPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Wallpaper");
                 if (!Directory.Exists(wallpaperPath))
                 {
@@ -42,7 +52,7 @@ namespace SpotLightUWP.Services
                 }
 
                 IStorageFolder wallpaperFolder = await StorageFolder.GetFolderFromPathAsync(wallpaperPath);
-                var copiedFile = await image.CopyAsync(wallpaperFolder, image.Name,NameCollisionOption.ReplaceExisting);
+                var copiedFile = await file.CopyAsync(wallpaperFolder, file.Name,NameCollisionOption.ReplaceExisting);
                 UserProfilePersonalizationSettings profileSettings = UserProfilePersonalizationSettings.Current;
                 if (setAs == SetAs.Wallpaper)
                 {
