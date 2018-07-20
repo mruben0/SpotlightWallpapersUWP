@@ -9,8 +9,8 @@
                        
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <Storyboard x:ConnectionId='2' x:Name="showFlipView"                                    >
+    <!--<Page.Resources>
+        <Storyboard x:Name="showFlipView" Completed="OnShowFlipViewCompleted">
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="flipView" BeginTime="0:0:0.5">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
             </ObjectAnimationUsingKeyFrames>
@@ -21,40 +21,41 @@
                 <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
-    </Page.Resources>
+    </Page.Resources>-->
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <FlipView x:ConnectionId='3'
+
+        <Image x:ConnectionId='2'
+                            x:Name="detailImage"
+                            Stretch="UniformToFill"
+                                                                                       />
+        <!--<FlipView
             x:Name="flipView"
             Visibility="Collapsed"
             FocusVisualPrimaryThickness="1,1,1,1"
-                                                   
-                                                                        >
+            ItemsSource="{x:Bind ViewModel.Source}"
+            SelectedItem="{x:Bind ViewModel.SelectedImage, Mode=TwoWay}">
             <FlipView.ItemTemplate>
-                <DataTemplate                             >
-                    <Viewbox x:ConnectionId='9' StretchDirection="DownOnly">
-                        <Image x:ConnectionId='10'
-                            x:Name="detailImage"
-                            Stretch="None"
-                                                               />
+                <DataTemplate x:DataType="models:ImageDTO">
+                    <Viewbox StretchDirection="DownOnly">
+                        
                     </Viewbox>
                 </DataTemplate>
             </FlipView.ItemTemplate>
-        </FlipView>
+        </FlipView>-->
 
 
-        <Grid x:ConnectionId='4' x:Name="shapeGrid" Background="{ThemeResource FlipViewBackground}"/>
-        <Image x:ConnectionId='5'
+        <Grid x:ConnectionId='3' x:Name="shapeGrid" Background="{ThemeResource FlipViewBackground}"/>
+        <Image x:ConnectionId='4'
             x:Name="previewImage"
-            Style="{StaticResource DetailImageStyle}"
-                                                                                         />
+            Style="{StaticResource DetailImageStyle}" />
         
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Orientation="Horizontal">
-            <Button x:ConnectionId='6' HorizontalAlignment="Center"                                         >
+            <Button x:ConnectionId='5' HorizontalAlignment="Center"                                         >
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE896;"/>
             </Button>
             <Button Margin="2,0,0,0" >
@@ -62,13 +63,13 @@
 
                 <Button.Flyout>
                     <MenuFlyout>
-                        <MenuFlyoutItem x:ConnectionId='7' Text="Set As Wallpaper"                                            >
+                        <MenuFlyoutItem x:ConnectionId='6' Text="Set As Wallpaper"                                            >
                             <MenuFlyoutItem.Icon>
                                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BA;"/>
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
 
-                        <MenuFlyoutItem x:ConnectionId='8' Text="Set As Lockscreen"                                             >
+                        <MenuFlyoutItem x:ConnectionId='7' Text="Set As Lockscreen"                                             >
                             <MenuFlyoutItem.Icon>
                                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEE3F;"/>
                             </MenuFlyoutItem.Icon>

@@ -23,8 +23,8 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="Style" />
       <RootProperty Name="Stretch" />
+      <RootProperty Name="Style" />
       <RootProperty Name="ContextFlyout" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
@@ -40,10 +40,10 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="DataContext" />
-      <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
       <RootProperty Name="Style" />
       <RootProperty Name="NavigationCacheMode" />
+      <RootProperty Name="Resources" />
       <RootEvent Name="KeyDown" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
@@ -96,22 +96,6 @@
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Source" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.Animation.Storyboard">
-      <RootProperty Name="Children" />
-      <RootEvent Name="Completed" />
-      <RootMethod Name="GetTargetProperty" />
-      <RootMethod Name="SetTargetProperty" />
-      <RootMethod Name="GetTargetName" />
-      <RootMethod Name="SetTargetName" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.Animation.ObjectAnimationUsingKeyFrames">
-      <RootProperty Name="BeginTime" />
-      <RootProperty Name="KeyFrames" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.Animation.DiscreteObjectKeyFrame">
-      <RootProperty Name="KeyTime" />
-      <RootProperty Name="Value" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="Children" />
@@ -124,13 +108,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.FlipView">
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="FocusVisualPrimaryThickness" />
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="SelectedItem" />
-      <RootProperty Name="ItemTemplate" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="HorizontalAlignment" />
@@ -156,10 +133,6 @@
       <RootProperty Name="Mode" />
       <RootProperty Name="Converter" />
       <RootProperty Name="ConverterParameter" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Viewbox">
-      <RootProperty Name="StretchDirection" />
-      <RootProperty Name="Child" />
     </RootType>
     <RootType FullName="SpotLightUWP.Views.ImageGalleryDetailPage" />
     <RootType FullName="SpotLightUWP.Converters.BoolToVisibilityConverter" />

@@ -20,11 +20,13 @@ namespace SpotLightUWP.ViewModels
     {
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
         private IOManager IOManager => Locator.IOManager;
+        private HTTPService _httpService => Locator.HTTPService;
         private WallpaperService WallpaperService => Locator.WallpaperService;
         private static UIElement _image;
         private ImageDTO _selectedImage;
-        private ObservableCollection<ImageDTO> _source;       
-       
+        private ObservableCollection<ImageDTO> _source;
+        private string _fullsizedImage;
+
         public ImageGalleryDetailViewModel()
         {
         }
@@ -64,8 +66,15 @@ namespace SpotLightUWP.ViewModels
                 }
             }
 
+            SelectedImage.URI = await _httpService.DownloadByIdAsync(SelectedImage.Id);
+
             var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(SpotlightViewModel.ImageGalleryAnimationOpen);
             animation?.TryStart(_image);
+        }
+
+        public async Task<string> DownLoadSelectedAsync()
+        {
+            return await _httpService.DownloadByIdAsync(SelectedImage.Id);
         }
 
         public void SetAnimation()
@@ -78,6 +87,15 @@ namespace SpotLightUWP.ViewModels
            await IOManager.SaveImageAs((ImageDTO)SelectedImage);
         }
 
+        public string FullSizedImage
+        {
+            get => _fullsizedImage;
+            set
+            {
+                Set(ref _fullsizedImage, value);
+            }               
+        }
+
         public ImageDTO SelectedImage
         {
             get => _selectedImage;
@@ -85,7 +103,16 @@ namespace SpotLightUWP.ViewModels
             {
                 Set(ref _selectedImage, value);
                 ApplicationData.Current.LocalSettings.SaveString(SpotlightViewModel.ImageGallerySelectedIdKey, SelectedImage.Id);
+               // UpdateImage();
             }
+        }
+
+        public void UpdateImage()
+        {
+            Task.Run(async () =>
+            {
+                FullSizedImage = await _httpService.DownloadByIdAsync(SelectedImage.Id);
+            }).Wait();
         }
 
         public ObservableCollection<ImageDTO> Source

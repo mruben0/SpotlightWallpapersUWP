@@ -27,11 +27,11 @@ namespace SpotLightUWP.Services
 
         public async Task InitializeAsync()
         {
-            await GetAllDataFromServerAsync();
-            Source = await GetGalleryDataAsync();
+            await GetAllDataFromServerAsync(new int[] { 1, 10 });
+            Source = await GetGalleryDataAsync(new int[] { 1,10});
         }
 
-        public  async Task<ObservableCollection<ImageDTO>> GetGalleryDataAsync(bool IsTemplate = true)
+        public  async Task<ObservableCollection<ImageDTO>> GetGalleryDataAsync(int[] interval,bool IsTemplate = true)
         {
             StorageFolder dataFolder = await StorageFolder.GetFolderFromPathAsync(IOManager.DownloadPath);            
 
@@ -44,24 +44,23 @@ namespace SpotLightUWP.Services
             var items = await dataFolder.GetItemsAsync();
             foreach (var item in items)
             {
-                data.Add(new ImageDTO()
+                var id = Convert.ToInt32(ImageNameManager.GetId(item.Name));
+                if (id >= interval[0] && id <= interval[1])
                 {
-                    URI = item.Path,
-                    Id = ImageNameManager.GetId(item.Name),
-                    Name = ImageNameManager.CreateName(item.Name),
-                });
+                    data.Add(new ImageDTO()
+                    {
+                        URI = item.Path,
+                        Id = ImageNameManager.GetId(item.Name),
+                        Name = ImageNameManager.CreateName(item.Name)
+                    });
+                }              
             }            
             return data;
         }
 
-        public async Task GetAllDataFromServerAsync(bool IsTemplate = true)
-        {
-            var dataDate = _hTTPService.UpdatedDate();
-            UpdateDate = GetBaseDate();
-            if (dataDate > UpdateDate)
-            {
-                UpdateDate = dataDate;
-                var imageDTOs = _hTTPService.URLParser();
+        public async Task GetAllDataFromServerAsync(int[] interval,bool IsTemplate = true)
+        {          
+                var imageDTOs = _hTTPService.URLParser(interval);
                 if (imageDTOs != null)
                 {
                     if (IsTemplate)
@@ -72,32 +71,18 @@ namespace SpotLightUWP.Services
                     {
                         await IOManager.DownloadImages(imageDTOs, false);
                     }
-                    SaveBaseDate();
                 }
                 else
                 {
                     //notif about internet connection
                 }
-            }
-            else
-            {
-                // up to date
-            }
+         
         }
 
         public  async Task DownloadById(string ID)
         {
             var image = Source.FirstOrDefault(i => i.Id == ID);
             await  IOManager.DownloadImage(image.URI);
-        }
-
-        private  void SaveBaseDate()
-        {
-            if (File.Exists(_datefilePath))
-             using (var sw = new StreamWriter(_datefilePath))
-            {
-                 sw.WriteLine(UpdateDate.ToString());
-            }
         }
 
         private  int GetBaseDate()

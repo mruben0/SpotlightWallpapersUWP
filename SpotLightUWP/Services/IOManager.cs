@@ -19,7 +19,7 @@ namespace SpotLightUWP.Services
         private  ImageNameManager ImageNameManager => Locator.ImageNameManager;
         private string _downloadPath;
         private string _templatePath;
-        private string _downloadedfolder = "DownloadedFolder";
+        public string _downloadedfolder = "DownloadedFolder";
         private string _templateFolder = "Templates";
         
         public IOManager()
@@ -27,7 +27,7 @@ namespace SpotLightUWP.Services
             var appdata = ApplicationData.Current.LocalFolder;
             DownloadPath = Path.Combine(appdata.Path,_downloadedfolder);
             TemplatePath = Path.Combine(appdata.Path, _templateFolder);
-           if (!Directory.Exists(DownloadPath))
+            if (!Directory.Exists(DownloadPath))
             {
                 Directory.CreateDirectory(DownloadPath);
             }
@@ -37,9 +37,13 @@ namespace SpotLightUWP.Services
             }
         }
 
-        private string ResultPathGenerator(string url, string path, string name = null)
+        public string ResultPathGenerator(string url, string path, string id=null ,string name = null)
         {
             string _name = name ?? Path.GetFileName(url);
+            if (id != null)
+            {
+                _name = $"__{id}__" + _name;
+            }
             var cleanName = ImageNameManager.CleanName(_name);
             string resultPath = Path.Combine(path, cleanName);
             return resultPath;
@@ -51,25 +55,29 @@ namespace SpotLightUWP.Services
             if (AsTemplate)
             {
                 downloadFolder = TemplatePath;
+                foreach (var imagedto in imageDTOs)
+                {
+                    await DownloadImage(imagedto.TemplateUri,imagedto.Id, imagedto.Name, downloadFolder);
+                }
             }
             else
             {
                 downloadFolder = DownloadPath;
-            }
-            foreach (var imagedto in imageDTOs)
-            {
-               await DownloadImage(imagedto.URI, imagedto.Name, downloadFolder);
-            }
+                foreach (var imagedto in imageDTOs)
+                {
+                    await DownloadImage(imagedto.URI, imagedto.Id ,imagedto.Name, downloadFolder);
+                }
+            }          
         }        
 
-        public async Task DownloadImage(string Url, string name = null, string Path = null)
+        public async Task DownloadImage(string Url, string id = null, string name = null, string Path = null)
         {
             string _path = Path ?? DownloadPath;
             using (WebClient client = new WebClient())
             {
-                if (!File.Exists(ResultPathGenerator(Url, _path, name)))
+                if (!File.Exists(ResultPathGenerator(Url, _path,id, name)))
                 {
-                 await client.DownloadFileTaskAsync(new Uri(Url), ResultPathGenerator(Url, _path, name));
+                 await client.DownloadFileTaskAsync(new Uri(Url), ResultPathGenerator(Url, _path,id, name));
                 }
             }
         }
@@ -92,7 +100,7 @@ namespace SpotLightUWP.Services
            {
                CachedFileManager.DeferUpdates(file);
                await FileIO.WriteBytesAsync(file, buffer);
-              await CachedFileManager.CompleteUpdatesAsync(file);
+               await CachedFileManager.CompleteUpdatesAsync(file);
            }
            
         }

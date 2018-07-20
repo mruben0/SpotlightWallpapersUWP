@@ -9,7 +9,7 @@
     KeyDown="OnKeyDown"
     mc:Ignorable="d">
 
-    <Page.Resources>
+    <!--<Page.Resources>
         <Storyboard x:Name="showFlipView" Completed="OnShowFlipViewCompleted">
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="flipView" BeginTime="0:0:0.5">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
@@ -21,14 +21,19 @@
                 <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
-    </Page.Resources>
+    </Page.Resources>-->
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <FlipView
+
+        <Image
+                            x:Name="detailImage"
+                            Stretch="UniformToFill"
+                            Source="{x:Bind ViewModel.SelectedImage.URI, Mode=OneWay}" />
+        <!--<FlipView
             x:Name="flipView"
             Visibility="Collapsed"
             FocusVisualPrimaryThickness="1,1,1,1"
@@ -37,21 +42,17 @@
             <FlipView.ItemTemplate>
                 <DataTemplate x:DataType="models:ImageDTO">
                     <Viewbox StretchDirection="DownOnly">
-                        <Image
-                            x:Name="detailImage"
-                            Stretch="None"
-                            Source="{x:Bind URI, Mode=OneWay}" />
+                        
                     </Viewbox>
                 </DataTemplate>
             </FlipView.ItemTemplate>
-        </FlipView>
+        </FlipView>-->
 
 
         <Grid x:Name="shapeGrid" Background="{ThemeResource FlipViewBackground}"/>
         <Image
             x:Name="previewImage"
-            Style="{StaticResource DetailImageStyle}"
-            Source="{x:Bind ViewModel.SelectedImage.(models:ImageDTO.URI), Mode=OneWay}" />
+            Style="{StaticResource DetailImageStyle}" />
         
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Orientation="Horizontal">
             <Button HorizontalAlignment="Center" Command="{x:Bind ViewModel.SaveImageAs}">

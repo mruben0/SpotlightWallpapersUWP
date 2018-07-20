@@ -4,53 +4,76 @@ using RestSharp;
 using SpotLightUWP.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.UI.Xaml;
 
 namespace SpotLightUWP.Services
 {
-   public class HTTPService
+    public class HTTPService
     {
-        RestClient client = new RestClient("http://spotlight.gear.host/imageuri");
+        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
+        private IOManager IOManager => Locator.IOManager;
 
+        RestClient client = new RestClient("http://spotlight.gear.host/");
 
-        public List<ImageDTO> URLParser()
+        public List<ImageDTO> URLParser(int[] interval)
         {
+            int count = 0;
+            var countRequest = new RestRequest("Images/GetCount", Method.GET);
+            IRestResponse countResult = client.Execute(countRequest);
             List<ImageDTO> ImageDtos = new List<ImageDTO>();
 
-            var request = new RestRequest(Method.GET);
-            
-            var queryResult = client.Execute(request);
-
-            if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
+            if (countResult.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                JObject o = JObject.Parse(queryResult.Content);
-                JArray images = (JArray)o.SelectToken("Images");
+                count = Convert.ToInt32(countResult.Content);
 
-                foreach (var item in images)
+                if (count > interval[1])
                 {
-                    ImageDtos.Add(JsonConvert.DeserializeObject<ImageDTO>(item.ToString()));
+                    count = interval[1];
                 }
-                return ImageDtos;
-            }
 
-            else return null;
+                for (int i = interval[0]; i <= count; i++)
+                {
+                    var request = new RestRequest("Images/GetById/{Id}", Method.GET);
+                    request.AddParameter("Id", i, ParameterType.UrlSegment);
+
+                    var queryResult = client.Execute(request);
+
+                    if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        JObject image = JObject.Parse(queryResult.Content);
+                        ImageDtos.Add(JsonConvert.DeserializeObject<ImageDTO>(image.ToString()));                        
+                    }
+                }
+            }
+            return ImageDtos;
         }
 
-        public int UpdatedDate()
+        public async Task<string> DownloadByIdAsync(string Id)
         {
-            var request = new RestRequest(Method.GET);
+            var request = new RestRequest($"Images/GetById/{Id}", Method.GET);
             var queryResult = client.Execute(request);
-
             if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                JObject o = JObject.Parse(queryResult.Content);
+                JObject image = JObject.Parse(queryResult.Content);
+                ImageDTO imageDTO = JsonConvert.DeserializeObject<ImageDTO>(image.ToString());
 
-                return (int)o.SelectToken("Meta.Date");
+                using (WebClient client = new WebClient())
+                {
+                    var filePath = IOManager.ResultPathGenerator(imageDTO.URI, IOManager.DownloadPath, Id, imageDTO.Name);
+                    if (!File.Exists(filePath))
+                    {
+                        await client.DownloadFileTaskAsync(new Uri(imageDTO.URI), filePath);
+                    }
+                    return filePath;
+                }
             }
-            return 0;
+            return null;
         }
-
     }
 }

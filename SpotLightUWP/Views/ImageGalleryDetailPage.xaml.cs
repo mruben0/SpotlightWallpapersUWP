@@ -37,7 +37,7 @@ namespace SpotLightUWP.Views
         {
             base.OnNavigatedTo(e);
             await ViewModel.InitializeAsync(e.Parameter as ImageDetailNavigationParams, e.NavigationMode);
-            showFlipView.Begin();
+            //showFlipView.Begin();
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -50,7 +50,7 @@ namespace SpotLightUWP.Views
             }
         }
 
-        private void OnShowFlipViewCompleted(object sender, object e) => flipView.Focus(FocusState.Programmatic);
+       // private void OnShowFlipViewCompleted(object sender, object e) => flipView.Focus(FocusState.Programmatic);
 
         private void OnKeyDown(object sender, KeyRoutedEventArgs e)
         {
