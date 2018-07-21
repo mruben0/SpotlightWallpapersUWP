@@ -35,10 +35,12 @@ namespace SpotLightUWP.ViewModels
         private object _selected;
         private bool _isLoaded;
         private IOManager _iOManager => Locator.IOManager;
+        private HTTPService _httpService => Locator.HTTPService;
         private static string _downloadPath;
         private static string _templatePath;
         private ObservableCollection<ImageDTO> _source;
         private int[] _lastInterval;
+        private int _count;
 
 
         private GridView _imagesGridView;
@@ -49,6 +51,10 @@ namespace SpotLightUWP.ViewModels
             IsLoaded = false;
             await EraseDownloaded();
         });
+
+        public ICommand ToLeft => new RelayCommand(async()=> await MoveLeftAsync());
+
+        public ICommand ToRight => new RelayCommand(async () => await MoveRightAsync());
        
         public SpotlightViewModel()
         {
@@ -61,8 +67,12 @@ namespace SpotLightUWP.ViewModels
 
         public async Task InitializeAsync(GridView imagesGridView)
         {
-            await UpdateSourceAsync(_lastInterval);
-           _imagesGridView = imagesGridView;
+            if (Source == null || Source?.Count == 0)
+            {
+                await UpdateSourceAsync(_lastInterval);
+                _count = _httpService.GetCount();
+            }
+            _imagesGridView = imagesGridView;
             IsLoaded = true;
         }
 
@@ -121,6 +131,33 @@ namespace SpotLightUWP.ViewModels
             await UpdateSourceAsync(_lastInterval);
             IsLoaded = true;
         }
+
+        private async Task MoveLeftAsync()
+        {
+            if (_lastInterval[0] > 1)
+            {
+                IsLoaded = false;
+                _lastInterval[0] -= 10;
+                _lastInterval[1] -= 10;
+
+                await UpdateSourceAsync(_lastInterval);
+                IsLoaded = true;
+            }           
+        }
+
+        private async Task MoveRightAsync()
+        {
+            if (_lastInterval[1] <= _count)
+            {
+                IsLoaded = false;
+                _lastInterval[0] += 10;
+                _lastInterval[1] += 10;
+
+                await UpdateSourceAsync(_lastInterval);
+                IsLoaded = true;
+            }            
+        }
+
 
         public object Selected
         {

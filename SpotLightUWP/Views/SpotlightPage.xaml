@@ -29,14 +29,38 @@
             </Setter>
         </Style>
     </Page.Resources>
-        
+
     <Grid x:Name="ContentArea">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ProgressBar Grid.Row="0" Visibility="{x:Bind ViewModel.IsLoaded, Mode=OneWay, Converter={StaticResource invertedBoolToVis}}" IsIndeterminate="True" ShowError="False" ShowPaused="False" Grid.Column="0"/>
-        <Button Grid.Row="0" Margin="2"  Command="{x:Bind ViewModel.EraseImages}">Erase Downloaded</Button>
+
+        <StackPanel Grid.Row="1" Canvas.ZIndex="7" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button Command="{x:Bind ViewModel.ToLeft}" Foreground="WhiteSmoke" Margin="5">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76B;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+
+            <Button Foreground="White" >
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEDE3;" FlowDirection="LeftToRight"/>
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Delete Downloaded" Command="{x:Bind ViewModel.EraseImages}">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE74D;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+
+            <Button HorizontalAlignment="Right" 
+                Command="{x:Bind ViewModel.ToRight}" Foreground="WhiteSmoke" Margin="5" >
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76C;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+        </StackPanel>       
+
         <GridView
             Visibility="{x:Bind ViewModel.IsLoaded, Mode=OneWay, Converter={StaticResource boolToVis}}"
             Grid.Row="1"
@@ -46,12 +70,12 @@
             SelectedItem="{x:Bind ViewModel.Selected, Mode=TwoWay}"
             Padding="{StaticResource MediumLeftRightMargin}"
             SelectionMode="Single">
-            
+
             <i:Interaction.Behaviors>
                 <ic:EventTriggerBehavior EventName="ItemClick">
                     <ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemSelectedCommand, Mode=OneWay}" />
                 </ic:EventTriggerBehavior>
-            </i:Interaction.Behaviors>         
+            </i:Interaction.Behaviors>
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:ImageDTO">
                     <Image

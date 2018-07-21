@@ -29,15 +29,39 @@
             </Setter>
         </Style>
     </Page.Resources>
-        
+
     <Grid x:ConnectionId='2' x:Name="ContentArea">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ProgressBar x:ConnectionId='3' Grid.Row="0"                                                                                                     IsIndeterminate="True" ShowError="False" ShowPaused="False" Grid.Column="0"/>
-        <Button x:ConnectionId='4' Grid.Row="0" Margin="2"                                          >Erase Downloaded</Button>
-        <GridView x:ConnectionId='5'
+
+        <StackPanel Grid.Row="1" Canvas.ZIndex="7" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button x:ConnectionId='7'                                     Foreground="WhiteSmoke" Margin="5">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76B;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+
+            <Button Foreground="White" >
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEDE3;" FlowDirection="LeftToRight"/>
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem x:ConnectionId='9' Text="Delete Downloaded"                                         >
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE74D;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+
+            <Button x:ConnectionId='8' HorizontalAlignment="Right" 
+                                                     Foreground="WhiteSmoke" Margin="5" >
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76C;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+        </StackPanel>       
+
+        <GridView x:ConnectionId='4'
                                                                                                        
             Grid.Row="1"
             x:Name="gridView"
@@ -46,15 +70,15 @@
                                                                    
             Padding="{StaticResource MediumLeftRightMargin}"
             SelectionMode="Single">
-            
+
             <i:Interaction.Behaviors>
                 <ic:EventTriggerBehavior EventName="ItemClick">
-                    <ic:InvokeCommandAction x:ConnectionId='6'                                                               />
+                    <ic:InvokeCommandAction x:ConnectionId='5'                                                               />
                 </ic:EventTriggerBehavior>
-            </i:Interaction.Behaviors>         
+            </i:Interaction.Behaviors>
             <GridView.ItemTemplate>
                 <DataTemplate                             >
-                    <Image x:ConnectionId='7'
+                    <Image x:ConnectionId='6'
                         Grid.Row="0"
                         Height="150"
                         Width="150"

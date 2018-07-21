@@ -75,5 +75,16 @@ namespace SpotLightUWP.Services
             }
             return null;
         }
+
+        public int GetCount()
+        {
+            var countRequest = new RestRequest("Images/GetCount", Method.GET);
+            IRestResponse countResult = client.Execute(countRequest);
+            if (countResult.StatusCode == HttpStatusCode.OK)
+            {
+                return Convert.ToInt32(countResult.Content);
+            }
+            else return 0;
+        }
     }
 }

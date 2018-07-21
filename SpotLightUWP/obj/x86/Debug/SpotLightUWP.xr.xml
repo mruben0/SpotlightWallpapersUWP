@@ -121,6 +121,8 @@
       <RootProperty Name="FontFamily" />
       <RootProperty Name="Glyph" />
       <RootProperty Name="FlowDirection" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyout">
       <RootProperty Name="Items" />
@@ -148,6 +150,10 @@
       <RootProperty Name="IsIndeterminate" />
       <RootProperty Name="ShowError" />
       <RootProperty Name="ShowPaused" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
+      <RootMethod Name="GetZIndex" />
+      <RootMethod Name="SetZIndex" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.GridView">
       <RootProperty Name="Visibility" />

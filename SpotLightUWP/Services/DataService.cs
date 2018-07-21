@@ -27,8 +27,11 @@ namespace SpotLightUWP.Services
 
         public async Task InitializeAsync(int[] interval)
         {
-            await GetAllDataFromServerAsync(interval);
-            Source = await GetGalleryDataAsync(interval);
+            bool success = await GetAllDataFromServerAsync(interval);
+            if (success)
+            {
+                Source = await GetGalleryDataAsync(interval);
+            }
         }
 
         public  async Task<ObservableCollection<ImageDTO>> GetGalleryDataAsync(int[] interval,bool IsTemplate = true)
@@ -58,10 +61,10 @@ namespace SpotLightUWP.Services
             return data;
         }
 
-        public async Task GetAllDataFromServerAsync(int[] interval,bool IsTemplate = true)
+        public async Task<bool> GetAllDataFromServerAsync(int[] interval,bool IsTemplate = true)
         {          
                 var imageDTOs = _hTTPService.URLParser(interval);
-                if (imageDTOs != null)
+                if (imageDTOs.Count > 0)
                 {
                     if (IsTemplate)
                     {
@@ -71,9 +74,11 @@ namespace SpotLightUWP.Services
                     {
                         await IOManager.DownloadImages(imageDTOs, false);
                     }
+                return true;
                 }
                 else
                 {
+                return false;
                     //notif about internet connection
                 }
          
