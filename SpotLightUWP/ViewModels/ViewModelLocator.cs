@@ -25,6 +25,7 @@ namespace SpotLightUWP.ViewModels
             Register<SpotlightViewModel, SpotlightPage>();
             Register<ImageGalleryDetailViewModel, ImageGalleryDetailPage>();
             Register<SettingsViewModel, SettingsPage>();
+            Register<DownloadedImagesViewModel, DownloadedImagesPage>();
         }
 
         public SettingsViewModel SettingsViewModel => ServiceLocator.Current.GetInstance<SettingsViewModel>();
@@ -46,6 +47,8 @@ namespace SpotLightUWP.ViewModels
         public DialogService DialogService => ServiceLocator.Current.GetInstance<DialogService>();
 
         public ImageNameManager ImageNameManager => ServiceLocator.Current.GetInstance<ImageNameManager>();
+
+        public DownloadedImagesViewModel DownloadedImagesViewModel => ServiceLocator.Current.GetInstance<DownloadedImagesViewModel>();
 
         public void Register<VM, V>()
             where VM : class

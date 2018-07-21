@@ -367,3 +367,8 @@ C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\Spotli
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\SpotlightPage.xaml
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\SpotlightPage.xbf
 C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\SpotLightUWP.csprojAssemblyReference.cache
+C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\DownloadedImagesPage.xbf
+C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\DownloadedImagesPage.g.i.cs
+C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\DownloadedImagesPage.g.cs
+C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\DownloadedImagesPage.xaml
+C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x86\Debug\Views\DownloadedImagesPage.xbf

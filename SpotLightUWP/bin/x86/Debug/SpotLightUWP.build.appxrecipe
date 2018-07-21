@@ -670,6 +670,9 @@
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Styles\TextBlock.xbf">
       <PackagePath>Styles\TextBlock.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\DownloadedImagesPage.xbf">
+      <PackagePath>Views\DownloadedImagesPage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\Views\FirstRunDialog.xbf">
       <PackagePath>Views\FirstRunDialog.xbf</PackagePath>
     </AppxPackagedFile>

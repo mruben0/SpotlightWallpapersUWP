@@ -139,11 +139,15 @@
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="Services\WallpaperService.cs" />
+    <Compile Include="ViewModels\DownloadedImagesViewModel.cs" />
     <Compile Include="ViewModels\ImageGalleryDetailViewModel.cs" />
     <Compile Include="ViewModels\SpotlightViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\DownloadedImagesPage.xaml.cs">
+      <DependentUpon>DownloadedImagesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FirstRunDialog.xaml.cs">
       <DependentUpon>FirstRunDialog.xaml</DependentUpon>
     </Compile>
@@ -188,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\TextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DownloadedImagesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

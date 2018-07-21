@@ -18,7 +18,7 @@
         Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
         <NavigationView.MenuItems>
             <NavigationViewItem x:Uid="Shell_Bing" Icon="Document" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.SpotlightViewModel" />
-            <NavigationViewItem x:Uid="Shell_Spotlight" Icon="OpenLocal" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.SpotlightViewModel" />
+            <NavigationViewItem x:Uid="Shell_Spotlight" Icon="OpenLocal" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.DownloadedImagesViewModel" />
         </NavigationView.MenuItems>
         <NavigationView.HeaderTemplate>
             <DataTemplate>

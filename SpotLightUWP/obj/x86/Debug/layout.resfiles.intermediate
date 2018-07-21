@@ -25,6 +25,7 @@ Styles\_Thickness.xbf
 Styles\Image.xbf
 Styles\Page.xbf
 Styles\TextBlock.xbf
+Views\DownloadedImagesPage.xbf
 Views\FirstRunDialog.xbf
 Views\ImageGalleryDetailPage.xbf
 Views\SettingsPage.xbf

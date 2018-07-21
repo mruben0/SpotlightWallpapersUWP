@@ -38,11 +38,11 @@
         <ProgressBar Grid.Row="0" Visibility="{x:Bind ViewModel.IsLoaded, Mode=OneWay, Converter={StaticResource invertedBoolToVis}}" IsIndeterminate="True" ShowError="False" ShowPaused="False" Grid.Column="0"/>
 
         <StackPanel Grid.Row="1" Canvas.ZIndex="7" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <Button Command="{x:Bind ViewModel.ToLeft}" Foreground="WhiteSmoke" Margin="5">
+            <Button Command="{x:Bind ViewModel.ToLeft}" Margin="5">
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76B;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
 
-            <Button Foreground="White" >
+            <Button >
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEDE3;" FlowDirection="LeftToRight"/>
                 <Button.Flyout>
                     <MenuFlyout>
@@ -56,7 +56,7 @@
             </Button>
 
             <Button HorizontalAlignment="Right" 
-                Command="{x:Bind ViewModel.ToRight}" Foreground="WhiteSmoke" Margin="5" >
+                Command="{x:Bind ViewModel.ToRight}"  Margin="5" >
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76C;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
         </StackPanel>       
