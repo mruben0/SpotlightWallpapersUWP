@@ -35,13 +35,13 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <ProgressBar x:ConnectionId='3' Grid.Row="0"                                                                                                     IsIndeterminate="True" ShowError="False" ShowPaused="False" Grid.Column="0"/>
-        <GridView x:ConnectionId='4'
+        <Button x:ConnectionId='4' Grid.Row="0" Margin="2"                                          >Erase Downloaded</Button>
+        <GridView x:ConnectionId='5'
                                                                                                        
             Grid.Row="1"
             x:Name="gridView"
-                                                                            
+                                                                
             IsItemClickEnabled="True"
                                                                    
             Padding="{StaticResource MediumLeftRightMargin}"
@@ -49,24 +49,21 @@
             
             <i:Interaction.Behaviors>
                 <ic:EventTriggerBehavior EventName="ItemClick">
-                    <ic:InvokeCommandAction x:ConnectionId='5'                                                               />
+                    <ic:InvokeCommandAction x:ConnectionId='6'                                                               />
                 </ic:EventTriggerBehavior>
             </i:Interaction.Behaviors>         
             <GridView.ItemTemplate>
                 <DataTemplate                             >
-                    <Image x:ConnectionId='6'
+                    <Image x:ConnectionId='7'
                         Grid.Row="0"
+                        Height="150"
+                        Width="150"
                         x:Name="galleryImage"
+                        Stretch="UniformToFill"
                         Style="{StaticResource ThumbnailImageStyle}"
                                                           
                                                                               
-                                                                           >
-                            <Image.ContextFlyout>
-                                <MenuFlyout>
-                                    <MenuFlyoutItem x:ConnectionId='7'                                 />
-                                </MenuFlyout>
-                            </Image.ContextFlyout>
-                        </Image>
+                                                                           />
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

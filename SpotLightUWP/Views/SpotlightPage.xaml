@@ -35,13 +35,13 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <ProgressBar Grid.Row="0" Visibility="{x:Bind ViewModel.IsLoaded, Mode=OneWay, Converter={StaticResource invertedBoolToVis}}" IsIndeterminate="True" ShowError="False" ShowPaused="False" Grid.Column="0"/>
+        <Button Grid.Row="0" Margin="2"  Command="{x:Bind ViewModel.EraseImages}">Erase Downloaded</Button>
         <GridView
             Visibility="{x:Bind ViewModel.IsLoaded, Mode=OneWay, Converter={StaticResource boolToVis}}"
             Grid.Row="1"
             x:Name="gridView"
-            ItemsSource="{x:Bind ViewModel.DataService.Source, Mode=OneWay}"
+            ItemsSource="{x:Bind ViewModel.Source, Mode=OneWay}"
             IsItemClickEnabled="True"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=TwoWay}"
             Padding="{StaticResource MediumLeftRightMargin}"
@@ -56,17 +56,14 @@
                 <DataTemplate x:DataType="models:ImageDTO">
                     <Image
                         Grid.Row="0"
+                        Height="150"
+                        Width="150"
                         x:Name="galleryImage"
+                        Stretch="UniformToFill"
                         Style="{StaticResource ThumbnailImageStyle}"
                         Source="{x:Bind URI, Mode=OneWay}"
                         AutomationProperties.Name="{x:Bind Name, Mode=OneWay}"
-                        ToolTipService.ToolTip="{x:Bind Name, Mode=OneWay}">
-                            <Image.ContextFlyout>
-                                <MenuFlyout>
-                                    <MenuFlyoutItem Text="{x:Bind URI, Mode=OneWay}"/>
-                                </MenuFlyout>
-                            </Image.ContextFlyout>
-                        </Image>
+                        ToolTipService.ToolTip="{x:Bind Name, Mode=OneWay}"/>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

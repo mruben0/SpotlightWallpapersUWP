@@ -43,6 +43,9 @@ namespace SpotLightUWP.ViewModels
             await WallpaperService.SetAsAsync(SelectedImage.URI,setAs: SetAs.Lockscreen);
         });
 
+        public ICommand ToLeft => new RelayCommand(async() => await MoveLeft());
+        public ICommand ToRight => new RelayCommand(async () => await MoveRight());
+
         public void SetImage(UIElement image) => _image = image;
 
         public async Task InitializeAsync(ImageDetailNavigationParams imageDetailNavigationArgs, NavigationMode navigationMode)
@@ -67,6 +70,7 @@ namespace SpotLightUWP.ViewModels
             }
 
             SelectedImage.URI = await _httpService.DownloadByIdAsync(SelectedImage.Id);
+            RaisePropertyChanged(nameof(SelectedImage));
 
             var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(SpotlightViewModel.ImageGalleryAnimationOpen);
             animation?.TryStart(_image);
@@ -77,6 +81,28 @@ namespace SpotLightUWP.ViewModels
             return await _httpService.DownloadByIdAsync(SelectedImage.Id);
         }
 
+        public async Task MoveLeft()
+        {
+            var newId = GetNewId();
+            if (Source.Any(e=>e.Id == newId))
+            {
+                SelectedImage = Source.FirstOrDefault(e => e.Id == newId);
+                SelectedImage.URI = await _httpService.DownloadByIdAsync(SelectedImage.Id);
+                RaisePropertyChanged(nameof(SelectedImage));
+            }            
+        }
+
+        public async Task MoveRight()
+        {
+            var newId = GetNewId(false);
+            if (Source.Any(e => e.Id == newId))
+            {
+                SelectedImage = Source.FirstOrDefault(e => e.Id == newId);
+                SelectedImage.URI = await _httpService.DownloadByIdAsync(SelectedImage.Id);
+                RaisePropertyChanged(nameof(SelectedImage));
+            }            
+        }
+
         public void SetAnimation()
         {
             ConnectedAnimationService.GetForCurrentView()?.PrepareToAnimate(SpotlightViewModel.ImageGalleryAnimationClose, _image);
@@ -85,6 +111,34 @@ namespace SpotLightUWP.ViewModels
         private async Task SaveItem()
         {
            await IOManager.SaveImageAs((ImageDTO)SelectedImage);
+        }
+
+        private string GetNewId(bool toLeft = true)
+        {
+            if (toLeft)
+            {
+                for (int i = Convert.ToInt32(SelectedImage.Id) - 1 ; i > 0; i--)
+                { 
+                    if (Source.Any(e => e.Id == i.ToString()))
+                    {
+                        return i.ToString();
+                    }
+                    else continue;
+                }
+            }
+            else
+            {
+                var max = Convert.ToInt32(SelectedImage.Id) + 10;
+                for (int i = Convert.ToInt32(SelectedImage.Id) + 1; i < max ; i++)
+                {
+                    if (Source.Any(e => e.Id == i.ToString()))
+                    {
+                        return i.ToString();
+                    }
+                    else continue;
+                }
+            }
+            return "1";
         }
 
         public string FullSizedImage
@@ -103,16 +157,7 @@ namespace SpotLightUWP.ViewModels
             {
                 Set(ref _selectedImage, value);
                 ApplicationData.Current.LocalSettings.SaveString(SpotlightViewModel.ImageGallerySelectedIdKey, SelectedImage.Id);
-               // UpdateImage();
             }
-        }
-
-        public void UpdateImage()
-        {
-            Task.Run(async () =>
-            {
-                FullSizedImage = await _httpService.DownloadByIdAsync(SelectedImage.Id);
-            }).Wait();
         }
 
         public ObservableCollection<ImageDTO> Source
@@ -120,6 +165,5 @@ namespace SpotLightUWP.ViewModels
             get => _source;
             set => Set(ref _source, value);
         }
-
     }
 }

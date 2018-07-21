@@ -25,10 +25,10 @@ namespace SpotLightUWP.Services
         private string _datefilePath => Path.Combine(AppdataFolder.Path, "dt");
 
 
-        public async Task InitializeAsync()
+        public async Task InitializeAsync(int[] interval)
         {
-            await GetAllDataFromServerAsync(new int[] { 1, 10 });
-            Source = await GetGalleryDataAsync(new int[] { 1,10});
+            await GetAllDataFromServerAsync(interval);
+            Source = await GetGalleryDataAsync(interval);
         }
 
         public  async Task<ObservableCollection<ImageDTO>> GetGalleryDataAsync(int[] interval,bool IsTemplate = true)

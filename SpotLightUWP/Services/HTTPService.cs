@@ -37,7 +37,7 @@ namespace SpotLightUWP.Services
                     count = interval[1];
                 }
 
-                for (int i = interval[0]; i <= count; i++)
+                for (int i = interval[0]; i <= interval[0] + 10; i++)
                 {
                     var request = new RestRequest("Images/GetById/{Id}", Method.GET);
                     request.AddParameter("Id", i, ParameterType.UrlSegment);
