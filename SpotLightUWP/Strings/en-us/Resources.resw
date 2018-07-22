@@ -157,6 +157,10 @@
     <value>Spotlight</value>
     <comment>Navigation view item name for Main</comment>
   </data>
+   <data name="Shell_DownLoaded.Content" xml:space="preserve">
+    <value>Downloaded</value>
+    <comment>Navigation view item name for Main</comment>
+  </data>
   <data name="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" xml:space="preserve">
     <value>File name is null or empty. Specify a valid file name</value>
     <comment>File name is null or empty to save file in settings storage extensions</comment>
