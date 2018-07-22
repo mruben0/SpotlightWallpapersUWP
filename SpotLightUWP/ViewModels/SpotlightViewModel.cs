@@ -69,7 +69,7 @@ namespace SpotLightUWP.ViewModels
         {
             if (Source == null || Source?.Count == 0)
             {
-                await UpdateSourceAsync(_lastInterval);
+               Source = await UpdateSourceAsync(_lastInterval);
                 _count = _httpService.GetCount();
             }
             _imagesGridView = imagesGridView;
@@ -108,10 +108,10 @@ namespace SpotLightUWP.ViewModels
             NavigationService.Navigate(typeof(ImageGalleryDetailViewModel).FullName, new ImageDetailNavigationParams(Source, selected.Id));
         }
 
-        private async Task UpdateSourceAsync(int[] interval)
+        private async Task<ObservableCollection<ImageDTO>> UpdateSourceAsync(int[] interval)
         {
             await DataService.InitializeAsync(interval);
-            Source = DataService.Source;
+            return DataService.Source;
         }
 
         private async Task EraseDownloaded()
@@ -128,7 +128,7 @@ namespace SpotLightUWP.ViewModels
                 file.Delete();
             }
 
-            await UpdateSourceAsync(_lastInterval);
+            Source = await UpdateSourceAsync(_lastInterval);
             IsLoaded = true;
         }
 
@@ -140,7 +140,7 @@ namespace SpotLightUWP.ViewModels
                 _lastInterval[0] -= 15;
                 _lastInterval[1] -= 15;
 
-                await UpdateSourceAsync(_lastInterval);
+                Source = await UpdateSourceAsync(_lastInterval);
                 IsLoaded = true;
             }           
         }
@@ -150,10 +150,10 @@ namespace SpotLightUWP.ViewModels
             if (_lastInterval[1] <= _count)
             {
                 IsLoaded = false;
-                _lastInterval[0] += 10;
-                _lastInterval[1] += 10;
+                _lastInterval[0] += 15;
+                _lastInterval[1] += 15;
 
-                await UpdateSourceAsync(_lastInterval);
+                Source = await UpdateSourceAsync(_lastInterval);
                 IsLoaded = true;
             }            
         }

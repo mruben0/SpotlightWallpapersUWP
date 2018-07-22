@@ -120,6 +120,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
+    <Compile Include="AsyncCommands\AsyncCommand.cs" />
+    <Compile Include="AsyncCommands\IErrorHandler.cs" />
+    <Compile Include="AsyncCommands\IAsyncCommand.cs" />
+    <Compile Include="AsyncCommands\TaskUtilities.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\EnumToBooleanConverter.cs" />
     <Compile Include="Converters\InvertedBoolToVisibilityConverter.cs" />

@@ -21,33 +21,34 @@ namespace SpotLightUWP.Services
 
         RestClient client = new RestClient("http://spotlight.gear.host/");
 
-        public List<ImageDTO> URLParser(int[] interval)
+        public async Task<IRestResponse> ExecuteAsync(RestRequest request)
+        {
+            IRestResponse response = await client.ExecuteTaskAsync(request);
+            return response;
+        }
+
+        public async Task<List<ImageDTO>> URLParserAsync(int[] interval)
         {
             int count = 0;
             var countRequest = new RestRequest("Images/GetCount", Method.GET);
-            IRestResponse countResult = client.Execute(countRequest);
             List<ImageDTO> ImageDtos = new List<ImageDTO>();
 
-            if (countResult.StatusCode == System.Net.HttpStatusCode.OK)
+            var countRes = await ExecuteAsync(countRequest);
+
+            if (countRes.StatusCode == HttpStatusCode.OK)
             {
-                count = Convert.ToInt32(countResult.Content);
-
-                if (count > interval[1])
-                {
-                    count = interval[1];
-                }
-
+                count = Convert.ToInt32(countRes.Content);
                 for (int i = interval[0]; i <= interval[0] + 10; i++)
                 {
                     var request = new RestRequest("Images/GetById/{Id}", Method.GET);
                     request.AddParameter("Id", i, ParameterType.UrlSegment);
 
-                    var queryResult = client.Execute(request);
+                    var queryResult = await ExecuteAsync(request);
 
                     if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         JObject image = JObject.Parse(queryResult.Content);
-                        ImageDtos.Add(JsonConvert.DeserializeObject<ImageDTO>(image.ToString()));                        
+                        ImageDtos.Add(JsonConvert.DeserializeObject<ImageDTO>(image.ToString()));
                     }
                 }
             }

@@ -63,7 +63,7 @@ namespace SpotLightUWP.Services
 
         public async Task<bool> GetAllDataFromServerAsync(int[] interval,bool IsTemplate = true)
         {          
-                var imageDTOs = _hTTPService.URLParser(interval);
+                var imageDTOs =  await _hTTPService.URLParserAsync(interval);
                 if (imageDTOs.Count > 0)
                 {
                     if (IsTemplate)
