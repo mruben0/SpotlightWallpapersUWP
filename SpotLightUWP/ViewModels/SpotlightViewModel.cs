@@ -59,7 +59,7 @@ namespace SpotLightUWP.ViewModels
         public SpotlightViewModel()
         {
             IsLoaded = false;
-            _lastInterval = new int[] { 1, 10 };
+            _lastInterval = new int[] { 1, 15 };
             _downloadPath = _iOManager.DownloadPath;
             _templatePath = _iOManager.TemplatePath;
             DataService = new DataService();
@@ -137,8 +137,8 @@ namespace SpotLightUWP.ViewModels
             if (_lastInterval[0] > 1)
             {
                 IsLoaded = false;
-                _lastInterval[0] -= 10;
-                _lastInterval[1] -= 10;
+                _lastInterval[0] -= 15;
+                _lastInterval[1] -= 15;
 
                 await UpdateSourceAsync(_lastInterval);
                 IsLoaded = true;

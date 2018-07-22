@@ -17,9 +17,17 @@
         IsSettingsVisible="True"
         Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
         <NavigationView.MenuItems>
-            <NavigationViewItem x:Uid="Shell_Spotlight" Icon="Document" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.SpotlightViewModel" />
-            <NavigationViewItem x:Uid="Shell_DownLoaded" Icon="OpenLocal" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.DownloadedImagesViewModel" />
-        </NavigationView.MenuItems>
+            <NavigationViewItem x:Uid="Shell_Spotlight" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.SpotlightViewModel" >
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC50;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Uid="Shell_DownLoaded" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.DownloadedImagesViewModel">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC51;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.MenuItems> 
         <NavigationView.HeaderTemplate>
             <DataTemplate>
                 <TextBlock

@@ -80,8 +80,8 @@
                 <DataTemplate                             >
                     <Image x:ConnectionId='6'
                         Grid.Row="0"
-                        Height="150"
-                        Width="150"
+                        Height="130"
+                        Width="240"
                         x:Name="galleryImage"
                         Stretch="UniformToFill"
                         Style="{StaticResource ThumbnailImageStyle}"
