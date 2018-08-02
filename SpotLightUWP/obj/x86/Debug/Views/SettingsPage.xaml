@@ -64,15 +64,14 @@
                 <TextBlock x:Uid="Description_Text" TextWrapping="WrapWholeWords"/>
 
                 <HyperlinkButton
-                    x:Uid="GithubLink"
-                 
-                    Margin="{StaticResource EightTopMargin}" />
-
-                <HyperlinkButton
                     x:Uid="Settings_PrivacyTermsLink"
                  
-                    Margin="{StaticResource EightTopMargin}" />
+                    Margin="{StaticResource EightTopMargin}" /> 
 
+                <TextBlock  Margin="{StaticResource EightTopMargin}">
+                <Span xml:space="preserve"><Run>Icon made by </Run><Hyperlink NavigateUri="https://www.freepik.com/flaticon">flaticon</Hyperlink> from www.freepik.com</Span>
+                </TextBlock>
+                
                 <TextBlock  Margin="{StaticResource EightTopMargin}">
                 <Span xml:space="preserve"><Run> Contact us: </Run><Hyperlink NavigateUri="mailto:mruben0@outlook.com">mruben0@outlook.com</Hyperlink></Span>
                 </TextBlock>

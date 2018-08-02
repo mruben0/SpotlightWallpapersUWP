@@ -38,7 +38,7 @@ namespace SpotLightUWP.Services
             if (countRes.StatusCode == HttpStatusCode.OK)
             {
                 count = Convert.ToInt32(countRes.Content);
-                for (int i = interval[0]; i <= interval[0] + 10; i++)
+                for (int i = interval[0]; i <= interval[0] + 12; i++)
                 {
                     var request = new RestRequest("Images/GetById/{Id}", Method.GET);
                     request.AddParameter("Id", i, ParameterType.UrlSegment);

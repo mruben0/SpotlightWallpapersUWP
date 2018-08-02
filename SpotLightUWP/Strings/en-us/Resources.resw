@@ -224,13 +224,7 @@ New features are coming...
     </value>
     <comment>First use prompt message body</comment>
   </data>
-  <data name="GithubLink.Content" xml:space="preserve">
-    <value>Source on github</value>
-    <comment>Privacy Statement link content for Settings</comment>
-  </data>
-  <data name="GithubLink.NavigateUri" xml:space="preserve">
-    <value>https://github.com/mruben0/SpotlightWallpapersUWP</value>
-  </data>
+  
   <data name="FirstRun_Title.Text" xml:space="preserve">
     <value>Welcome</value>
     <comment>First use prompt message title</comment>

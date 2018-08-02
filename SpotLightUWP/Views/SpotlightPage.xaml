@@ -80,7 +80,7 @@
                 <DataTemplate x:DataType="models:ImageDTO">
                     <Image
                         Grid.Row="0"
-                        Height="130"
+                        Height="135"
                         Width="240"
                         x:Name="galleryImage"
                         Stretch="UniformToFill"

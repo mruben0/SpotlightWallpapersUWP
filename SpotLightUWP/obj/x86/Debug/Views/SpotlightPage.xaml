@@ -80,7 +80,7 @@
                 <DataTemplate                             >
                     <Image x:ConnectionId='6'
                         Grid.Row="0"
-                        Height="130"
+                        Height="135"
                         Width="240"
                         x:Name="galleryImage"
                         Stretch="UniformToFill"
