@@ -94,18 +94,8 @@ namespace SpotLightUWP.ViewModels
 
         private async Task EraseDownloaded()
         {
-            DirectoryInfo templateDir = new DirectoryInfo(_templatePath);
-            foreach (var file in templateDir.GetFiles())
-            {
-                file.Delete();
-            }
-
-            DirectoryInfo downloadDir = new DirectoryInfo(_downloadPath);
-            foreach (var file in downloadDir.GetFiles())
-            {
-                file.Delete();
-            }
-
+            _iOManager.EraseDownloaded();
+            _lastInterval = new int[] { 1, 10 };
             await UpdateSourceAsync(_lastInterval);
             IsLoaded = true;
         }

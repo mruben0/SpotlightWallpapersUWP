@@ -133,6 +133,22 @@ namespace SpotLightUWP.Services
            
         }
 
+        public void EraseDownloaded()
+        {
+            var foldersToErase = new[] { "DownloadedFolder", "Templates", "BingDownloadedFolder" };
+            var appdata = ApplicationData.Current.LocalFolder;
+
+            foreach (var folderName in foldersToErase)
+            {
+                var folder = Path.Combine(appdata.Path, folderName);
+                DirectoryInfo Dir = new DirectoryInfo(folder);
+                foreach (var file in Dir.GetFiles())
+                {
+                    file.Delete();
+                }
+            }
+        }
+
         public string DownloadPath
         {
             get { return _downloadPath; }
