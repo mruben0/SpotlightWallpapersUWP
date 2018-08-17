@@ -224,4 +224,7 @@
       <RootMethod Name="GetNavigateTo" />
       <RootMethod Name="SetNavigateTo" />
     </RootType>
-    <RootType FullName="Windows.UI.X
+    <RootType FullName="Windows.UI.Xaml.Controls.Frame" />
+    <RootType FullName="SpotLightUWP.Views.ShellPage" />
+  </Roots.RootTypes>
+</Roots>
