@@ -1,0 +1,6 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.language-zh-hans"
+"ResourceDimensions"		"language-zh-cn"
+
+[Files]
+"C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x64\Debug\split.language-zh-hans.pri"			"resources.pri"

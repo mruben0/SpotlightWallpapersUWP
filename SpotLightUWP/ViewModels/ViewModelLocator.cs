@@ -20,13 +20,17 @@ namespace SpotLightUWP.ViewModels
             SimpleIoc.Default.Register(() => new HTTPService());
             SimpleIoc.Default.Register(() => new DialogService());
             SimpleIoc.Default.Register(() => new ImageNameManager());
+            SimpleIoc.Default.Register(() => new BingHTTPService());
 
             SimpleIoc.Default.Register<ShellViewModel>();
             Register<SpotlightViewModel, SpotlightPage>();
             Register<ImageGalleryDetailViewModel, ImageGalleryDetailPage>();
             Register<SettingsViewModel, SettingsPage>();
             Register<DownloadedImagesViewModel, DownloadedImagesPage>();
+            Register<BingImageViewModel, BingImage>();
         }
+
+        public BingImageViewModel BingImageViewModel => ServiceLocator.Current.GetInstance<BingImageViewModel>();
 
         public SettingsViewModel SettingsViewModel => ServiceLocator.Current.GetInstance<SettingsViewModel>();
 
@@ -49,6 +53,8 @@ namespace SpotLightUWP.ViewModels
         public ImageNameManager ImageNameManager => ServiceLocator.Current.GetInstance<ImageNameManager>();
 
         public DownloadedImagesViewModel DownloadedImagesViewModel => ServiceLocator.Current.GetInstance<DownloadedImagesViewModel>();
+
+        public BingHTTPService BingHTTPService => ServiceLocator.Current.GetInstance<BingHTTPService>();
 
         public void Register<VM, V>()
             where VM : class

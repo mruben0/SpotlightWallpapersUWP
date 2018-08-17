@@ -110,7 +110,7 @@ namespace SpotLightUWP.ViewModels
 
         private async Task SaveItem()
         {
-           await IOManager.SaveImageAs((ImageDTO)SelectedImage);
+           await IOManager.SaveImageAs(SelectedImage.Path);
         }
 
         private string GetNewId(bool toLeft = true)

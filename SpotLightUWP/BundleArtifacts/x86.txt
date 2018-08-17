@@ -1,0 +1,2 @@
+MainPackage=C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\x86\Debug\SpotLightUWP_1.0.0.0_x86_Debug.appx
+SymbolPackage=C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\AppPackages\SpotLightUWP_1.0.0.0_Debug_Test\SpotLightUWP_1.0.0.0_x86_Debug.appxsym

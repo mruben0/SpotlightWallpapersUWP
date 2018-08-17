@@ -17,16 +17,21 @@ namespace SpotLightUWP.Services
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
         private ImageNameManager ImageNameManager => Locator.ImageNameManager;
         private HTTPService _hTTPService => Locator.HTTPService;
-        private IOManager IOManager => Locator.IOManager;
+        private BingHTTPService _bingHTTPService => Locator.BingHTTPService;
+        public IOManager iOManager => Locator.IOManager;        
         private DialogService DialogService => Locator.DialogService;
         private ObservableCollection<ImageDTO> _source;
         private int _updateDate;
         public StorageFolder AppdataFolder => ApplicationData.Current.LocalFolder;
         private string _datefilePath => Path.Combine(AppdataFolder.Path, "dt");
+        private IOManagerParams _iOManagerParams;
 
 
-        public async Task InitializeAsync(int[] interval)
+        public async Task InitializeAsync(int[] interval, IOManagerParams @params)
         {
+            ImageDTOList = new List<ImageDTO>();
+            _iOManagerParams = @params;
+            iOManager.Initialize(_iOManagerParams);
             bool success = await GetAllDataFromServerAsync(interval);
             if (success)
             {
@@ -36,11 +41,11 @@ namespace SpotLightUWP.Services
 
         public  async Task<ObservableCollection<ImageDTO>> GetGalleryDataAsync(int[] interval,bool IsTemplate = true)
         {
-            StorageFolder dataFolder = await StorageFolder.GetFolderFromPathAsync(IOManager.DownloadPath);            
+            StorageFolder dataFolder = await StorageFolder.GetFolderFromPathAsync(iOManager.DownloadPath);            
 
             if (IsTemplate)
             {
-               dataFolder = await StorageFolder.GetFolderFromPathAsync(IOManager.TemplatePath);
+               dataFolder = await StorageFolder.GetFolderFromPathAsync(iOManager.TemplatePath);
             }
 
             var data = new ObservableCollection<ImageDTO>();
@@ -62,32 +67,37 @@ namespace SpotLightUWP.Services
         }
 
         public async Task<bool> GetAllDataFromServerAsync(int[] interval,bool IsTemplate = true)
-        {          
-                var imageDTOs =  await _hTTPService.URLParserAsync(interval);
-                if (imageDTOs.Count > 0)
-                {
-                    if (IsTemplate)
-                    {
-                        await IOManager.DownloadImages(imageDTOs, true);
-                    }
-                    else
-                    {
-                        await IOManager.DownloadImages(imageDTOs, false);
-                    }
+        {
+
+
+            if (_iOManagerParams == IOManagerParams.SpotLight )
+            {
+                ImageDTOList = await _hTTPService.URLParserAsync(interval);
+            }
+            else
+            {
+                ImageDTOList = await _bingHTTPService.URLParserAsync();
+                IsTemplate = false; 
+            }
+
+            if (ImageDTOList.Count > 0 && _iOManagerParams == IOManagerParams.SpotLight)
+            {
+                await iOManager.DownloadImages(ImageDTOList, IsTemplate);
+
                 return true;
-                }
-                else
-                {
-                return false;
-                    //notif about internet connection
-                }
+            }
+            else
+            {
+            return false;
+                //notif about internet connection
+            }
          
         }
 
         public  async Task DownloadById(string ID)
         {
             var image = Source.FirstOrDefault(i => i.Id == ID);
-            await  IOManager.DownloadImage(image.URI);
+            await  iOManager.DownloadImage(image.URI);
         }
 
         private  int GetBaseDate()
@@ -112,6 +122,8 @@ namespace SpotLightUWP.Services
             get => _source;
             set => Set(ref _source, value);
         }
+
+        public List<ImageDTO> ImageDTOList;
 
         public  int UpdateDate
         {

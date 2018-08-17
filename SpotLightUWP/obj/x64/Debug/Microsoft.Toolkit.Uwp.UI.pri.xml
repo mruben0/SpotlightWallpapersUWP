@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Microsoft.Toolkit.Uwp.UI" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI">
+				<NamedResource name="Microsoft.Toolkit.Uwp.UI.xr.xml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI/Files/Microsoft.Toolkit.Uwp.UI/Microsoft.Toolkit.Uwp.UI.xr.xml">
+					<Candidate type="Path">
+						<Value>Microsoft.Toolkit.Uwp.UI\Microsoft.Toolkit.Uwp.UI.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="Extensions">
+					<ResourceMapSubtree name="NavigationView">
+						<NamedResource name="NavigationView.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI/Files/Microsoft.Toolkit.Uwp.UI/Extensions/NavigationView/NavigationView.xaml">
+							<Candidate type="Path">
+								<Value>Microsoft.Toolkit.Uwp.UI\Extensions\NavigationView\NavigationView.xaml</Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="NavigationView.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI/Files/Microsoft.Toolkit.Uwp.UI/Extensions/NavigationView/NavigationView.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+						<ResourceMapSubtree name="Styles">
+							<NamedResource name="VSCodeActivityBarStyle.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI/Files/Microsoft.Toolkit.Uwp.UI/Extensions/NavigationView/Styles/VSCodeActivityBarStyle.xaml">
+								<Candidate type="Path">
+									<Value>Microsoft.Toolkit.Uwp.UI\Extensions\NavigationView\Styles\VSCodeActivityBarStyle.xaml</Value>
+								</Candidate>
+							</NamedResource>
+							<NamedResource name="VSCodeActivityBarStyle.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI/Files/Microsoft.Toolkit.Uwp.UI/Extensions/NavigationView/Styles/VSCodeActivityBarStyle.xbf">
+								<Candidate type="EmbeddedData">
+									<Base64Value>[Embedded Binary Data]</Base64Value>
+								</Candidate>
+							</NamedResource>
+						</ResourceMapSubtree>
+					</ResourceMapSubtree>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

@@ -1,0 +1,15 @@
+Language=DE-DE
+Language=ES-ES
+Language=FR-FR
+Language=IT-IT
+Language=JA-JP
+Language=KO-KR
+Language=PT-BR
+Language=RU-RU
+Language=UK-UA
+Language=ZH-CN
+Language=ZH-TW
+Scale=100
+Scale=125
+Scale=150
+Scale=400

@@ -1,0 +1,6 @@
+MainPackage=C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\ARM\Debug\SpotLightUWP_1.0.0.0_ARM_Debug.appx
+SymbolPackage=C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\AppPackages\SpotLightUWP_1.0.0.0_Debug_Test\SpotLightUWP_1.0.0.0_ARM_Debug.appxsym
+ResourcePack=C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\ARM\Debug\SpotLightUWP_1.0.0.0_scale-100.appx
+ResourcePack=C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\ARM\Debug\SpotLightUWP_1.0.0.0_scale-125.appx
+ResourcePack=C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\ARM\Debug\SpotLightUWP_1.0.0.0_scale-150.appx
+ResourcePack=C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\bin\ARM\Debug\SpotLightUWP_1.0.0.0_scale-400.appx

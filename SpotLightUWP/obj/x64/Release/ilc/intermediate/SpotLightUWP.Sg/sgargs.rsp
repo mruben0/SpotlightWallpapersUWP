@@ -1,0 +1,12 @@
+﻿/ref:"C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x64\Release\ilc\intermediate\PreMergeILTransformed"
+/ref:"C:\Users\mrube\.nuget\packages\runtime.win10-x64.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc"
+/ref:"C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x64\Release\ilc\intermediate\PreMergeILTransformed"
+/ref:"C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x64\Release\ilc\in\\"
+/ref:"C:\Users\mrube\.nuget\packages\runtime.win10-x64.microsoft.net.native.compiler\2.1.8\tools\x64\ilc\lib\Private\\"
+/ref:"C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x64\Release\ilc\in"
+/ref:"C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x64\Release\ilc\in\WinMetadata"
+/ca:System.Private.CoreLib
+/cscpath:"C:\Users\mrube\.nuget\packages\microsoft.net.native.compiler\2.1.8\tools\csc"
+/out:"C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x64\Release\ilc\intermediate\SgGenerated\\"
+/int:"C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x64\Release\ilc\intermediate\SpotLightUWP.Sg"
+"@C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x64\Release\ilc\intermediate\SpotLightUWP.Sg\ComputedSerializationInput.txt"

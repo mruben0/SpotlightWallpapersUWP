@@ -19,22 +19,41 @@ namespace SpotLightUWP.Services
         private  ImageNameManager ImageNameManager => Locator.ImageNameManager;
         private string _downloadPath;
         private string _templatePath;
-        public string _downloadedfolder = "DownloadedFolder";
-        private string _templateFolder = "Templates";
+        public string _downloadedfolder;
+        private string _templateFolder;
+        private bool _Initialized;
         
         public IOManager()
         {
-            var appdata = ApplicationData.Current.LocalFolder;
-            DownloadPath = Path.Combine(appdata.Path,_downloadedfolder);
-            TemplatePath = Path.Combine(appdata.Path, _templateFolder);
-            if (!Directory.Exists(DownloadPath))
-            {
-                Directory.CreateDirectory(DownloadPath);
-            }
-            if (!Directory.Exists(TemplatePath))
-            {
-                Directory.CreateDirectory(TemplatePath);
-            }
+           
+        }
+
+        public void Initialize(IOManagerParams @params = IOManagerParams.SpotLight)
+        {          
+           var appdata = ApplicationData.Current.LocalFolder;
+
+           if (@params == IOManagerParams.SpotLight)
+           {
+               _downloadedfolder = "DownloadedFolder";
+               _templateFolder = "Templates";
+           }
+           else
+           {
+               _downloadedfolder = "BingDownloadedFolder";
+               _templateFolder = "BingTemplates";
+
+           }
+
+           DownloadPath = Path.Combine(appdata.Path, _downloadedfolder);
+           TemplatePath = Path.Combine(appdata.Path, _templateFolder);
+           if (!Directory.Exists(DownloadPath))
+           {
+               Directory.CreateDirectory(DownloadPath);
+           }
+           if (!Directory.Exists(TemplatePath))
+           {
+               Directory.CreateDirectory(TemplatePath);
+           }               
         }
 
         public string ResultPathGenerator(string url, string path, string id=null ,string name = null)
@@ -46,7 +65,7 @@ namespace SpotLightUWP.Services
             }
             var cleanName = ImageNameManager.CleanName(_name);
             string resultPath = Path.Combine(path, cleanName);
-            return resultPath;
+            return resultPath.Replace("'", string.Empty);
         }
 
         public async Task DownloadImages(List<ImageDTO> imageDTOs, bool AsTemplate = true)
@@ -63,9 +82,9 @@ namespace SpotLightUWP.Services
             else
             {
                 downloadFolder = DownloadPath;
-                foreach (var imagedto in imageDTOs)
+                    foreach (var imagedto in imageDTOs)
                 {
-                    await DownloadImage(imagedto.URI, imagedto.Id ,imagedto.Name, downloadFolder);
+                    await DownloadImage(imagedto.URI, imagedto.Id ?? null ,imagedto.Name, downloadFolder);
                 }
             }          
         }        
@@ -73,18 +92,27 @@ namespace SpotLightUWP.Services
         public async Task DownloadImage(string Url, string id = null, string name = null, string Path = null)
         {
             string _path = Path ?? DownloadPath;
+            var newName = name.Replace(" ", string.Empty).Replace("'", string.Empty).Replace("(",string.Empty).Replace(")",string.Empty);
             using (WebClient client = new WebClient())
             {
-                if (!File.Exists(ResultPathGenerator(Url, _path,id, name)))
+                var path = ResultPathGenerator(Url, _path, id, newName);
+                if (!File.Exists(path))
                 {
-                 await client.DownloadFileTaskAsync(new Uri(Url), ResultPathGenerator(Url, _path,id, name));
+                    try
+                    {
+                        await client.DownloadFileTaskAsync(new Uri(Url), path);
+                    }
+                    catch (Exception ex)
+                    {
+                        //throw new Exception("couldnt download Image",ex);
+                    }
                 }
             }
         }
 
-        public async Task SaveImageAs(ImageDTO image)
+        public async Task SaveImageAs(string imageUri)
         {
-           StorageFile currentImage = await StorageFile.GetFileFromPathAsync(image.URI);
+           StorageFile currentImage = await StorageFile.GetFileFromPathAsync(imageUri);
            byte[] buffer;
            Stream stream = await currentImage.OpenStreamForReadAsync();
            buffer = new byte[stream.Length];

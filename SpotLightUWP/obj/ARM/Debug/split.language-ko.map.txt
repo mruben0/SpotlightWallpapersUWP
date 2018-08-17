@@ -1,0 +1,6 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.language-ko"
+"ResourceDimensions"		"language-ko-kr"
+
+[Files]
+"C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\ARM\Debug\split.language-ko.pri"			"resources.pri"

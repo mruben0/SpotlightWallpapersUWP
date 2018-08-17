@@ -1,0 +1,40 @@
+﻿<ContentDialog 
+    x:Class="SpotLightUWP.Views.FirstRunDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="345"
+    d:DesignWidth="550"
+    PrimaryButtonText="Ok">
+    <ContentDialog.TitleTemplate>
+        <DataTemplate>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="ms-appx:///Assets/StoreLogo.png" Width="40" Height="40" Margin="0"/>
+                <TextBlock x:Uid="FirstRun_Title" Text="Welcome" Margin="10,5,0,0"/>
+            </StackPanel>
+        </DataTemplate>
+    </ContentDialog.TitleTemplate>
+    <ScrollViewer>        
+        <StackPanel Margin="{StaticResource EightTopMargin}">           
+            
+            <TextBlock
+                x:Uid="Settings_About"
+                Style="{StaticResource SubtitleTextBlockStyle}" />
+
+            <TextBlock x:Uid="Description_Text" TextWrapping="WrapWholeWords"/>
+
+            <HyperlinkButton
+                    x:Uid="GithubLink"
+                 
+                    Margin="{StaticResource EightTopMargin}" />
+
+            <HyperlinkButton
+                    x:Uid="Settings_PrivacyTermsLink"
+                 
+                    Margin="{StaticResource EightTopMargin}" />
+        </StackPanel>
+    </ScrollViewer>
+</ContentDialog>
+

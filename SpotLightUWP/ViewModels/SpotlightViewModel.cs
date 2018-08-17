@@ -41,9 +41,16 @@ namespace SpotLightUWP.ViewModels
         private ObservableCollection<ImageDTO> _source;
         private int[] _lastInterval;
         private int _count;
-
-
         private GridView _imagesGridView;
+
+        public SpotlightViewModel()
+        {
+            IsLoaded = false;
+            _lastInterval = new int[] { 1, 15 };
+            _downloadPath = _iOManager.DownloadPath;
+            _templatePath = _iOManager.TemplatePath;
+            DataService = new DataService();
+        }
 
         public ICommand ItemSelectedCommand => new RelayCommand<ItemClickEventArgs>(OnsItemSelected);
 
@@ -55,16 +62,7 @@ namespace SpotLightUWP.ViewModels
         public ICommand ToLeft => new RelayCommand(async()=> await MoveLeftAsync());
 
         public ICommand ToRight => new RelayCommand(async () => await MoveRightAsync());
-       
-        public SpotlightViewModel()
-        {
-            IsLoaded = false;
-            _lastInterval = new int[] { 1, 15 };
-            _downloadPath = _iOManager.DownloadPath;
-            _templatePath = _iOManager.TemplatePath;
-            DataService = new DataService();
-        }
-
+   
         public async Task InitializeAsync(GridView imagesGridView)
         {
             if (Source == null || Source?.Count == 0)
@@ -110,7 +108,7 @@ namespace SpotLightUWP.ViewModels
 
         private async Task<ObservableCollection<ImageDTO>> UpdateSourceAsync(int[] interval)
         {
-            await DataService.InitializeAsync(interval);
+            await DataService.InitializeAsync(interval, IOManagerParams.SpotLight);
             return DataService.Source;
         }
 

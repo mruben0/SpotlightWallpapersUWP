@@ -60,6 +60,7 @@ namespace SpotLightUWP.ViewModels
 
         public async Task InitializeAsync(GridView imagesGridView)
         {
+            DataService.iOManager.Initialize();
             if (Source == null || Source?.Count == 0)
             {
                 await UpdateSourceAsync(_lastInterval);

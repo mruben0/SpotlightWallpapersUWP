@@ -19,13 +19,7 @@ namespace SpotLightUWP.Services
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
         private IOManager IOManager => Locator.IOManager;
 
-        RestClient client = new RestClient("http://spotlight.gear.host/");
-
-        public async Task<IRestResponse> ExecuteAsync(RestRequest request)
-        {
-            IRestResponse response = await client.ExecuteTaskAsync(request);
-            return response;
-        }
+        RestClient _client = new RestClient("http://spotlight.gear.host/");       
 
         public async Task<List<ImageDTO>> URLParserAsync(int[] interval)
         {
@@ -33,7 +27,7 @@ namespace SpotLightUWP.Services
             var countRequest = new RestRequest("Images/GetCount", Method.GET);
             List<ImageDTO> ImageDtos = new List<ImageDTO>();
 
-            var countRes = await ExecuteAsync(countRequest);
+            var countRes = await ExecuteAsync(_client,countRequest);
 
             if (countRes.StatusCode == HttpStatusCode.OK)
             {
@@ -43,7 +37,7 @@ namespace SpotLightUWP.Services
                     var request = new RestRequest("Images/GetById/{Id}", Method.GET);
                     request.AddParameter("Id", i, ParameterType.UrlSegment);
 
-                    var queryResult = await ExecuteAsync(request);
+                    var queryResult = await ExecuteAsync(_client,request);
 
                     if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
                     {
@@ -58,7 +52,7 @@ namespace SpotLightUWP.Services
         public async Task<string> DownloadByIdAsync(string Id)
         {
             var request = new RestRequest($"Images/GetById/{Id}", Method.GET);
-            var queryResult = client.Execute(request);
+            var queryResult = _client.Execute(request);
             if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 JObject image = JObject.Parse(queryResult.Content);
@@ -77,15 +71,35 @@ namespace SpotLightUWP.Services
             return null;
         }
 
+        public async Task<string> DownLoadAsync(Uri uri,string downloadPath)
+        {
+            var name = Path.GetFileNameWithoutExtension(uri.ToString());            
+            using (WebClient client = new WebClient())
+            {
+                var filePath = IOManager.ResultPathGenerator(uri.ToString(), downloadPath, name);
+                if (!File.Exists(filePath))
+                {
+                    await client.DownloadFileTaskAsync(uri, filePath);
+                }
+                return filePath;
+            }         
+        }
+
         public int GetCount()
         {
             var countRequest = new RestRequest("Images/GetCount", Method.GET);
-            IRestResponse countResult = client.Execute(countRequest);
+            IRestResponse countResult = _client.Execute(countRequest);
             if (countResult.StatusCode == HttpStatusCode.OK)
             {
                 return Convert.ToInt32(countResult.Content);
             }
             else return 0;
+        }
+
+        private async Task<IRestResponse> ExecuteAsync(RestClient client, RestRequest request)
+        {
+            IRestResponse response = await client.ExecuteTaskAsync(request);
+            return response;
         }
     }
 }
