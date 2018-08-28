@@ -1,6 +1,0 @@
-﻿[ResourceMetadata]
-"ResourceId"			"split.language-fr"
-"ResourceDimensions"		"language-fr-fr"
-
-[Files]
-"C:\Users\mrube\source\repos\SpotLightUWP\SpotLightUWP\obj\x64\Debug\split.language-fr.pri"			"resources.pri"
