@@ -20,13 +20,18 @@
             <NavigationViewItem x:Uid="Shell_Spotlight" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.SpotlightViewModel" >
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC50;"/>
+                </NavigationViewItem.Icon> 
+            </NavigationViewItem>
+            <NavigationViewItem x:Uid="Shell_Bing" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.BingImageViewModel">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE909;"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
             <NavigationViewItem x:Uid="Shell_DownLoaded" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.DownloadedImagesViewModel">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC51;"/>
                 </NavigationViewItem.Icon>
-            </NavigationViewItem>
+            </NavigationViewItem>           
         </NavigationView.MenuItems> 
         <NavigationView.HeaderTemplate>
             <DataTemplate>

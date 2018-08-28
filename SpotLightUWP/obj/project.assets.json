@@ -9262,24 +9262,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mrube\\.nuget\\packages\\": {},
+    "C:\\Users\\Ruben.Martirosyan\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mrube\\source\\repos\\SpotLightUWP\\SpotLightUWP\\SpotLightUWP.csproj",
+      "projectUniqueName": "C:\\Users\\Ruben.Martirosyan\\source\\repos\\spotlight\\SpotlightWallpapersUWP-master\\SpotLightUWP\\SpotLightUWP.csproj",
       "projectName": "SpotLightUWP",
-      "projectPath": "C:\\Users\\mrube\\source\\repos\\SpotLightUWP\\SpotLightUWP\\SpotLightUWP.csproj",
-      "packagesPath": "C:\\Users\\mrube\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mrube\\source\\repos\\SpotLightUWP\\SpotLightUWP\\obj\\",
+      "projectPath": "C:\\Users\\Ruben.Martirosyan\\source\\repos\\spotlight\\SpotlightWallpapersUWP-master\\SpotLightUWP\\SpotLightUWP.csproj",
+      "packagesPath": "C:\\Users\\Ruben.Martirosyan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ruben.Martirosyan\\source\\repos\\spotlight\\SpotlightWallpapersUWP-master\\SpotLightUWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\mrube\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ruben.Martirosyan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

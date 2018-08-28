@@ -1579,6 +1579,44 @@ namespace __Interop
 		internal static int StdCall__78(
 					global::System.IntPtr pfn, 
 					void* pthis, 
+					void* arg0, 
+					int arg1)
+		{
+			// This method is implemented elsewhere in the toolchain
+			return 0;
+		}
+
+		internal static int StdCall__79(
+					global::System.IntPtr pfn, 
+					void* pthis, 
+					uint arg0, 
+					uint arg1)
+		{
+			// This method is implemented elsewhere in the toolchain
+			return 0;
+		}
+
+		internal static int StdCall__80(
+					global::System.IntPtr pfn, 
+					void* pthis, 
+					global::Windows.UI.Xaml.GridLength arg0)
+		{
+			// This method is implemented elsewhere in the toolchain
+			return 0;
+		}
+
+		internal static int StdCall__81(
+					global::System.IntPtr pfn, 
+					void* pthis, 
+					global::Windows.UI.Xaml.CornerRadius arg0)
+		{
+			// This method is implemented elsewhere in the toolchain
+			return 0;
+		}
+
+		internal static int StdCall__82(
+					global::System.IntPtr pfn, 
+					void* pthis, 
 					uint arg0, 
 					void* arg1)
 		{
@@ -1586,7 +1624,7 @@ namespace __Interop
 			return 0;
 		}
 
-		internal static void HasThisCall__79(
+		internal static void HasThisCall__83(
 					object __this, 
 					global::System.IntPtr pfn, 
 					global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken arg0)
@@ -1594,7 +1632,7 @@ namespace __Interop
 			// This method is implemented elsewhere in the toolchain
 		}
 
-		internal static TResult HasThisCall__80<TArg0, TResult>(
+		internal static TResult HasThisCall__84<TArg0, TResult>(
 					object __this, 
 					global::System.IntPtr pfn, 
 					object arg0, 
@@ -1604,7 +1642,7 @@ namespace __Interop
 			return default(TResult);
 		}
 
-		internal static bool HasThisCall__81(
+		internal static bool HasThisCall__85(
 					object __this, 
 					global::System.IntPtr pfn, 
 					object arg0)
@@ -1613,7 +1651,7 @@ namespace __Interop
 			return default(bool);
 		}
 
-		internal static TResult HasThisCall__82<TResult>(
+		internal static TResult HasThisCall__86<TResult>(
 					object __this, 
 					global::System.IntPtr pfn)
 		{
@@ -1621,7 +1659,7 @@ namespace __Interop
 			return default(TResult);
 		}
 
-		internal static void HasThisCall__83(
+		internal static void HasThisCall__87(
 					object __this, 
 					global::System.IntPtr pfn, 
 					object arg0)
@@ -1629,7 +1667,7 @@ namespace __Interop
 			// This method is implemented elsewhere in the toolchain
 		}
 
-		internal static int StdCall__84(
+		internal static int StdCall__88(
 					global::System.IntPtr pfn, 
 					void* pthis, 
 					void* arg0, 
@@ -1640,17 +1678,7 @@ namespace __Interop
 			return 0;
 		}
 
-		internal static int StdCall__85(
-					global::System.IntPtr pfn, 
-					void* pthis, 
-					uint arg0, 
-					uint arg1)
-		{
-			// This method is implemented elsewhere in the toolchain
-			return 0;
-		}
-
-		internal static int StdCall__86(
+		internal static int StdCall__89(
 					global::System.IntPtr pfn, 
 					void* pthis, 
 					void* arg0, 
@@ -1662,7 +1690,7 @@ namespace __Interop
 			return 0;
 		}
 
-		internal static int StdCall__87(
+		internal static int StdCall__90(
 					global::System.IntPtr pfn, 
 					void* pthis, 
 					global::System.Runtime.InteropServices.HSTRING arg0, 
@@ -1674,7 +1702,7 @@ namespace __Interop
 			return 0;
 		}
 
-		internal static bool HasThisCall__88(
+		internal static bool HasThisCall__91(
 					object __this, 
 					global::System.IntPtr pfn)
 		{
@@ -1682,17 +1710,7 @@ namespace __Interop
 			return default(bool);
 		}
 
-		internal static int StdCall__89(
-					global::System.IntPtr pfn, 
-					void* pthis, 
-					void* arg0, 
-					int arg1)
-		{
-			// This method is implemented elsewhere in the toolchain
-			return 0;
-		}
-
-		internal static void HasThisCall__90(
+		internal static void HasThisCall__92(
 					object __this, 
 					global::System.IntPtr pfn, 
 					object arg0, 
@@ -1701,25 +1719,17 @@ namespace __Interop
 			// This method is implemented elsewhere in the toolchain
 		}
 
-		internal static int StdCall__91(
-					global::System.IntPtr pfn, 
-					void* pthis, 
-					global::Windows.UI.Xaml.GridLength arg0)
-		{
-			// This method is implemented elsewhere in the toolchain
-			return 0;
-		}
-
-		internal static int StdCall__92(
-					global::System.IntPtr pfn, 
-					void* pthis, 
-					global::Windows.UI.Xaml.CornerRadius arg0)
-		{
-			// This method is implemented elsewhere in the toolchain
-			return 0;
-		}
-
 		internal static int StdCall__93(
+					global::System.IntPtr pfn, 
+					void* pthis, 
+					void* arg0, 
+					global::Windows.Foundation.Point arg1)
+		{
+			// This method is implemented elsewhere in the toolchain
+			return 0;
+		}
+
+		internal static int StdCall__94(
 					global::System.IntPtr pfn, 
 					void* pthis, 
 					double arg0, 
@@ -1729,7 +1739,7 @@ namespace __Interop
 			return 0;
 		}
 
-		internal static void HasThisCall__94(
+		internal static void HasThisCall__95(
 					object __this, 
 					global::System.IntPtr pfn, 
 					double arg0, 
@@ -1738,21 +1748,11 @@ namespace __Interop
 			// This method is implemented elsewhere in the toolchain
 		}
 
-		internal static int StdCall__95(
-					global::System.IntPtr pfn, 
-					void* pthis, 
-					void* arg0, 
-					double arg1)
-		{
-			// This method is implemented elsewhere in the toolchain
-			return 0;
-		}
-
 		internal static int StdCall__96(
 					global::System.IntPtr pfn, 
 					void* pthis, 
 					void* arg0, 
-					global::System.Runtime.InteropServices.HSTRING arg1)
+					double arg1)
 		{
 			// This method is implemented elsewhere in the toolchain
 			return 0;
@@ -1762,7 +1762,7 @@ namespace __Interop
 					global::System.IntPtr pfn, 
 					void* pthis, 
 					void* arg0, 
-					global::Windows.Foundation.Point arg1)
+					global::System.Runtime.InteropServices.HSTRING arg1)
 		{
 			// This method is implemented elsewhere in the toolchain
 			return 0;
@@ -1845,10 +1845,7 @@ namespace __Interop
 					void* pthis, 
 					global::Windows.Foundation.Point arg0, 
 					float arg1, 
-					float arg2, 
-					float arg3, 
-					ulong arg4, 
-					void* arg5)
+					void* arg2)
 		{
 			// This method is implemented elsewhere in the toolchain
 			return 0;
@@ -1859,7 +1856,10 @@ namespace __Interop
 					void* pthis, 
 					global::Windows.Foundation.Point arg0, 
 					float arg1, 
-					void* arg2)
+					float arg2, 
+					float arg3, 
+					ulong arg4, 
+					void* arg5)
 		{
 			// This method is implemented elsewhere in the toolchain
 			return 0;

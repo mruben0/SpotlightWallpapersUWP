@@ -91,7 +91,7 @@ namespace SpotLightUWP.ViewModels
 
         public async Task MoveRight()
         {
-            if (_id <= 15)
+            if (_id < 14)
             {
                 _id += 1;
                 if (ImageDTOList[_id] != null)
@@ -133,7 +133,6 @@ namespace SpotLightUWP.ViewModels
             get { return _path; }
             set { _path = value; }
         }
-
 
         public ObservableCollection<ImageDTO> Source
         {

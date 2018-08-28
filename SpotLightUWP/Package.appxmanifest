@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:genTemplate="http://schemas.microsoft.com/appx/developer/windowsTemplateStudio" IgnorableNamespaces="uap mp genTemplate">
-  <Identity Name="643584DC-F38D-4CB9-A8D5-2BC0D0F513AB" Publisher="CN=mrube" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="643584DC-F38D-4CB9-A8D5-2BC0D0F513AB" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="4484Ram6ler.SpotlightWallpapers" Publisher="CN=A1E0CBDB-8B7C-4129-B574-5C8CE6583832" Version="1.2.1.0" />
+  <mp:PhoneIdentity PhoneProductId="0cd5c819-c949-4606-9dc4-2e8da4d088ac" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>SpotLightUWP</DisplayName>
+    <DisplayName>Spotlight Wallpapers</DisplayName>
     <PublisherDisplayName>Ram6ler</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
