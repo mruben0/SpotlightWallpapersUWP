@@ -49,7 +49,8 @@ namespace SpotLightUWP.ViewModels
 
         public ICommand ItemSelectedCommand => new RelayCommand<ItemClickEventArgs>(OnsItemSelected);
 
-        public ICommand EraseImages => new RelayCommand(async () => {
+        public ICommand EraseImages => new RelayCommand(async () =>
+        {
             IsLoaded = false;
             await EraseDownloaded();
         });

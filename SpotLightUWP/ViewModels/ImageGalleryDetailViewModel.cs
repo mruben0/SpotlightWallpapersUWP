@@ -31,19 +31,22 @@ namespace SpotLightUWP.ViewModels
         {
         }
 
-        public ICommand SaveImageAs => new RelayCommand(async () => await SaveItem());
+        public ICommand SaveImageAs => new RelayCommand(async () =>
 
-        public ICommand SetAsWallpaper => new RelayCommand( async() =>
+        await SaveItem())
+            ;
+
+        public ICommand SetAsWallpaper => new RelayCommand(async () =>
+       {
+           await WallpaperService.SetAsAsync(SelectedImage.URI);
+       });
+
+        public ICommand SetAsLockscreen => new RelayCommand(async () =>
         {
-            await WallpaperService.SetAsAsync(SelectedImage.URI);
+            await WallpaperService.SetAsAsync(SelectedImage.URI, setAs: SetAs.Lockscreen);
         });
 
-        public ICommand SetAsLockscreen => new RelayCommand(async() =>
-        {
-            await WallpaperService.SetAsAsync(SelectedImage.URI,setAs: SetAs.Lockscreen);
-        });
-
-        public ICommand ToLeft => new RelayCommand(async() => await MoveLeft());
+        public ICommand ToLeft => new RelayCommand(async () => await MoveLeft());
         public ICommand ToRight => new RelayCommand(async () => await MoveRight());
 
         public void SetImage(UIElement image) => _image = image;
@@ -84,12 +87,12 @@ namespace SpotLightUWP.ViewModels
         public async Task MoveLeft()
         {
             var newId = GetNewId();
-            if (Source.Any(e=>e.Id == newId))
+            if (Source.Any(e => e.Id == newId))
             {
                 SelectedImage = Source.FirstOrDefault(e => e.Id == newId);
                 SelectedImage.URI = await _httpService.DownloadByIdAsync(SelectedImage.Id);
                 RaisePropertyChanged(nameof(SelectedImage));
-            }            
+            }
         }
 
         public async Task MoveRight()
@@ -100,7 +103,7 @@ namespace SpotLightUWP.ViewModels
                 SelectedImage = Source.FirstOrDefault(e => e.Id == newId);
                 SelectedImage.URI = await _httpService.DownloadByIdAsync(SelectedImage.Id);
                 RaisePropertyChanged(nameof(SelectedImage));
-            }            
+            }
         }
 
         public void SetAnimation()
@@ -110,15 +113,15 @@ namespace SpotLightUWP.ViewModels
 
         private async Task SaveItem()
         {
-           await IOManager.SaveImageAs(SelectedImage.Path);
+            await IOManager.SaveImageAs(SelectedImage.Path);
         }
 
         private string GetNewId(bool toLeft = true)
         {
             if (toLeft)
             {
-                for (int i = Convert.ToInt32(SelectedImage.Id) - 1 ; i > 0; i--)
-                { 
+                for (int i = Convert.ToInt32(SelectedImage.Id) - 1; i > 0; i--)
+                {
                     if (Source.Any(e => e.Id == i.ToString()))
                     {
                         return i.ToString();
@@ -129,7 +132,7 @@ namespace SpotLightUWP.ViewModels
             else
             {
                 var max = Convert.ToInt32(SelectedImage.Id) + 10;
-                for (int i = Convert.ToInt32(SelectedImage.Id) + 1; i < max ; i++)
+                for (int i = Convert.ToInt32(SelectedImage.Id) + 1; i < max; i++)
                 {
                     if (Source.Any(e => e.Id == i.ToString()))
                     {
@@ -147,7 +150,7 @@ namespace SpotLightUWP.ViewModels
             set
             {
                 Set(ref _fullsizedImage, value);
-            }               
+            }
         }
 
         public ImageDTO SelectedImage
