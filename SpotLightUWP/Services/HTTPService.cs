@@ -113,7 +113,7 @@ namespace SpotLightUWP.Services
         {
             var countClient = new RestClient("https://api.flickr.com/services/rest/?method=flickr.photosets.getInfo");
             var countRequest = new RestRequest();
-            countRequest.AddParameter("api_key", "5393e559377351b512a33c5e3dfcd628");
+            countRequest.AddParameter("api_key", "");
             countRequest.AddParameter("photoset_id", "72157698748876834");
             countRequest.AddParameter("user_id", "93113931%40N08", ParameterType.QueryStringWithoutEncode);
             countRequest.AddParameter("format", "json");
