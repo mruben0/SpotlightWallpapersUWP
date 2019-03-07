@@ -10,7 +10,7 @@
     <SplashScreenSource>C:\Users\mrube\Downloads\computer-doodle-outline.png</SplashScreenSource>
     <PackageLogoSource>C:\Users\mrube\Downloads\computer-doodle-outline.png</PackageLogoSource>
     <AppxPackageIsForStore>True</AppxPackageIsForStore>
-    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxShowAllApps>True</AppxShowAllApps>
     <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
     <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>

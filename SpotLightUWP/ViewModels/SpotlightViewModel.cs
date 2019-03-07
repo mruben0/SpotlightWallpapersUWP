@@ -39,14 +39,14 @@ namespace SpotLightUWP.ViewModels
         private static string _downloadPath;
         private static string _templatePath;
         private ObservableCollection<ImageDTO> _source;
-        private int[] _lastInterval;
+        private int _lastPage;
         private int _count;
         private GridView _imagesGridView;
+        private int _maxPagesCount;
 
         public SpotlightViewModel()
         {
             IsLoaded = false;
-            _lastInterval = new int[] { 1, 15 };
             _downloadPath = _iOManager.DownloadPath;
             _templatePath = _iOManager.TemplatePath;
             DataService = new DataService();
@@ -54,23 +54,27 @@ namespace SpotLightUWP.ViewModels
 
         public ICommand ItemSelectedCommand => new RelayCommand<ItemClickEventArgs>(OnsItemSelected);
 
-        public ICommand EraseImages => new RelayCommand(async()=> {
+        public ICommand EraseImages => new RelayCommand(async () =>
+        {
             IsLoaded = false;
             await EraseDownloaded();
         });
 
-        public ICommand ToLeft => new RelayCommand(async()=> await MoveLeftAsync());
+        public ICommand ToLeft => new RelayCommand(async () => await MoveLeftAsync());
 
         public ICommand ToRight => new RelayCommand(async () => await MoveRightAsync());
-   
+
         public async Task InitializeAsync(GridView imagesGridView)
         {
+            _count = _httpService.GetCount();
+            _maxPagesCount = (int)Math.Floor((decimal)_count / 14);
+            _lastPage = _maxPagesCount;
             if (Source == null || Source?.Count == 0)
             {
-               Source = await UpdateSourceAsync(_lastInterval);
-                _count = _httpService.GetCount();
+                Source = await UpdateSourceAsync(_maxPagesCount);
             }
             _imagesGridView = imagesGridView;
+            UpdateButtons();
             IsLoaded = true;
         }
 
@@ -106,50 +110,49 @@ namespace SpotLightUWP.ViewModels
             NavigationService.Navigate(typeof(ImageGalleryDetailViewModel).FullName, new ImageDetailNavigationParams(Source, selected.Id));
         }
 
-        private async Task<ObservableCollection<ImageDTO>> UpdateSourceAsync(int[] interval)
+        private async Task<ObservableCollection<ImageDTO>> UpdateSourceAsync(int page)
         {
-            await DataService.InitializeAsync(interval, IOManagerParams.SpotLight);
+            await DataService.InitializeAsync(page, IOManagerParams.SpotLight);
             return DataService.Source;
         }
 
         private async Task EraseDownloaded()
         {
             _iOManager.EraseDownloaded();
-            _lastInterval = new int[] { 1, 15 };
-            Source = await UpdateSourceAsync(_lastInterval);
+            Source = await UpdateSourceAsync(_lastPage);
             IsLoaded = true;
         }
 
         private async Task MoveLeftAsync()
         {
-            if (_lastInterval[0] > 1)
+            if (CanTurnLeft)
             {
                 IsLoaded = false;
-                _lastInterval[0] -= 15;
-                _lastInterval[1] -= 15;
+                _lastPage++;
+                UpdateButtons();
 
-                Source = await UpdateSourceAsync(_lastInterval);
+                Source = await UpdateSourceAsync(_lastPage);
                 IsLoaded = true;
-            }           
+            }
         }
 
         private async Task MoveRightAsync()
         {
-            if (_lastInterval[1] <= _count)
+            if (CanTurnRight)
             {
                 IsLoaded = false;
-                _lastInterval[0] += 15;
-                _lastInterval[1] += 15;
+                _lastPage -= 1;
+                UpdateButtons();
 
-                Source = await UpdateSourceAsync(_lastInterval);
+                Source = await UpdateSourceAsync(_lastPage);
                 IsLoaded = true;
-            }            
+            }
         }
 
         public object Selected
         {
-            get  { return _selected; }
-            set { _selected = value;}
+            get { return _selected; }
+            set { _selected = value; }
         }
 
         public DataService DataService
@@ -157,7 +160,7 @@ namespace SpotLightUWP.ViewModels
             get { return _dataService; }
             set { _dataService = value; }
         }
-        
+
         public bool IsLoaded
         {
             get { return _isLoaded; }
@@ -174,5 +177,13 @@ namespace SpotLightUWP.ViewModels
             set => Set(ref _source, value);
         }
 
+        public bool CanTurnLeft => _lastPage < _maxPagesCount;
+        public bool CanTurnRight => _lastPage > 1;
+
+        private void UpdateButtons()
+        {
+            RaisePropertyChanged(nameof(CanTurnLeft));
+            RaisePropertyChanged(nameof(CanTurnRight));
+        }
     }
 }

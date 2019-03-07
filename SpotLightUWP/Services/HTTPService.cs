@@ -19,61 +19,85 @@ namespace SpotLightUWP.Services
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
         private IOManager IOManager => Locator.IOManager;
 
-        RestClient _client = new RestClient("http://spotlight.gear.host/");       
-
-        public async Task<List<ImageDTO>> URLParserAsync(int[] interval)
+        public async Task<List<ImageDTO>> GetPhotosByPageAsync(int page)
         {
-            int count = 0;
-            var countRequest = new RestRequest("Images/GetCount", Method.GET);
-            List<ImageDTO> ImageDtos = new List<ImageDTO>();
+            var ImageDtos = new List<ImageDTO>();
 
-            var countRes = await ExecuteAsync(_client,countRequest);
+            var albumClient = new RestClient("https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos");
+            var request = new RestRequest();
+            request.AddParameter("api_key", "5393e559377351b512a33c5e3dfcd628");
+            request.AddParameter("photoset_id", "72157698748876834");
+            request.AddParameter("user_id", "93113931%40N08", ParameterType.QueryStringWithoutEncode);
+            request.AddParameter("format", "json");
+            request.AddParameter("page", page);
+            request.AddParameter("per_page", 14);
+            request.AddParameter("nojsoncallback", 1);
 
-            if (countRes.StatusCode == HttpStatusCode.OK)
+            var albumQueryResult = await ExecuteAsync(albumClient, request);
+            var content = albumQueryResult.Content;
+            if (albumQueryResult.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                count = Convert.ToInt32(countRes.Content);
-                for (int i = interval[0]; i <= interval[0] + 12; i++)
+                var photoClient = new RestClient("https://api.flickr.com/services/rest/?method=flickr.photos.getSizes");
+
+                JObject obj = JObject.Parse(albumQueryResult.Content);
+                var images = obj["photoset"]["photo"].ToList();
+                var pRequest = new RestRequest();
+                pRequest.AddParameter("nojsoncallback", 1);
+                pRequest.AddParameter("format", "json");
+
+                pRequest.AddParameter("api_key", "5393e559377351b512a33c5e3dfcd628");
+
+                foreach (var image in images)
                 {
-                    var request = new RestRequest("Images/GetById/{Id}", Method.GET);
-                    request.AddParameter("Id", i, ParameterType.UrlSegment);
-
-                    var queryResult = await ExecuteAsync(_client,request);
-
-                    if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        JObject image = JObject.Parse(queryResult.Content);
-                        ImageDtos.Add(JsonConvert.DeserializeObject<ImageDTO>(image.ToString()));
-                    }
+                    var flickrImage = JsonConvert.DeserializeObject<FlickrImage>(image.ToString());
+                    pRequest.AddParameter("photo_id", flickrImage.Id);
+                    var photoQueryResult = await ExecuteAsync(photoClient, pRequest);
+                    var photoContent = photoQueryResult.Content;
+                    JObject pObj = JObject.Parse(photoContent);
+                    var sizes = pObj["sizes"]["size"].ToList();
+                    var tumbnailSize = sizes.FirstOrDefault(j => j["label"].ToString() == "Small")["source"].ToString();
+                    var originalSize = sizes.FirstOrDefault(j => j["label"].ToString() == "Original")["source"].ToString();
+                    var newImageDTO = new ImageDTO() { Name = flickrImage.Title, Id = flickrImage.Id, TemplateUri = tumbnailSize, URI = originalSize };
+                    ImageDtos.Add(newImageDTO);
                 }
             }
             return ImageDtos;
         }
 
-        public async Task<string> DownloadByIdAsync(string Id)
+        public async Task<string> DownloadByIdAsync(string Id, string name, string filePath = null)
         {
-            var request = new RestRequest($"Images/GetById/{Id}", Method.GET);
-            var queryResult = _client.Execute(request);
-            if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
+            var photoClient = new RestClient("https://api.flickr.com/services/rest/?method=flickr.photos.getSizes");
+            var pRequest = new RestRequest();
+
+            pRequest.AddParameter("nojsoncallback", 1);
+            pRequest.AddParameter("format", "json");
+            pRequest.AddParameter("photo_id", Id);
+            pRequest.AddParameter("api_key", "5393e559377351b512a33c5e3dfcd628");
+
+            var photoQueryResult = await ExecuteAsync(photoClient, pRequest);
+
+            if (photoQueryResult.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                JObject image = JObject.Parse(queryResult.Content);
-                ImageDTO imageDTO = JsonConvert.DeserializeObject<ImageDTO>(image.ToString());
+                JObject image = JObject.Parse(photoQueryResult.Content);
+                var sizes = image["sizes"]["size"].ToList();
+                var originalSizeUri = sizes.FirstOrDefault(j => j["label"].ToString() == "Original")["source"].ToString();
 
                 using (WebClient client = new WebClient())
                 {
-                    var filePath = IOManager.ResultPathGenerator(imageDTO.URI, IOManager.DownloadPath, Id, imageDTO.Name);
-                    if (!File.Exists(filePath))
+                    var _filePath = filePath ?? IOManager.ResultPathGenerator(originalSizeUri, IOManager.DownloadPath, name);
+                    if (!File.Exists(_filePath))
                     {
-                        await client.DownloadFileTaskAsync(new Uri(imageDTO.URI), filePath);
+                        await client.DownloadFileTaskAsync(new Uri(originalSizeUri), _filePath);
                     }
-                    return filePath;
+                    return _filePath;
                 }
             }
             return null;
         }
 
-        public async Task<string> DownLoadAsync(Uri uri,string downloadPath)
+        public async Task<string> DownLoadAsync(Uri uri, string downloadPath)
         {
-            var name = Path.GetFileNameWithoutExtension(uri.ToString());            
+            var name = Path.GetFileNameWithoutExtension(uri.ToString());
             using (WebClient client = new WebClient())
             {
                 var filePath = IOManager.ResultPathGenerator(uri.ToString(), downloadPath, name);
@@ -82,16 +106,25 @@ namespace SpotLightUWP.Services
                     await client.DownloadFileTaskAsync(uri, filePath);
                 }
                 return filePath;
-            }         
+            }
         }
 
         public int GetCount()
         {
-            var countRequest = new RestRequest("Images/GetCount", Method.GET);
-            IRestResponse countResult = _client.Execute(countRequest);
+            var countClient = new RestClient("https://api.flickr.com/services/rest/?method=flickr.photosets.getInfo");
+            var countRequest = new RestRequest();
+            countRequest.AddParameter("api_key", "5393e559377351b512a33c5e3dfcd628");
+            countRequest.AddParameter("photoset_id", "72157698748876834");
+            countRequest.AddParameter("user_id", "93113931%40N08", ParameterType.QueryStringWithoutEncode);
+            countRequest.AddParameter("format", "json");
+            countRequest.AddParameter("nojsoncallback", 1);
+
+            IRestResponse countResult = countClient.Execute(countRequest);
             if (countResult.StatusCode == HttpStatusCode.OK)
             {
-                return Convert.ToInt32(countResult.Content);
+                JObject obj = JObject.Parse(countResult.Content);
+                var countToken = obj["photoset"]["count_photos"].ToString();
+                return Convert.ToInt32(countToken);
             }
             else return 0;
         }

@@ -1,44 +1,39 @@
 <Page
     x:Class="SpotLightUWP.Views.ShellPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:SpotLightUWP.Helpers"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     DataContext="{Binding ShellViewModel, Source={StaticResource Locator}}"
-    xmlns:helpers="using:SpotLightUWP.Helpers"
-    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:i="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d">
 
     <NavigationView
         x:Name="navigationView"
-        SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
+        Background="{ThemeResource SystemControlBackgroundAltHighBrush}"
         Header="{x:Bind ViewModel.Selected.Content, Mode=OneWay}"
         IsSettingsVisible="True"
-        Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+        SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
         <NavigationView.MenuItems>
-            <NavigationViewItem x:Uid="Shell_Spotlight" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.SpotlightViewModel" >
+            <NavigationViewItem x:Uid="Shell_Spotlight" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.SpotlightViewModel">
                 <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC50;"/>
-                </NavigationViewItem.Icon> 
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC50;" />
+                </NavigationViewItem.Icon>
             </NavigationViewItem>
             <NavigationViewItem x:Uid="Shell_Bing" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.BingImageViewModel">
                 <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE909;"/>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE909;" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItem x:Uid="Shell_DownLoaded" helpers:NavHelper.NavigateTo="SpotLightUWP.ViewModels.DownloadedImagesViewModel">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC51;"/>
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>           
-        </NavigationView.MenuItems> 
+        </NavigationView.MenuItems>
         <NavigationView.HeaderTemplate>
             <DataTemplate>
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
                     Margin="12,0,0,0"
                     VerticalAlignment="Center"
+                    Style="{StaticResource TitleTextBlockStyle}"
                     Text="{Binding}" />
             </DataTemplate>
         </NavigationView.HeaderTemplate>

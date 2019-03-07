@@ -33,7 +33,7 @@ namespace SpotLightUWP.ViewModels
         private static string _downloadPath;
         private static string _templatePath;
         private ObservableCollection<ImageDTO> _source;
-        private int[] _lastInterval;
+        private int _lastPage;
         private int _count;
 
         private GridView _imagesGridView;
@@ -41,7 +41,7 @@ namespace SpotLightUWP.ViewModels
         public DownloadedImagesViewModel()
         {
             IsLoaded = false;
-            _lastInterval = new int[] { 1, 10 };
+            _lastPage = 1;
             _downloadPath = _iOManager.DownloadPath;
             _templatePath = _iOManager.TemplatePath;
             DataService = new DataService();
@@ -64,8 +64,7 @@ namespace SpotLightUWP.ViewModels
             DataService.iOManager.Initialize();
             if (Source == null || Source?.Count == 0)
             {
-                await UpdateSourceAsync(_lastInterval);
-                _count = _httpService.GetCount();
+                await UpdateSourceAsync(1);
             }
             _imagesGridView = imagesGridView;
             IsLoaded = true;
@@ -88,41 +87,40 @@ namespace SpotLightUWP.ViewModels
             }
         }
 
-        private async Task UpdateSourceAsync(int[] interval)
+        private async Task UpdateSourceAsync(int page)
         {
-            Source = await DataService.GetGalleryDataAsync(interval, false);
+            _count = 14; // todo: fix
+            Source = await DataService.GetGalleryDataAsync(page, false);
         }
 
         private async Task EraseDownloaded()
         {
             _iOManager.EraseDownloaded();
-            _lastInterval = new int[] { 1, 10 };
-            await UpdateSourceAsync(_lastInterval);
+            _lastPage = 1;
+            await UpdateSourceAsync(_lastPage);
             IsLoaded = true;
         }
 
         private async Task MoveLeftAsync()
         {
-            if (_lastInterval[0] > 1)
+            if (_lastPage > 1)
             {
                 IsLoaded = false;
-                _lastInterval[0] -= 10;
-                _lastInterval[1] -= 10;
+                _lastPage--;
 
-                await UpdateSourceAsync(_lastInterval);
+                await UpdateSourceAsync(_lastPage);
                 IsLoaded = true;
             }
         }
 
         private async Task MoveRightAsync()
         {
-            if (_lastInterval[1] <= _count)
+            if (_lastPage <= _count)
             {
                 IsLoaded = false;
-                _lastInterval[0] += 10;
-                _lastInterval[1] += 10;
+                _lastPage++;
 
-                await UpdateSourceAsync(_lastInterval);
+                await UpdateSourceAsync(_lastPage);
                 IsLoaded = true;
             }
         }

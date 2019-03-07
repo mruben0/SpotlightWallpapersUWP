@@ -56,7 +56,7 @@ namespace SpotLightUWP.ViewModels
 
         public async Task InitializeAsync(NavigationMode navigationMode)
         {
-            await _dataService.InitializeAsync(new int[] { 1 }, IOManagerParams.Bing);
+            await _dataService.InitializeAsync(1, IOManagerParams.Bing);
             ImageDTOList = _dataService.ImageDTOList;
             try
             {

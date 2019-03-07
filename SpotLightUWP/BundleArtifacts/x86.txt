@@ -1,2 +1,2 @@
-MainPackage=C:\Users\Ruben.Martirosyan\source\repos\spotlight\SpotlightWallpapersUWP-master\SpotLightUWP\bin\x86\Release\SpotLightUWP_1.2.1.0_x86.appx
-SymbolPackage=C:\Users\Ruben.Martirosyan\source\repos\spotlight\SpotlightWallpapersUWP-master\SpotLightUWP\AppPackages\SpotLightUWP_1.2.1.0_Test\SpotLightUWP_1.2.1.0_x86.appxsym
+MainPackage=C:\Users\Ruben.Martirosyan\source\repos\UWPSW\SpotlightWallpapersUWP\SpotLightUWP\bin\x86\Release\SpotLightUWP_1.3.0.0_x86.appx
+SymbolPackage=C:\Users\Ruben.Martirosyan\source\repos\UWPSW\SpotlightWallpapersUWP\SpotLightUWP\AppPackages\SpotLightUWP_1.3.0.0_Test\SpotLightUWP_1.3.0.0_x86.appxsym

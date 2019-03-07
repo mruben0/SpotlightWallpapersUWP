@@ -15,89 +15,91 @@ namespace SpotLightUWP.Services
 {
     public class IOManager
     {
-        private  ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-        private  ImageNameManager ImageNameManager => Locator.ImageNameManager;
+        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
+        private ImageNameManager ImageNameManager => Locator.ImageNameManager;
         private string _downloadPath;
         private string _templatePath;
         public string _downloadedfolder;
         private string _templateFolder;
         private bool _Initialized;
-        
+
         public IOManager()
         {
-           
         }
 
         public void Initialize(IOManagerParams @params = IOManagerParams.SpotLight)
-        {          
-           var appdata = ApplicationData.Current.LocalFolder;
+        {
+            var appdata = ApplicationData.Current.LocalFolder;
 
-           if (@params == IOManagerParams.SpotLight)
-           {
-               _downloadedfolder = "DownloadedFolder";
-               _templateFolder = "Templates";
-           }
-           else
-           {
-               _downloadedfolder = "BingDownloadedFolder";
-               _templateFolder = "BingTemplates";
+            if (@params == IOManagerParams.SpotLight)
+            {
+                _downloadedfolder = "DownloadedFolder";
+                _templateFolder = "Templates";
+            }
+            else
+            {
+                _downloadedfolder = "BingDownloadedFolder";
+                _templateFolder = "BingTemplates";
+            }
 
-           }
-
-           DownloadPath = Path.Combine(appdata.Path, _downloadedfolder);
-           TemplatePath = Path.Combine(appdata.Path, _templateFolder);
-           if (!Directory.Exists(DownloadPath))
-           {
-               Directory.CreateDirectory(DownloadPath);
-           }
-           if (!Directory.Exists(TemplatePath))
-           {
-               Directory.CreateDirectory(TemplatePath);
-           }               
+            DownloadPath = Path.Combine(appdata.Path, _downloadedfolder);
+            TemplatePath = Path.Combine(appdata.Path, _templateFolder);
+            if (!Directory.Exists(DownloadPath))
+            {
+                Directory.CreateDirectory(DownloadPath);
+            }
+            if (!Directory.Exists(TemplatePath))
+            {
+                Directory.CreateDirectory(TemplatePath);
+            }
         }
 
-        public string ResultPathGenerator(string url, string path, string id=null ,string name = null)
+        public string ResultPathGenerator(string url, string path, string id = null, string name = null)
         {
             string _name = name ?? Path.GetFileName(url);
             if (id != null)
             {
                 _name = $"__{id}__" + _name;
             }
-            var cleanName = ImageNameManager.CleanName(_name);
-            string resultPath = Path.Combine(path, cleanName);
+            // var cleanName = ImageNameManager.CreateName(_name);
+            string resultPath = Path.Combine(path, _name);
             return resultPath.Replace("'", string.Empty);
         }
 
-        public async Task DownloadImages(List<ImageDTO> imageDTOs, bool AsTemplate = true)
+        public async Task DownloadImages(List<ImageDTO> imageDTOs, int page, bool AsTemplate = true)
         {
             string downloadFolder;
             if (AsTemplate)
             {
-                downloadFolder = TemplatePath;
+                downloadFolder = Path.Combine(TemplatePath, page.ToString());
                 foreach (var imagedto in imageDTOs)
                 {
-                    await DownloadImage(imagedto.TemplateUri,imagedto.Id, imagedto.Name, downloadFolder);
+                    await DownloadImage(imagedto.TemplateUri, imagedto.Id, imagedto.Name, downloadFolder);
                 }
             }
             else
             {
-                downloadFolder = DownloadPath;
-                    foreach (var imagedto in imageDTOs)
+                downloadFolder = Path.Combine(DownloadPath, page.ToString()); ;
+                foreach (var imagedto in imageDTOs)
                 {
-                    await DownloadImage(imagedto.URI, imagedto.Id ?? null ,imagedto.Name, downloadFolder);
+                    await DownloadImage(imagedto.URI, imagedto.Id ?? null, imagedto.Name, downloadFolder);
                 }
-            }          
-        }        
+            }
+        }
 
         public async Task DownloadImage(string Url, string id = null, string name = null, string Path = null)
         {
             string _path = Path ?? DownloadPath;
-            var newName = name.Replace(" ", string.Empty).Replace("'", string.Empty).Replace("(",string.Empty).Replace(")",string.Empty);
+            var newName = name.Replace(" ", string.Empty).Replace("'", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty);
             using (WebClient client = new WebClient())
             {
                 var path = ResultPathGenerator(Url, _path, id, newName);
                 if (!File.Exists(path))
                 {
+                    if (!Directory.Exists(new FileInfo(path).Directory.FullName))
+                    {
+                        Directory.CreateDirectory(new FileInfo(path).Directory.FullName);
+                    }
                     try
                     {
                         await client.DownloadFileTaskAsync(new Uri(Url), path);
@@ -112,25 +114,24 @@ namespace SpotLightUWP.Services
 
         public async Task SaveImageAs(string imageUri)
         {
-           StorageFile currentImage = await StorageFile.GetFileFromPathAsync(imageUri);
-           byte[] buffer;
-           Stream stream = await currentImage.OpenStreamForReadAsync();
-           buffer = new byte[stream.Length];
-           await stream.ReadAsync(buffer, 0, (int)stream.Length);
-           var savePicker = new FileSavePicker();
-           savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
-           savePicker.FileTypeChoices.Add("JPEG-Image", new List<string>() { ".jpg" });
-           savePicker.FileTypeChoices.Add("PNG-Image", new List<string>() { ".png" });
-           savePicker.SuggestedSaveFile = currentImage;
-           savePicker.SuggestedFileName = currentImage.Name;
-           var file = await savePicker.PickSaveFileAsync();
-           if (file != null)
-           {
-               CachedFileManager.DeferUpdates(file);
-               await FileIO.WriteBytesAsync(file, buffer);
-               await CachedFileManager.CompleteUpdatesAsync(file);
-           }
-           
+            StorageFile currentImage = await StorageFile.GetFileFromPathAsync(imageUri);
+            byte[] buffer;
+            Stream stream = await currentImage.OpenStreamForReadAsync();
+            buffer = new byte[stream.Length];
+            await stream.ReadAsync(buffer, 0, (int)stream.Length);
+            var savePicker = new FileSavePicker();
+            savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            savePicker.FileTypeChoices.Add("JPEG-Image", new List<string>() { ".jpg" });
+            savePicker.FileTypeChoices.Add("PNG-Image", new List<string>() { ".png" });
+            savePicker.SuggestedSaveFile = currentImage;
+            savePicker.SuggestedFileName = currentImage.Name;
+            var file = await savePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                CachedFileManager.DeferUpdates(file);
+                await FileIO.WriteBytesAsync(file, buffer);
+                await CachedFileManager.CompleteUpdatesAsync(file);
+            }
         }
 
         public void EraseDownloaded()
@@ -146,6 +147,14 @@ namespace SpotLightUWP.Services
                 {
                     file.Delete();
                 }
+                foreach (var dir in Dir.GetDirectories())
+                {
+                    foreach (var item in dir.GetFiles())
+                    {
+                        item.Delete();
+                    }
+                    dir.Delete();
+                }
             }
         }
 
@@ -160,6 +169,5 @@ namespace SpotLightUWP.Services
             get { return _templatePath; }
             set { _templatePath = value; }
         }
-
     }
 }

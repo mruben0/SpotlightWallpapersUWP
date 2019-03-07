@@ -18,7 +18,7 @@ namespace SpotLightUWP.Services
         private ImageNameManager ImageNameManager => Locator.ImageNameManager;
         private HTTPService _hTTPService => Locator.HTTPService;
         private BingHTTPService _bingHTTPService => Locator.BingHTTPService;
-        public IOManager iOManager => Locator.IOManager;        
+        public IOManager iOManager => Locator.IOManager;
         private DialogService DialogService => Locator.DialogService;
         private ObservableCollection<ImageDTO> _source;
         private int _updateDate;
@@ -26,81 +26,82 @@ namespace SpotLightUWP.Services
         private string _datefilePath => Path.Combine(AppdataFolder.Path, "dt");
         private IOManagerParams _iOManagerParams;
 
-
-        public async Task InitializeAsync(int[] interval, IOManagerParams @params)
+        public async Task InitializeAsync(int page, IOManagerParams @params)
         {
             ImageDTOList = new List<ImageDTO>();
             _iOManagerParams = @params;
             iOManager.Initialize(_iOManagerParams);
-            bool success = await GetAllDataFromServerAsync(interval);
+
+            bool success = await GetAllDataFromServerAsync(page);
             if (success)
             {
-                Source = await GetGalleryDataAsync(interval);
+                Source = await GetGalleryDataAsync(page);
             }
         }
 
-        public  async Task<ObservableCollection<ImageDTO>> GetGalleryDataAsync(int[] interval,bool IsTemplate = true)
+        public async Task<ObservableCollection<ImageDTO>> GetGalleryDataAsync(int page, bool IsTemplate = true)
         {
-            StorageFolder dataFolder = await StorageFolder.GetFolderFromPathAsync(iOManager.DownloadPath);            
+            StorageFolder dataFolder;
 
             if (IsTemplate)
             {
-               dataFolder = await StorageFolder.GetFolderFromPathAsync(iOManager.TemplatePath);
+                dataFolder = await StorageFolder.GetFolderFromPathAsync(Path.Combine(iOManager.TemplatePath, page.ToString()));
+            }
+            else
+            {
+                dataFolder = await StorageFolder.GetFolderFromPathAsync(Path.Combine(iOManager.DownloadPath, page.ToString()));
             }
 
             var data = new ObservableCollection<ImageDTO>();
             var items = await dataFolder.GetItemsAsync();
-            foreach (var item in items)
+            var ListItems = items.ToList();
+            foreach (var item in ListItems)
             {
-                var id = Convert.ToInt32(ImageNameManager.GetId(item.Name));
-                if (id >= interval[0] && id <= interval[1])
+                var id = ImageNameManager.GetId(item.Name);
+
+                data.Add(new ImageDTO()
                 {
-                    data.Add(new ImageDTO()
-                    {
-                        URI = item.Path,
-                        Id = ImageNameManager.GetId(item.Name),
-                        Name = ImageNameManager.CreateName(item.Name)
-                    });
-                }              
-            }            
+                    URI = item.Path,
+                    Id = id.ToString(),
+                    Name = item.Name
+                });
+            }
+
             return data;
         }
 
-        public async Task<bool> GetAllDataFromServerAsync(int[] interval,bool IsTemplate = true)
+        public async Task<bool> GetAllDataFromServerAsync(int page, bool IsTemplate = true)
         {
-
-
-            if (_iOManagerParams == IOManagerParams.SpotLight )
+            if (_iOManagerParams == IOManagerParams.SpotLight)
             {
-                ImageDTOList = await _hTTPService.URLParserAsync(interval);
+                ImageDTOList = await _hTTPService.GetPhotosByPageAsync(page);
             }
             else
             {
                 ImageDTOList = await _bingHTTPService.URLParserAsync();
-                IsTemplate = false; 
+                IsTemplate = false;
             }
 
             if (ImageDTOList.Count > 0 && _iOManagerParams == IOManagerParams.SpotLight)
             {
-                await iOManager.DownloadImages(ImageDTOList, IsTemplate);
+                await iOManager.DownloadImages(ImageDTOList, page, IsTemplate);
 
                 return true;
             }
             else
             {
-            return false;
+                return false;
                 //notif about internet connection
             }
-         
         }
 
-        public  async Task DownloadById(string ID)
+        public async Task DownloadById(string ID)
         {
             var image = Source.FirstOrDefault(i => i.Id == ID);
-            await  iOManager.DownloadImage(image.URI);
+            await iOManager.DownloadImage(image.URI);
         }
 
-        private  int GetBaseDate()
+        private int GetBaseDate()
         {
             if (File.Exists(_datefilePath))
             {
@@ -108,16 +109,16 @@ namespace SpotLightUWP.Services
                 {
                     var date = sr.ReadLine();
                     return Convert.ToInt32(date);
-                }                
+                }
             }
             else
             {
                 File.Create(_datefilePath).Dispose();
                 return 0;
-            }               
+            }
         }
 
-        public  ObservableCollection<ImageDTO> Source
+        public ObservableCollection<ImageDTO> Source
         {
             get => _source;
             set => Set(ref _source, value);
@@ -125,7 +126,7 @@ namespace SpotLightUWP.Services
 
         public List<ImageDTO> ImageDTOList;
 
-        public  int UpdateDate
+        public int UpdateDate
         {
             get { return _updateDate; }
             set { _updateDate = value; }

@@ -15,7 +15,7 @@ namespace SpotLightUWP.Helpers
                 var substrings = name.Split("__");
                 return substrings[1];
             }
-            else return name;  
+            else return name;
         }
 
         public string CleanName(string name)
@@ -32,13 +32,13 @@ namespace SpotLightUWP.Helpers
             if (name.Contains("__"))
             {
                 var substrings = name.Split("__");
-                name = substrings[1];                 
+                name = substrings.Last();
             }
             if (name.Contains("."))
             {
                 return name + ".jpg";
             }
             return name;
-        } 
+        }
     }
 }

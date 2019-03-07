@@ -3,6 +3,8 @@
 using SpotLightUWP.Services;
 
 using Windows.ApplicationModel.Activation;
+using Windows.Foundation;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
 namespace SpotLightUWP
@@ -19,7 +21,8 @@ namespace SpotLightUWP
         public App()
         {
             InitializeComponent();
-
+            ApplicationView.PreferredLaunchViewSize = new Size() { Height = 1200, Width = 820 };
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             _activationService = new Lazy<ActivationService>(CreateActivationService);
         }
 

@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 using SpotLightUWP.Services;
 using SpotLightUWP.ViewModels;
+using Windows.Foundation;
 using Windows.Foundation.Metadata;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 

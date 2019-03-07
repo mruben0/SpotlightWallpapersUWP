@@ -23,9 +23,11 @@ namespace SpotLightUWP.ViewModels
         private HTTPService _httpService => Locator.HTTPService;
         private WallpaperService WallpaperService => Locator.WallpaperService;
         private static UIElement _image;
+        private int _count;
         private ImageDTO _selectedImage;
         private ObservableCollection<ImageDTO> _source;
         private string _fullsizedImage;
+        private ImageNameManager ImageNameManager => Locator.ImageNameManager;
 
         public ImageGalleryDetailViewModel()
         {
@@ -33,8 +35,7 @@ namespace SpotLightUWP.ViewModels
 
         public ICommand SaveImageAs => new RelayCommand(async () =>
 
-        await SaveItem())
-            ;
+        await SaveItem());
 
         public ICommand SetAsWallpaper => new RelayCommand(async () =>
        {
@@ -54,7 +55,7 @@ namespace SpotLightUWP.ViewModels
         public async Task InitializeAsync(ImageDetailNavigationParams imageDetailNavigationArgs, NavigationMode navigationMode)
         {
             Source = imageDetailNavigationArgs.Source;
-
+            _count = _httpService.GetCount();
             if (!string.IsNullOrEmpty(imageDetailNavigationArgs.Id) && navigationMode == NavigationMode.New)
             {
                 SelectedImage = Source.FirstOrDefault(i => i.Id == imageDetailNavigationArgs.Id);
@@ -72,7 +73,7 @@ namespace SpotLightUWP.ViewModels
                 }
             }
 
-            SelectedImage.URI = await _httpService.DownloadByIdAsync(SelectedImage.Id);
+            SelectedImage.URI = await _httpService.DownloadByIdAsync(ImageNameManager.GetId(SelectedImage.Name), SelectedImage.Name);
             RaisePropertyChanged(nameof(SelectedImage));
 
             var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(SpotlightViewModel.ImageGalleryAnimationOpen);
@@ -81,7 +82,7 @@ namespace SpotLightUWP.ViewModels
 
         public async Task<string> DownLoadSelectedAsync()
         {
-            return await _httpService.DownloadByIdAsync(SelectedImage.Id);
+            return await _httpService.DownLoadAsync(new Uri(SelectedImage.URI), IOManager.ResultPathGenerator(SelectedImage.URI, IOManager.DownloadPath, SelectedImage.Id, SelectedImage.Name));
         }
 
         public async Task MoveLeft()
@@ -90,7 +91,7 @@ namespace SpotLightUWP.ViewModels
             if (Source.Any(e => e.Id == newId))
             {
                 SelectedImage = Source.FirstOrDefault(e => e.Id == newId);
-                SelectedImage.URI = await _httpService.DownloadByIdAsync(SelectedImage.Id);
+                SelectedImage.URI = await _httpService.DownloadByIdAsync(newId, SelectedImage.Name, IOManager.ResultPathGenerator(SelectedImage.URI, IOManager.DownloadPath, SelectedImage.Id, SelectedImage.Name));
                 RaisePropertyChanged(nameof(SelectedImage));
             }
         }
@@ -101,7 +102,7 @@ namespace SpotLightUWP.ViewModels
             if (Source.Any(e => e.Id == newId))
             {
                 SelectedImage = Source.FirstOrDefault(e => e.Id == newId);
-                SelectedImage.URI = await _httpService.DownloadByIdAsync(SelectedImage.Id);
+                SelectedImage.URI = await _httpService.DownloadByIdAsync(newId, SelectedImage.Name, IOManager.ResultPathGenerator(SelectedImage.URI, IOManager.DownloadPath, SelectedImage.Id, SelectedImage.Name));
                 RaisePropertyChanged(nameof(SelectedImage));
             }
         }
@@ -120,25 +121,20 @@ namespace SpotLightUWP.ViewModels
         {
             if (toLeft)
             {
-                for (int i = Convert.ToInt32(SelectedImage.Id) - 1; i > 0; i--)
+                var currentIndex = Source.IndexOf(SelectedImage);
+                if (currentIndex != 0)
                 {
-                    if (Source.Any(e => e.Id == i.ToString()))
-                    {
-                        return i.ToString();
-                    }
-                    else continue;
+                    var nextIndex = --currentIndex;
+                    return Source.ElementAt(nextIndex).Id;
                 }
             }
             else
             {
-                var max = Convert.ToInt32(SelectedImage.Id) + 10;
-                for (int i = Convert.ToInt32(SelectedImage.Id) + 1; i < max; i++)
+                var currentIndex = Source.IndexOf(SelectedImage);
+                if (currentIndex != Source.IndexOf(Source.Last()))
                 {
-                    if (Source.Any(e => e.Id == i.ToString()))
-                    {
-                        return i.ToString();
-                    }
-                    else continue;
+                    var nextIndex = ++currentIndex;
+                    return Source.ElementAt(nextIndex).Id;
                 }
             }
             return "1";
