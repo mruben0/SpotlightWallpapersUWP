@@ -91,7 +91,7 @@ namespace SpotLightUWP.ViewModels
 
         public async Task MoveRight()
         {
-            if (_id < 14)
+            if (_id < ImageDTOList.Count() - 1)
             {
                 _id += 1;
                 if (ImageDTOList[_id] != null)

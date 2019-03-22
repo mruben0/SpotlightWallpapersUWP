@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Xaml;
@@ -25,7 +26,7 @@ namespace SpotLightUWP.Services
 
             var albumClient = new RestClient("https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos");
             var request = new RestRequest();
-            request.AddParameter("api_key", "5393e559377351b512a33c5e3dfcd628");
+            request.AddParameter("api_key", "");
             request.AddParameter("photoset_id", "72157698748876834");
             request.AddParameter("user_id", "93113931%40N08", ParameterType.QueryStringWithoutEncode);
             request.AddParameter("format", "json");
@@ -45,7 +46,7 @@ namespace SpotLightUWP.Services
                 pRequest.AddParameter("nojsoncallback", 1);
                 pRequest.AddParameter("format", "json");
 
-                pRequest.AddParameter("api_key", "5393e559377351b512a33c5e3dfcd628");
+                pRequest.AddParameter("api_key", "");
 
                 foreach (var image in images)
                 {
@@ -72,7 +73,7 @@ namespace SpotLightUWP.Services
             pRequest.AddParameter("nojsoncallback", 1);
             pRequest.AddParameter("format", "json");
             pRequest.AddParameter("photo_id", Id);
-            pRequest.AddParameter("api_key", "5393e559377351b512a33c5e3dfcd628");
+            pRequest.AddParameter("api_key", "");
 
             var photoQueryResult = await ExecuteAsync(photoClient, pRequest);
 
@@ -97,13 +98,25 @@ namespace SpotLightUWP.Services
 
         public async Task<string> DownLoadAsync(Uri uri, string downloadPath)
         {
-            var name = Path.GetFileNameWithoutExtension(uri.ToString());
+            var name = Path.GetFileNameWithoutExtension(uri.ToString()).Replace('?', '_');
+            string illegal = "\"M\"\\a/ry/ h**ad:>> a\\/:*?\"| li*tt|le|| la\"mb.?";
+            string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            Regex r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
+            name = r.Replace(illegal, "");
             using (WebClient client = new WebClient())
             {
                 var filePath = IOManager.ResultPathGenerator(uri.ToString(), downloadPath, name);
+                filePath = filePath.Replace("?", "");
                 if (!File.Exists(filePath))
                 {
-                    await client.DownloadFileTaskAsync(uri, filePath);
+                    try
+                    {
+                        await client.DownloadFileTaskAsync(uri, filePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw;
+                    }
                 }
                 return filePath;
             }
