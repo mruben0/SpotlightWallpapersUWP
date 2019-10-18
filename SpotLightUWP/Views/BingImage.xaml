@@ -2,51 +2,86 @@
     x:Class="SpotLightUWP.Views.BingImage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    DataContext="{Binding BingImageViewModel, Source={StaticResource Locator}}"
     xmlns:models="using:SpotLightUWP.Models"
+    DataContext="{Binding BingImageViewModel, Source={StaticResource Locator}}"
     KeyDown="OnKeyDown"
     mc:Ignorable="d">
 
     <Grid Margin="5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <Image x:Name="detailImage"
-               Stretch="UniformToFill"               
-               Source="{x:Bind ViewModel.ImgPath, Mode=OneWay}" />
+        <Image
+            x:Name="detailImage"
+            Source="{x:Bind ViewModel.ImgPath, Mode=OneWay}"
+            Stretch="UniformToFill" />
 
-        <Grid x:Name="shapeGrid" Background="{ThemeResource FlipViewBackground}"/>
+        <Grid x:Name="shapeGrid" Background="{ThemeResource FlipViewBackground}" />
 
-        <Button Opacity=".5" Command="{x:Bind ViewModel.ToLeft}" Foreground="WhiteSmoke">
-            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76B;"/>
+        <Button
+            Command="{x:Bind ViewModel.ToLeft}"
+            Foreground="WhiteSmoke"
+            Opacity=".5">
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76B;" />
         </Button>
 
-        <Button Opacity=".5" Command="{x:Bind ViewModel.ToRight}" HorizontalAlignment="Right" Foreground="WhiteSmoke">
-            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76C;"/>
+        <Button
+            HorizontalAlignment="Right"
+            Command="{x:Bind ViewModel.ToRight}"
+            Foreground="WhiteSmoke"
+            Opacity=".5">
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76C;" />
         </Button>
 
-        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Orientation="Horizontal">
-            <Button HorizontalAlignment="Center" Foreground="WhiteSmoke" Command="{x:Bind ViewModel.SaveImageAs}">
-                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE896;"/>
+        <StackPanel
+            Margin="10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+            <Button
+                HorizontalAlignment="Center"
+                Command="{x:Bind ViewModel.SaveImageAs}"
+                Foreground="WhiteSmoke">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE896;" />
             </Button>
-            <Button Margin="2,0,0,0" Foreground="White" >
-                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEDE3;" FlowDirection="LeftToRight"/>
+            <Button
+                Margin="5,0"
+                Content="Info"
+                Foreground="White">
+                <Button.Flyout>
+                    <Flyout>
+                        <TextBlock
+                            Width="400"
+                            IsTextSelectionEnabled="True"
+                            Text="{x:Bind ViewModel.Image.Info, Mode=OneWay}"
+                            TextWrapping="Wrap" />
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+
+            <Button Margin="2,0,0,0" Foreground="White">
+                <FontIcon
+                    FlowDirection="LeftToRight"
+                    FontFamily="Segoe MDL2 Assets"
+                    Glyph="&#xEDE3;" />
 
                 <Button.Flyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem Text="Set As Wallpaper" Command="{x:Bind ViewModel.SetAsWallpaper}">
+                    <MenuFlyout LightDismissOverlayMode="On">
+                        <MenuFlyoutItem Command="{x:Bind ViewModel.SetAsWallpaper}" Text="Set As Wallpaper">
                             <MenuFlyoutItem.Icon>
-                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BA;"/>
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BA;" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
 
-                        <MenuFlyoutItem Text="Set As Lockscreen" Command="{x:Bind ViewModel.SetAsLockscreen}">
+                        <MenuFlyoutItem Command="{x:Bind ViewModel.SetAsLockscreen}" Text="Set As Lockscreen">
                             <MenuFlyoutItem.Icon>
-                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEE3F;"/>
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEE3F;" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
                     </MenuFlyout>

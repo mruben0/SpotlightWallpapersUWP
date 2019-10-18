@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using SpotLightUWP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SpotLightUWP.Services
@@ -26,24 +26,24 @@ namespace SpotLightUWP.Services
                 request.AddParameter("idx", i, ParameterType.UrlSegment);
 
                 var queryResult = await ExecuteAsync(request);
-
-                JObject o = JObject.Parse(queryResult.Content);
-                JArray arr = (JArray)o.SelectToken("images");
-
-                foreach (var item in arr)
+                if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    var url = item.Value<string>("url");
-                    var bingUrl = "https://www.bing.com" + url;
-                    var name = System.IO.Path.GetFileNameWithoutExtension(url);
+                    var bingImageModel = JsonConvert.DeserializeObject<BingImageModel>(queryResult.Content);
 
-                    if (!ImageUrls.Contains(bingUrl))
+                    foreach (var image in bingImageModel.images)
                     {
-                        ImageUrls.Add($@"{bingUrl}");
+                        var url = image.url;
+                        var bingUrl = "https://www.bing.com" + url;
+                        var name = System.IO.Path.GetFileNameWithoutExtension(url);
 
-                        var newImageDto = new ImageDTO() { Name = name, URI = bingUrl, Id = (imageDTOs.Count() - 1).ToString() };
+                        if (!ImageUrls.Contains(bingUrl))
+                        {
+                            ImageUrls.Add($@"{bingUrl}");
+                        }
+                        var newImageDto = new ImageDTO() { Id = (imageDTOs.Count() - 1).ToString(), Name = name, URI = bingUrl, Info = image.copyright };
                         imageDTOs.Add(newImageDto);
                     }
-                }
+                }               
             }
             return imageDTOs;
         }

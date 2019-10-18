@@ -26,7 +26,7 @@ namespace SpotLightUWP.Services
 
             var albumClient = new RestClient("https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos");
             var request = new RestRequest();
-            request.AddParameter("api_key", "");
+            request.AddParameter("api_key", "key");
             request.AddParameter("photoset_id", "72157698748876834");
             request.AddParameter("user_id", "93113931%40N08", ParameterType.QueryStringWithoutEncode);
             request.AddParameter("format", "json");
@@ -46,7 +46,7 @@ namespace SpotLightUWP.Services
                 pRequest.AddParameter("nojsoncallback", 1);
                 pRequest.AddParameter("format", "json");
 
-                pRequest.AddParameter("api_key", "");
+                pRequest.AddParameter("api_key", "key");
 
                 foreach (var image in images)
                 {
@@ -73,7 +73,7 @@ namespace SpotLightUWP.Services
             pRequest.AddParameter("nojsoncallback", 1);
             pRequest.AddParameter("format", "json");
             pRequest.AddParameter("photo_id", Id);
-            pRequest.AddParameter("api_key", "");
+            pRequest.AddParameter("api_key", "key");
 
             var photoQueryResult = await ExecuteAsync(photoClient, pRequest);
 
@@ -126,7 +126,7 @@ namespace SpotLightUWP.Services
         {
             var countClient = new RestClient("https://api.flickr.com/services/rest/?method=flickr.photosets.getInfo");
             var countRequest = new RestRequest();
-            countRequest.AddParameter("api_key", "");
+            countRequest.AddParameter("api_key", "key");
             countRequest.AddParameter("photoset_id", "72157698748876834");
             countRequest.AddParameter("user_id", "93113931%40N08", ParameterType.QueryStringWithoutEncode);
             countRequest.AddParameter("format", "json");

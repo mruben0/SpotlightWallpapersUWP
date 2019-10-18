@@ -1,17 +1,14 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using SpotLightUWP.Models;
+using SpotLightUWP.Services;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using SpotLightUWP.Helpers;
-using SpotLightUWP.Models;
-using SpotLightUWP.Services;
-using Windows.Storage;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
@@ -28,6 +25,7 @@ namespace SpotLightUWP.ViewModels
         private string _fullsizedImage;
         private DataService _dataService;
         private int _id;
+        private ImageDTO _imageDto;
 
         public BingImageViewModel()
         {
@@ -62,7 +60,7 @@ namespace SpotLightUWP.ViewModels
             {
                 Image = ImageDTOList.FirstOrDefault();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -122,7 +120,15 @@ namespace SpotLightUWP.ViewModels
             }
         }
 
-        public ImageDTO Image;
+        public ImageDTO Image
+        {
+            get { return _imageDto; }
+            set
+            {
+                _imageDto = value;
+                RaisePropertyChanged(nameof(Image));
+            }
+        }
 
         public List<ImageDTO> ImageDTOList;
 

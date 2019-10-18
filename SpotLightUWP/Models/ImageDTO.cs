@@ -8,6 +8,8 @@
 
         public string TemplateUri { get; set; }
 
+        public string Info { get; set; }
+
         public string URI { get; set; }
 
         public string Path { get; set; }

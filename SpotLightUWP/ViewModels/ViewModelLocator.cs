@@ -30,6 +30,7 @@ namespace SpotLightUWP.ViewModels
             Register<BingImageViewModel, BingImage>();
         }
 
+
         public BingImageViewModel BingImageViewModel => ServiceLocator.Current.GetInstance<BingImageViewModel>();
 
         public SettingsViewModel SettingsViewModel => ServiceLocator.Current.GetInstance<SettingsViewModel>();
