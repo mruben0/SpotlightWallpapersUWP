@@ -1,7 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using SpotLightUWP.Models;
+using SpotLightUWP.Core.Base;
+using SpotLightUWP.Core.Models;
 using SpotLightUWP.Services;
+using SpotLightUWP.Services.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,44 +18,36 @@ namespace SpotLightUWP.ViewModels
 {
     public class BingImageViewModel : ViewModelBase
     {
-        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-        private IOManager IOManager => Locator.IOManager;
-        private HTTPService _httpService => Locator.HTTPService;
-        private WallpaperService WallpaperService => Locator.WallpaperService;
         private static UIElement _image;
         private ObservableCollection<ImageDTO> _source;
         private string _fullsizedImage;
-        private DataService _dataService;
         private int _id;
         private ImageDTO _imageDto;
+        private string _path;
+        private readonly IHTTPService _httpService;
+        private readonly IDataService _dataService;
+        private readonly IIOManager _iOManager;
+        private readonly IWallpaperService _wallpaperService;
+        private readonly IDialogService _dialogService;
 
-        public BingImageViewModel()
+        public BingImageViewModel(IHTTPService httpService,
+                                 IDataService dataService,
+                                 IIOManager iOManager,
+                                 IWallpaperService wallpaperService,
+                                 IDialogService dialogService)
         {
             ImgPath = "a/b";
             ImageDTOList = new List<ImageDTO>();
-            _dataService = new DataService();
-            IOManager.Initialize(IOManagerParams.Bing);
+            _httpService = httpService ?? throw new ArgumentNullException(nameof(httpService));
+            _dataService = dataService ?? throw new ArgumentNullException(nameof(dataService));
+            _iOManager = iOManager ?? throw new ArgumentNullException(nameof(iOManager));
+            _wallpaperService = wallpaperService ?? throw new ArgumentNullException(nameof(wallpaperService));
+            _dialogService = dialogService ?? throw new ArgumentNullException(nameof(dialogService));
         }
-
-        public ICommand SaveImageAs => new RelayCommand(async () => await SaveItem());
-
-        public ICommand SetAsWallpaper => new RelayCommand(async () =>
-        {
-            await WallpaperService.SetAsAsync(ImgPath);
-        });
-
-        public ICommand SetAsLockscreen => new RelayCommand(async () =>
-        {
-            await WallpaperService.SetAsAsync(ImgPath, setAs: SetAs.Lockscreen);
-        });
-
-        public ICommand ToLeft => new RelayCommand(async () => await MoveLeft());
-        public ICommand ToRight => new RelayCommand(async () => await MoveRight());
-
-        public void SetImage(UIElement image) => _image = image;
 
         public async Task InitializeAsync(NavigationMode navigationMode)
         {
+            _iOManager.Initialize(IOManagerParams.Bing);
             await _dataService.InitializeAsync(1, IOManagerParams.Bing);
             ImageDTOList = _dataService.ImageDTOList;
             try
@@ -66,12 +60,30 @@ namespace SpotLightUWP.ViewModels
             }
             _id = ImageDTOList.IndexOf(Image);
 
-            ImgPath = await _httpService.DownLoadAsync(new Uri(Image.URI), IOManager.DownloadPath);
+            ImgPath = await _httpService.DownLoadAsync(new Uri(Image.URI), _iOManager.DownloadPath);
             RaisePropertyChanged(nameof(ImgPath));
 
             var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(SpotlightViewModel.ImageGalleryAnimationOpen);
             animation?.TryStart(_image);
         }
+
+        public ICommand SaveImageAs => new RelayCommand(async () => await SaveItem());
+
+        public ICommand SetAsWallpaper => new RelayCommand(async () =>
+        {
+            await _wallpaperService.SetAsAsync(ImgPath);
+        });
+
+        public ICommand SetAsLockscreen => new RelayCommand(async () =>
+        {
+            await _wallpaperService.SetAsAsync(ImgPath, setAs: SetAs.Lockscreen);
+        });
+
+        public ICommand ToLeft => new RelayCommand(async () => await MoveLeft(), _id > 0);
+
+        public ICommand ToRight => new RelayCommand(async () => await MoveRight(), _id < ImageDTOList.Count() - 1);
+
+        public void SetImage(UIElement image) => _image = image;
 
         public async Task MoveLeft()
         {
@@ -81,7 +93,7 @@ namespace SpotLightUWP.ViewModels
                 if (ImageDTOList[_id] != null)
                 {
                     Image = ImageDTOList[_id];
-                    ImgPath = await _httpService.DownLoadAsync(new Uri(Image.URI), IOManager.DownloadPath);
+                    ImgPath = await _httpService.DownLoadAsync(new Uri(Image.URI), _iOManager.DownloadPath);
                     RaisePropertyChanged(nameof(ImgPath));
                 }
             }
@@ -95,7 +107,7 @@ namespace SpotLightUWP.ViewModels
                 if (ImageDTOList[_id] != null)
                 {
                     Image = ImageDTOList[_id];
-                    ImgPath = await _httpService.DownLoadAsync(new Uri(Image.URI), IOManager.DownloadPath);
+                    ImgPath = await _httpService.DownLoadAsync(new Uri(Image.URI), _iOManager.DownloadPath);
                     RaisePropertyChanged(nameof(ImgPath));
                 }
             }
@@ -108,7 +120,7 @@ namespace SpotLightUWP.ViewModels
 
         private async Task SaveItem()
         {
-            await IOManager.SaveImageAs(ImgPath);
+            await _iOManager.SaveImageAs(ImgPath);
         }
 
         public string FullSizedImage
@@ -131,8 +143,6 @@ namespace SpotLightUWP.ViewModels
         }
 
         public List<ImageDTO> ImageDTOList;
-
-        private string _path;
 
         public string ImgPath
         {

@@ -92,7 +92,7 @@ namespace SpotLightUWP.Services
                     throw new ArgumentException(string.Format("ExceptionNavigationServiceExTypeAlreadyConfigured".GetLocalized(), _pages.First(p => p.Value == pageType).Key));
                 }
 
-                _pages.Add(key, pageType);
+                _pages.TryAdd(key, pageType);
             }
         }
 

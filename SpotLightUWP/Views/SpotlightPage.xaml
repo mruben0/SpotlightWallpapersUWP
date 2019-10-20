@@ -9,7 +9,7 @@
     xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
     xmlns:l="using:SpotLightUWP.ViewModels"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:SpotLightUWP.Models"
+    xmlns:models="using:SpotLightUWP.Core.Models"
     xmlns:x1="using:System"
     DataContext="{Binding SpotlightViewModel, Source={StaticResource Locator}}"
     NavigationCacheMode="Required"

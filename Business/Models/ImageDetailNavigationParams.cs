@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpotLightUWP.Models
+namespace SpotLightUWP.Core.Models
 {
     public class ImageDetailNavigationParams
     {

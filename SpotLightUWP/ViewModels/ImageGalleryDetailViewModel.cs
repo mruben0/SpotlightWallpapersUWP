@@ -1,14 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using SpotLightUWP.Core.Base;
+using SpotLightUWP.Core.Helpers;
+using SpotLightUWP.Core.Models;
 using SpotLightUWP.Helpers;
-using SpotLightUWP.Models;
 using SpotLightUWP.Services;
+using SpotLightUWP.Services.Base;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Animation;
@@ -18,19 +21,20 @@ namespace SpotLightUWP.ViewModels
 {
     public class ImageGalleryDetailViewModel : ViewModelBase
     {
-        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-        private IOManager IOManager => Locator.IOManager;
-        private HTTPService _httpService => Locator.HTTPService;
-        private WallpaperService WallpaperService => Locator.WallpaperService;
         private static UIElement _image;
         private int _count;
         private ImageDTO _selectedImage;
         private ObservableCollection<ImageDTO> _source;
         private string _fullsizedImage;
-        private ImageNameManager ImageNameManager => Locator.ImageNameManager;
+        private readonly IIOManager _iOManager;
+        private readonly IHTTPService _hTTPService;
+        private readonly IWallpaperService _wallpaperService;
 
-        public ImageGalleryDetailViewModel()
+        public ImageGalleryDetailViewModel(IIOManager iOManager, IHTTPService hTTPService, IWallpaperService wallpaperService)
         {
+            _iOManager = iOManager ?? throw new ArgumentNullException(nameof(iOManager));
+            _hTTPService = hTTPService ?? throw new ArgumentNullException(nameof(hTTPService));
+            _wallpaperService = wallpaperService ?? throw new ArgumentNullException(nameof(wallpaperService));
         }
 
         public ICommand SaveImageAs => new RelayCommand(async () =>
@@ -39,12 +43,12 @@ namespace SpotLightUWP.ViewModels
 
         public ICommand SetAsWallpaper => new RelayCommand(async () =>
        {
-           await WallpaperService.SetAsAsync(SelectedImage.URI);
+           await _wallpaperService.SetAsAsync(SelectedImage.URI);
        });
 
         public ICommand SetAsLockscreen => new RelayCommand(async () =>
         {
-            await WallpaperService.SetAsAsync(SelectedImage.URI, setAs: SetAs.Lockscreen);
+            await _wallpaperService.SetAsAsync(SelectedImage.URI, setAs: SetAs.Lockscreen);
         });
 
         public ICommand ToLeft => new RelayCommand(async () => await MoveLeft());
@@ -55,7 +59,7 @@ namespace SpotLightUWP.ViewModels
         public async Task InitializeAsync(ImageDetailNavigationParams imageDetailNavigationArgs, NavigationMode navigationMode)
         {
             Source = imageDetailNavigationArgs.Source;
-            _count = _httpService.GetCount();
+            _count = _hTTPService.GetCount();
             if (!string.IsNullOrEmpty(imageDetailNavigationArgs.Id) && navigationMode == NavigationMode.New)
             {
                 SelectedImage = Source.FirstOrDefault(i => i.Id == imageDetailNavigationArgs.Id);
@@ -69,11 +73,12 @@ namespace SpotLightUWP.ViewModels
                 var selectedImageId = await ApplicationData.Current.LocalSettings.ReadAsync<string>(SpotlightViewModel.ImageGallerySelectedIdKey);
                 if (!string.IsNullOrEmpty(selectedImageId))
                 {
-                    SelectedImage = Source.FirstOrDefault(i => i.Id == selectedImageId);
+                    SelectedImage
+                        = Source.FirstOrDefault(i => i.Id == selectedImageId);
                 }
             }
-
-            SelectedImage.URI = await _httpService.DownloadByIdAsync(ImageNameManager.GetId(SelectedImage.Name), SelectedImage.Name);
+           
+            SelectedImage.URI = await _hTTPService.DownloadByIdAsync(ImageNameManager.GetId(SelectedImage.Name), SelectedImage.Name,null, _iOManager.DownloadPath);
             RaisePropertyChanged(nameof(SelectedImage));
 
             var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(SpotlightViewModel.ImageGalleryAnimationOpen);
@@ -82,7 +87,7 @@ namespace SpotLightUWP.ViewModels
 
         public async Task<string> DownLoadSelectedAsync()
         {
-            return await _httpService.DownLoadAsync(new Uri(SelectedImage.URI), IOManager.ResultPathGenerator(SelectedImage.URI, IOManager.DownloadPath, SelectedImage.Id, SelectedImage.Name));
+            return await _hTTPService.DownLoadAsync(new Uri(SelectedImage.URI), ImageNameManager.ResultPathGenerator(SelectedImage.URI, _iOManager.DownloadPath, SelectedImage.Id, SelectedImage.Name));
         }
 
         public async Task MoveLeft()
@@ -91,7 +96,7 @@ namespace SpotLightUWP.ViewModels
             if (Source.Any(e => e.Id == newId))
             {
                 SelectedImage = Source.FirstOrDefault(e => e.Id == newId);
-                SelectedImage.URI = await _httpService.DownloadByIdAsync(newId, SelectedImage.Name, IOManager.ResultPathGenerator(SelectedImage.URI, IOManager.DownloadPath, SelectedImage.Id, SelectedImage.Name));
+                SelectedImage.URI = await _hTTPService.DownloadByIdAsync(newId, SelectedImage.Name, ImageNameManager.ResultPathGenerator(SelectedImage.URI, _iOManager.DownloadPath, SelectedImage.Id, SelectedImage.Name), null);
                 RaisePropertyChanged(nameof(SelectedImage));
             }
         }
@@ -102,7 +107,7 @@ namespace SpotLightUWP.ViewModels
             if (Source.Any(e => e.Id == newId))
             {
                 SelectedImage = Source.FirstOrDefault(e => e.Id == newId);
-                SelectedImage.URI = await _httpService.DownloadByIdAsync(newId, SelectedImage.Name, IOManager.ResultPathGenerator(SelectedImage.URI, IOManager.DownloadPath, SelectedImage.Id, SelectedImage.Name));
+                SelectedImage.URI = await _hTTPService.DownloadByIdAsync(newId, SelectedImage.Name, ImageNameManager.ResultPathGenerator(SelectedImage.URI, _iOManager.DownloadPath, SelectedImage.Id, SelectedImage.Name), null);
                 RaisePropertyChanged(nameof(SelectedImage));
             }
         }
@@ -114,7 +119,7 @@ namespace SpotLightUWP.ViewModels
 
         private async Task SaveItem()
         {
-            await IOManager.SaveImageAs(SelectedImage.URI);
+            await _iOManager.SaveImageAs(SelectedImage.URI);
         }
 
         private string GetNewId(bool toLeft = true)

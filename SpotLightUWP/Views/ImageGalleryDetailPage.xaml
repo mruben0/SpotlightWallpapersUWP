@@ -2,9 +2,10 @@
     x:Class="SpotLightUWP.Views.ImageGalleryDetailPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Windows10version1809="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:SpotLightUWP.Models"
+    xmlns:models="using:SpotLightUWP.Core.Models"
     DataContext="{Binding ImageGalleryDetailViewModel, Source={StaticResource Locator}}"
     KeyDown="OnKeyDown"
     mc:Ignorable="d">
@@ -16,10 +17,10 @@
 
         <Image
             x:Name="detailImage"
+            Windows10version1809:CanBeScrollAnchor="True"
+            CanDrag="True"
             Source="{x:Bind ViewModel.SelectedImage.URI, Mode=OneWay}"
-            Stretch="UniformToFill" />
-
-        <Grid x:Name="shapeGrid" Background="{ThemeResource FlipViewBackground}" />
+            Stretch="Uniform" />
 
         <Button
             Command="{x:Bind ViewModel.ToLeft}"
@@ -36,7 +37,10 @@
             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76C;" />
         </Button>
 
-        <Image x:Name="previewImage" Style="{StaticResource DetailImageStyle}" />
+        <Image
+            x:Name="previewImage"
+            Stretch="Uniform"
+            Style="{StaticResource DetailImageStyle}" />
 
         <StackPanel
             Margin="10"

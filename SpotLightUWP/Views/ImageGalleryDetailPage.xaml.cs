@@ -1,6 +1,4 @@
-﻿using System;
-
-using SpotLightUWP.Models;
+﻿using SpotLightUWP.Core.Models;
 using SpotLightUWP.Services;
 using SpotLightUWP.ViewModels;
 

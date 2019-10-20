@@ -1,5 +1,7 @@
-﻿using SpotLightUWP.Helpers;
-using SpotLightUWP.Models;
+﻿using SpotLightUWP.Core.Helpers;
+using SpotLightUWP.Core.Models;
+using SpotLightUWP.Helpers;
+using SpotLightUWP.Services.Base;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,15 +15,13 @@ using Windows.UI.Xaml;
 
 namespace SpotLightUWP.Services
 {
-    public class IOManager
+    
+    public class IOManager : IIOManager
     {
-        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-        private ImageNameManager ImageNameManager => Locator.ImageNameManager;
         private string _downloadPath;
         private string _templatePath;
         public string _downloadedfolder;
         private string _templateFolder;
-        private bool _Initialized;
 
         public IOManager()
         {
@@ -38,7 +38,7 @@ namespace SpotLightUWP.Services
             }
             else
             {
-                _downloadedfolder = "BingDownloadedFolder";
+                _downloadedfolder = "BingDownloaded";
                 _templateFolder = "BingTemplates";
             }
 
@@ -52,19 +52,7 @@ namespace SpotLightUWP.Services
             {
                 Directory.CreateDirectory(TemplatePath);
             }
-        }
-
-        public string ResultPathGenerator(string url, string path, string id = null, string name = null)
-        {
-            string _name = name ?? Path.GetFileName(url);
-            if (id != null)
-            {
-                _name = $"__{id}__" + _name;
-            }
-            // var cleanName = ImageNameManager.CreateName(_name);
-            string resultPath = Path.Combine(path, _name);
-            return resultPath.Replace("'", string.Empty);
-        }
+        }     
 
         public async Task DownloadImages(List<ImageDTO> imageDTOs, int page, bool AsTemplate = true)
         {
@@ -79,7 +67,7 @@ namespace SpotLightUWP.Services
             }
             else
             {
-                downloadFolder = Path.Combine(DownloadPath, page.ToString()); ;
+                downloadFolder = Path.Combine(DownloadPath, page.ToString());
                 foreach (var imagedto in imageDTOs)
                 {
                     await DownloadImage(imagedto.URI, imagedto.Id ?? null, imagedto.Name, downloadFolder);
@@ -93,7 +81,7 @@ namespace SpotLightUWP.Services
             var newName = name.Replace(" ", string.Empty).Replace("'", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty);
             using (WebClient client = new WebClient())
             {
-                var path = ResultPathGenerator(Url, _path, id, newName);
+                var path = ImageNameManager.ResultPathGenerator(Url, _path, id, newName);
                 if (!File.Exists(path))
                 {
                     if (!Directory.Exists(new FileInfo(path).Directory.FullName))

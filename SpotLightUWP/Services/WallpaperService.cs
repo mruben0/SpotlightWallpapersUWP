@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SpotLightUWP.Services.Base;
+using System;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.System.UserProfile;
 
-
 namespace SpotLightUWP.Services
 {
-    public class WallpaperService
+    public class WallpaperService : IWallpaperService
     {
         public async Task PickAndSetWallpaper()
         {
@@ -23,12 +20,12 @@ namespace SpotLightUWP.Services
 
             Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
             if (file != null)
-            {               
-                await SetAsAsync(image:file);
+            {
+                await SetAsAsync(image: file);
             }
         }
 
-        public async Task<bool> SetAsAsync(string Uri = null,StorageFile image = null , SetAs setAs = SetAs.Wallpaper)
+        public async Task<bool> SetAsAsync(string Uri = null, StorageFile image = null, SetAs setAs = SetAs.Wallpaper)
         {
             bool success = false;
             StorageFile file;
@@ -37,14 +34,12 @@ namespace SpotLightUWP.Services
                 try
                 {
                     file = image ?? await StorageFile.GetFileFromPathAsync(Uri) ?? throw new ArgumentNullException(nameof(image));
-
                 }
                 catch (Exception ex)
                 {
-
                     throw;
                 }
-               
+
                 var wallpaperPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Wallpaper");
                 if (!Directory.Exists(wallpaperPath))
                 {
@@ -52,7 +47,7 @@ namespace SpotLightUWP.Services
                 }
 
                 IStorageFolder wallpaperFolder = await StorageFolder.GetFolderFromPathAsync(wallpaperPath);
-                var copiedFile = await file.CopyAsync(wallpaperFolder, file.Name,NameCollisionOption.ReplaceExisting);
+                var copiedFile = await file.CopyAsync(wallpaperFolder, file.Name, NameCollisionOption.ReplaceExisting);
                 UserProfilePersonalizationSettings profileSettings = UserProfilePersonalizationSettings.Current;
                 if (setAs == SetAs.Wallpaper)
                 {

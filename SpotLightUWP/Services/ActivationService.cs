@@ -1,13 +1,10 @@
-﻿using System;
+﻿using SpotLightUWP.Activation;
+using SpotLightUWP.Core.Base;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
-using SpotLightUWP.Activation;
-
 using Windows.ApplicationModel.Activation;
-using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -22,13 +19,12 @@ namespace SpotLightUWP.Services
         private readonly Type _defaultNavItem;
 
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-        private HTTPService _hTTPService => Locator.HTTPService;
-        private IOManager IOManager => Locator.IOManager;
-        private DialogService DialogService => Locator.DialogService;
+
         private NavigationServiceEx NavigationService => Locator.NavigationService;
 
         public ActivationService(App app, Type defaultNavItem, Lazy<UIElement> shell = null)
         {
+            CommonServiceLocator.ServiceLocator.Current.GetInstance<IHTTPService>();
             _app = app;
             _shell = shell;
             _defaultNavItem = defaultNavItem;
@@ -39,7 +35,7 @@ namespace SpotLightUWP.Services
             if (IsInteractive(activationArgs))
             {
                 await InitializeAsync();
-               
+
                 if (Window.Current.Content == null)
                 {
                     Window.Current.Content = _shell?.Value ?? new Frame();
@@ -112,6 +108,5 @@ namespace SpotLightUWP.Services
                 e.Handled = true;
             }
         }
-
     }
 }

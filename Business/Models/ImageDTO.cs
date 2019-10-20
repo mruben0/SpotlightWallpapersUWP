@@ -1,4 +1,4 @@
-﻿namespace SpotLightUWP.Models
+﻿namespace SpotLightUWP.Core.Models
 {
     public class ImageDTO
     {

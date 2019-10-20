@@ -1,36 +1,47 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using SpotLightUWP.Core.Base;
+using SpotLightUWP.Core.Helpers;
+using SpotLightUWP.Core.Models;
+using SpotLightUWP.Services.Base;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
-using SpotLightUWP.Helpers;
-using SpotLightUWP.Models;
 using Windows.Storage;
-using Windows.UI.Xaml;
 
 namespace SpotLightUWP.Services
 {
-    public class DataService : ObservableObject
+    public class DataService : ObservableObject, IDataService
     {
-        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-        private ImageNameManager ImageNameManager => Locator.ImageNameManager;
-        private HTTPService _hTTPService => Locator.HTTPService;
-        private BingHTTPService _bingHTTPService => Locator.BingHTTPService;
-        public IOManager iOManager => Locator.IOManager;
-        private DialogService DialogService => Locator.DialogService;
         private ObservableCollection<ImageDTO> _source;
         private int _updateDate;
+        private readonly IHTTPService _httpService;
+        private readonly IBingHTTPService _bingHTTPService;
+        private readonly IIOManager _iOManager;
+        private readonly IDialogService _dialogService;
         public StorageFolder AppdataFolder => ApplicationData.Current.LocalFolder;
         private string _datefilePath => Path.Combine(AppdataFolder.Path, "dt");
         private IOManagerParams _iOManagerParams;
+
+        public DataService(IHTTPService httpService,
+                           IBingHTTPService bingHTTPService,
+                           IIOManager iOManager,
+                           IDialogService dialogService)
+        {
+            _httpService = httpService ?? throw new ArgumentNullException(nameof(httpService));
+            _bingHTTPService = bingHTTPService ?? throw new ArgumentNullException(nameof(bingHTTPService));
+            _iOManager = iOManager ?? throw new ArgumentNullException(nameof(iOManager));
+            _dialogService = dialogService ?? throw new ArgumentNullException(nameof(dialogService));
+            _iOManager.Initialize();
+        }
 
         public async Task InitializeAsync(int page, IOManagerParams @params)
         {
             ImageDTOList = new List<ImageDTO>();
             _iOManagerParams = @params;
-            iOManager.Initialize(_iOManagerParams);
+            _iOManager.Initialize(_iOManagerParams);
 
             bool success = await GetAllDataFromServerAsync(page);
             if (success)
@@ -45,11 +56,11 @@ namespace SpotLightUWP.Services
 
             if (IsTemplate)
             {
-                dataFolder = await StorageFolder.GetFolderFromPathAsync(Path.Combine(iOManager.TemplatePath, page.ToString()));
+                dataFolder = await StorageFolder.GetFolderFromPathAsync(Path.Combine(_iOManager.TemplatePath, page.ToString()));
             }
             else
             {
-                dataFolder = await StorageFolder.GetFolderFromPathAsync(Path.Combine(iOManager.DownloadPath, page.ToString()));
+                dataFolder = await StorageFolder.GetFolderFromPathAsync(Path.Combine(_iOManager.DownloadPath, page.ToString()));
             }
 
             var data = new ObservableCollection<ImageDTO>();
@@ -74,7 +85,7 @@ namespace SpotLightUWP.Services
         {
             if (_iOManagerParams == IOManagerParams.SpotLight)
             {
-                ImageDTOList = await _hTTPService.GetPhotosByPageAsync(page);
+                ImageDTOList = await _httpService.GetPhotosByPageAsync(page);
             }
             else
             {
@@ -84,7 +95,7 @@ namespace SpotLightUWP.Services
 
             if (ImageDTOList.Count > 0 && _iOManagerParams == IOManagerParams.SpotLight)
             {
-                await iOManager.DownloadImages(ImageDTOList, page, IsTemplate);
+                await _iOManager.DownloadImages(ImageDTOList, page, IsTemplate);
 
                 return true;
             }
@@ -98,24 +109,7 @@ namespace SpotLightUWP.Services
         public async Task DownloadById(string ID)
         {
             var image = Source.FirstOrDefault(i => i.Id == ID);
-            await iOManager.DownloadImage(image.URI);
-        }
-
-        private int GetBaseDate()
-        {
-            if (File.Exists(_datefilePath))
-            {
-                using (var sr = new StreamReader(_datefilePath))
-                {
-                    var date = sr.ReadLine();
-                    return Convert.ToInt32(date);
-                }
-            }
-            else
-            {
-                File.Create(_datefilePath).Dispose();
-                return 0;
-            }
+            await _iOManager.DownloadImage(image.URI);
         }
 
         public ObservableCollection<ImageDTO> Source
@@ -124,7 +118,7 @@ namespace SpotLightUWP.Services
             set => Set(ref _source, value);
         }
 
-        public List<ImageDTO> ImageDTOList;
+        public List<ImageDTO> ImageDTOList { get; set; }
 
         public int UpdateDate
         {

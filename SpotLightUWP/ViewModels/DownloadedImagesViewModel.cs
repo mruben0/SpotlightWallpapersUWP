@@ -1,18 +1,16 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using SpotLightUWP.Core.Base;
+using SpotLightUWP.Core.Models;
 using SpotLightUWP.Helpers;
-using SpotLightUWP.Models;
 using SpotLightUWP.Services;
-using System;
-using System.Collections.Generic;
+using SpotLightUWP.Services.Base;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Text;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Storage;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
@@ -20,16 +18,14 @@ namespace SpotLightUWP.ViewModels
 {
     public class DownloadedImagesViewModel : ViewModelBase
     {
-        private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
-
         public const string ImageGallerySelectedIdKey = "ImageGallerySelectedIdKey";
         public const string ImageGalleryAnimationOpen = "ImageGallery_AnimationOpen";
         public const string ImageGalleryAnimationClose = "ImageGallery_AnimationClose";
-        private DataService _dataService;
+        private readonly IHTTPService _httpService;
+        private readonly IIOManager _iOManager;
+        private readonly IDataService _dataService;
         private object _selected;
         private bool _isLoaded;
-        private IOManager _iOManager => Locator.IOManager;
-        private HTTPService _httpService => Locator.HTTPService;
         private static string _downloadPath;
         private static string _templatePath;
         private ObservableCollection<ImageDTO> _source;
@@ -38,13 +34,15 @@ namespace SpotLightUWP.ViewModels
 
         private GridView _imagesGridView;
 
-        public DownloadedImagesViewModel()
+        public DownloadedImagesViewModel(IHTTPService httpService, IIOManager iOManager, IDataService dataService)
         {
             IsLoaded = false;
+            _httpService = httpService ?? throw new System.ArgumentNullException(nameof(httpService));
+            _iOManager = iOManager ?? throw new System.ArgumentNullException(nameof(iOManager));
+            _dataService = dataService ?? throw new System.ArgumentNullException(nameof(dataService));
             _lastPage = 1;
             _downloadPath = _iOManager.DownloadPath;
             _templatePath = _iOManager.TemplatePath;
-            DataService = new DataService();
         }
 
         public ICommand ItemSelectedCommand => new RelayCommand<ItemClickEventArgs>(OnsItemSelected);
@@ -61,7 +59,7 @@ namespace SpotLightUWP.ViewModels
 
         public async Task InitializeAsync(GridView imagesGridView)
         {
-            DataService.iOManager.Initialize();
+            _iOManager.Initialize();
             if (Source == null || Source?.Count == 0)
             {
                 await UpdateSourceAsync(1);
@@ -89,8 +87,8 @@ namespace SpotLightUWP.ViewModels
 
         private async Task UpdateSourceAsync(int page)
         {
-            _count = 14; // todo: fix
-            Source = await DataService.GetGalleryDataAsync(page, false);
+            _count = 14;
+            Source = await _dataService.GetGalleryDataAsync(page, false);
         }
 
         private async Task EraseDownloaded()
@@ -150,12 +148,6 @@ namespace SpotLightUWP.ViewModels
         {
             get => _source;
             set => Set(ref _source, value);
-        }
-
-        public DataService DataService
-        {
-            get { return _dataService; }
-            set { _dataService = value; }
         }
 
         public bool IsLoaded

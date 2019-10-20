@@ -4,9 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:converters="using:SpotLightUWP.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:SpotLightUWP.Models"
+    xmlns:models="using:SpotLightUWP.Core.Models"
     DataContext="{Binding BingImageViewModel, Source={StaticResource Locator}}"
     KeyDown="OnKeyDown"
     mc:Ignorable="d">
@@ -17,16 +18,11 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <Image
-            x:Name="detailImage"
-            Source="{x:Bind ViewModel.ImgPath, Mode=OneWay}"
-            Stretch="UniformToFill" />
-
-        <Grid x:Name="shapeGrid" Background="{ThemeResource FlipViewBackground}" />
+        <Image Source="{x:Bind ViewModel.ImgPath, Mode=OneWay}" Stretch="Uniform" />
 
         <Button
             Command="{x:Bind ViewModel.ToLeft}"
-            Foreground="WhiteSmoke"
+            Foreground="White"
             Opacity=".5">
             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76B;" />
         </Button>
@@ -34,13 +30,13 @@
         <Button
             HorizontalAlignment="Right"
             Command="{x:Bind ViewModel.ToRight}"
-            Foreground="WhiteSmoke"
+            Foreground="White"
             Opacity=".5">
             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76C;" />
         </Button>
 
         <StackPanel
-            Margin="10"
+            Margin="15"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Orientation="Horizontal">
