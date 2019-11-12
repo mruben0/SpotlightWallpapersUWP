@@ -35,6 +35,7 @@ namespace SpotLightUWP.ViewModels
         private int _count;
         private GridView _imagesGridView;
         private int _maxPagesCount;
+        private IOManagerParams _managerParams;
 
         public SpotlightViewModel(IDataService dataService, IIOManager iOManager, IHTTPService hTTPService)
         {
@@ -59,8 +60,9 @@ namespace SpotLightUWP.ViewModels
 
         public ICommand ToRight => new RelayCommand(async () => await MoveRightAsync());
 
-        public async Task InitializeAsync(GridView imagesGridView)
+        public async Task InitializeAsync(GridView imagesGridView, IOManagerParams managerParams = IOManagerParams.SpotLight)
         {
+            _managerParams = managerParams;
             _count = _hTTPService.GetCount();
             _maxPagesCount = (int)Math.Floor((decimal)_count / 14);
             _lastPage = _maxPagesCount;
@@ -107,8 +109,17 @@ namespace SpotLightUWP.ViewModels
 
         private async Task<ObservableCollection<ImageDTO>> UpdateSourceAsync(int page)
         {
-            await _dataService.InitializeAsync(page, IOManagerParams.SpotLight);
-            return _dataService.Source;
+            var source = new ObservableCollection<ImageDTO>();
+            if (_managerParams == IOManagerParams.SpotLight)
+            {
+                await _dataService.InitializeAsync(page, _managerParams);
+                source = _dataService.Source;
+            }
+            else if (_managerParams == IOManagerParams.Local)
+            {
+
+            }
+            return source;
         }
 
         private async Task EraseDownloaded()

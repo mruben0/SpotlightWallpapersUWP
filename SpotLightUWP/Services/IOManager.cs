@@ -36,10 +36,15 @@ namespace SpotLightUWP.Services
                 _downloadedfolder = "DownloadedFolder";
                 _templateFolder = "Templates";
             }
-            else
+            else if(@params == IOManagerParams.Bing)
             {
                 _downloadedfolder = "BingDownloaded";
                 _templateFolder = "BingTemplates";
+            }
+            else
+            {
+                _downloadedfolder = "LocalDownloaded";
+                _templateFolder = "LocalTemplates";
             }
 
             DownloadPath = Path.Combine(appdata.Path, _downloadedfolder);
