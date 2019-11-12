@@ -5,9 +5,10 @@ namespace SpotLightUWP.Services
 {
     public class DialogService : IDialogService
     {
-        public async Task ShowAlertAsync(string message)
+        public async Task ShowAlertAsync(string title, string message = "")
         {
-            var dialog = new Windows.UI.Popups.MessageDialog(message);
+            var dialog = new Windows.UI.Popups.MessageDialog(message, title);
+
             await dialog.ShowAsync();
         }
     }

@@ -72,11 +72,20 @@ namespace SpotLightUWP.ViewModels
         public ICommand SetAsWallpaper => new RelayCommand(async () =>
         {
             await _wallpaperService.SetAsAsync(ImgPath);
+            await _dialogService.ShowAlertAsync("DONE", "Wallpaper successfully has been set");
         });
 
         public ICommand SetAsLockscreen => new RelayCommand(async () =>
         {
             await _wallpaperService.SetAsAsync(ImgPath, setAs: SetAs.Lockscreen);
+            await _dialogService.ShowAlertAsync("Done","LockScreen successfully has been set");
+        });
+
+        public ICommand SethBothCommand => new RelayCommand(async () =>
+        {
+            await _wallpaperService.SetAsAsync(ImgPath);
+            await _wallpaperService.SetAsAsync(ImgPath, setAs: SetAs.Lockscreen);
+            await _dialogService.ShowAlertAsync("DONE", "Wallpaper and LockScreen successfully has been set");
         });
 
         public ICommand ToLeft => new RelayCommand(async () => await MoveLeft(), _id > 0);

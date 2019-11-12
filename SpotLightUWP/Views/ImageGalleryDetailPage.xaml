@@ -72,6 +72,12 @@
                                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEE3F;" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
+
+                        <MenuFlyoutItem Command="{x:Bind ViewModel.SethBothCommand}" Text="Set Both">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEB82;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
                     </MenuFlyout>
                 </Button.Flyout>
             </Button>

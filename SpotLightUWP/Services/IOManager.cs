@@ -22,6 +22,7 @@ namespace SpotLightUWP.Services
         private string _templatePath;
         public string _downloadedfolder;
         private string _templateFolder;
+        private string _settingsPath;
 
         public IOManager()
         {
@@ -46,6 +47,8 @@ namespace SpotLightUWP.Services
                 _downloadedfolder = "LocalDownloaded";
                 _templateFolder = "LocalTemplates";
             }
+            SettingsPath = Path.Combine(appdata.Path, "Settings.s");
+
 
             DownloadPath = Path.Combine(appdata.Path, _downloadedfolder);
             TemplatePath = Path.Combine(appdata.Path, _templateFolder);
@@ -56,6 +59,12 @@ namespace SpotLightUWP.Services
             if (!Directory.Exists(TemplatePath))
             {
                 Directory.CreateDirectory(TemplatePath);
+            }
+
+            if (!File.Exists(SettingsPath))
+            {
+                var file = File.Create(SettingsPath);
+                file.Dispose();
             }
         }     
 
@@ -105,6 +114,16 @@ namespace SpotLightUWP.Services
             }
         }
 
+        public string GetSavedDTOS()
+        {
+            return File.ReadAllText(SettingsPath);
+        }
+
+        public void SaveToFile(string content)
+        {
+            File.WriteAllText(SettingsPath, content);
+        }
+
         public async Task SaveImageAs(string imageUri)
         {
             StorageFile currentImage = await StorageFile.GetFileFromPathAsync(imageUri);
@@ -129,7 +148,7 @@ namespace SpotLightUWP.Services
 
         public void EraseDownloaded()
         {
-            var foldersToErase = new[] { "DownloadedFolder", "Templates", "BingDownloadedFolder" };
+            var foldersToErase = new[] { "DownloadedFolder", "Templates", "BingDownloaded" };
             var appdata = ApplicationData.Current.LocalFolder;
 
             foreach (var folderName in foldersToErase)
@@ -156,6 +175,14 @@ namespace SpotLightUWP.Services
             get { return _downloadPath; }
             set { _downloadPath = value; }
         }
+
+
+        public string SettingsPath
+        {
+            get { return _settingsPath; }
+            set { _settingsPath = value; }
+        }
+
 
         public string TemplatePath
         {

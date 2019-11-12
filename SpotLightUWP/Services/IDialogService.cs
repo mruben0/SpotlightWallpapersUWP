@@ -4,6 +4,6 @@ namespace SpotLightUWP.Services
 {
     public interface IDialogService
     {
-        Task ShowAlertAsync(string message);
+        Task ShowAlertAsync(string title, string message = "");
     }
 }

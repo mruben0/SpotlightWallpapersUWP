@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using SpotLightUWP.Core.Base;
 using SpotLightUWP.Core.Helpers;
@@ -12,6 +6,11 @@ using SpotLightUWP.Core.Models;
 using SpotLightUWP.Helpers;
 using SpotLightUWP.Services;
 using SpotLightUWP.Services.Base;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Animation;
@@ -29,12 +28,17 @@ namespace SpotLightUWP.ViewModels
         private readonly IIOManager _iOManager;
         private readonly IHTTPService _hTTPService;
         private readonly IWallpaperService _wallpaperService;
+        private readonly IDialogService _dialogService;
 
-        public ImageGalleryDetailViewModel(IIOManager iOManager, IHTTPService hTTPService, IWallpaperService wallpaperService)
+        public ImageGalleryDetailViewModel(IIOManager iOManager,
+            IHTTPService hTTPService,
+            IWallpaperService wallpaperService,
+            IDialogService dialogService)
         {
             _iOManager = iOManager ?? throw new ArgumentNullException(nameof(iOManager));
             _hTTPService = hTTPService ?? throw new ArgumentNullException(nameof(hTTPService));
             _wallpaperService = wallpaperService ?? throw new ArgumentNullException(nameof(wallpaperService));
+            _dialogService = dialogService ?? throw new ArgumentNullException(nameof(dialogService));
         }
 
         public ICommand SaveImageAs => new RelayCommand(async () =>
@@ -44,11 +48,20 @@ namespace SpotLightUWP.ViewModels
         public ICommand SetAsWallpaper => new RelayCommand(async () =>
        {
            await _wallpaperService.SetAsAsync(SelectedImage.URI);
+           await _dialogService.ShowAlertAsync("DONE", "Wallpaper successfully has been set");
        });
 
         public ICommand SetAsLockscreen => new RelayCommand(async () =>
         {
             await _wallpaperService.SetAsAsync(SelectedImage.URI, setAs: SetAs.Lockscreen);
+            await _dialogService.ShowAlertAsync("Done", "LockScreen successfully has been set");
+        });
+
+        public ICommand SethBothCommand => new RelayCommand(async () =>
+        {
+            await _wallpaperService.SetAsAsync(SelectedImage.URI);
+            await _wallpaperService.SetAsAsync(SelectedImage.URI, setAs: SetAs.Lockscreen);
+            await _dialogService.ShowAlertAsync("DONE", "Wallpaper and LockScreen successfully has been set");
         });
 
         public ICommand ToLeft => new RelayCommand(async () => await MoveLeft());
@@ -77,8 +90,8 @@ namespace SpotLightUWP.ViewModels
                         = Source.FirstOrDefault(i => i.Id == selectedImageId);
                 }
             }
-           
-            SelectedImage.URI = await _hTTPService.DownloadByIdAsync(ImageNameManager.GetId(SelectedImage.Name), SelectedImage.Name,null, _iOManager.DownloadPath);
+
+            SelectedImage.URI = await _hTTPService.DownloadByIdAsync(ImageNameManager.GetId(SelectedImage.Name), SelectedImage.Name, null, _iOManager.DownloadPath);
             RaisePropertyChanged(nameof(SelectedImage));
 
             var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(SpotlightViewModel.ImageGalleryAnimationOpen);
