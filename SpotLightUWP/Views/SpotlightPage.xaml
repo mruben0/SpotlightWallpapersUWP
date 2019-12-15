@@ -33,6 +33,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+
         </Grid.RowDefinitions>
         <ProgressBar
             Grid.Row="0"
@@ -43,49 +45,54 @@
             Visibility="{x:Bind ViewModel.IsLoaded, Mode=OneWay, Converter={StaticResource invertedBoolToVis}}" />
 
         <StackPanel
-            Grid.Row="1"
+            Grid.Row="2"
             Margin="10"
             VerticalAlignment="Bottom"
-            Canvas.ZIndex="7"
+            Background="WhiteSmoke"
             Orientation="Horizontal">
-            <Button
-                Margin="5"
-                Command="{x:Bind ViewModel.ToLeft}"
-                IsEnabled="{Binding CanTurnLeft}">
-                <FontIcon
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontFamily="Segoe MDL2 Assets"
-                    Glyph="&#xE76B;" />
-            </Button>
+            <StackPanel
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Orientation="Horizontal">
+                <Button
+                    Margin="5"
+                    Command="{x:Bind ViewModel.ToLeft}"
+                    IsEnabled="{Binding CanTurnLeft}">
+                    <FontIcon
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontFamily="Segoe MDL2 Assets"
+                        Glyph="&#xE76B;" />
+                </Button>
 
-            <Button>
-                <FontIcon
-                    FlowDirection="LeftToRight"
-                    FontFamily="Segoe MDL2 Assets"
-                    Glyph="&#xEDE3;" />
-                <Button.Flyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem Command="{x:Bind ViewModel.EraseImages}" Text="Delete Downloaded">
-                            <MenuFlyoutItem.Icon>
-                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE74D;" />
-                            </MenuFlyoutItem.Icon>
-                        </MenuFlyoutItem>
-                    </MenuFlyout>
-                </Button.Flyout>
-            </Button>
+                <Button>
+                    <FontIcon
+                        FlowDirection="LeftToRight"
+                        FontFamily="Segoe MDL2 Assets"
+                        Glyph="&#xEDE3;" />
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Command="{x:Bind ViewModel.EraseImages}" Text="Delete Downloaded">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE74D;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
 
-            <Button
-                Margin="5"
-                HorizontalAlignment="Right"
-                Command="{x:Bind ViewModel.ToRight}"
-                IsEnabled="{Binding CanTurnRight}">
-                <FontIcon
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontFamily="Segoe MDL2 Assets"
-                    Glyph="&#xE76C;" />
-            </Button>
+                <Button
+                    Margin="5"
+                    HorizontalAlignment="Right"
+                    Command="{x:Bind ViewModel.ToRight}"
+                    IsEnabled="{Binding CanTurnRight}">
+                    <FontIcon
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontFamily="Segoe MDL2 Assets"
+                        Glyph="&#xE76C;" />
+                </Button>
+            </StackPanel>
 
             <UI:AdControl
                 Width="300"
@@ -93,15 +100,19 @@
                 Margin="100,0,0,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                AdUnitId=""
-                ApplicationId=""
+                AdUnitId="1100060720"
+                ApplicationId="9n8f961bk1hc"
                 CanDrag="True" />
+
         </StackPanel>
 
         <GridView
             x:Name="gridView"
             Grid.Row="1"
             Padding="{StaticResource MediumLeftRightMargin}"
+            Background="AliceBlue"
+            BorderBrush="Azure"
+            BorderThickness="1"
             IsItemClickEnabled="True"
             ItemsSource="{x:Bind ViewModel.Source, Mode=OneWay}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=TwoWay}"
@@ -122,7 +133,7 @@
                         Height="135"
                         AutomationProperties.Name="{x:Bind Name, Mode=OneWay}"
                         Source="{x:Bind URI, Mode=OneWay}"
-                        Stretch="UniformToFill"
+                        Stretch="Uniform"
                         Style="{StaticResource ThumbnailImageStyle}"
                         ToolTipService.ToolTip="{x:Bind Name, Mode=OneWay}" />
                 </DataTemplate>

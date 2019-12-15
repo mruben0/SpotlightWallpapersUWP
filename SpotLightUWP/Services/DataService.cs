@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI.Xaml;
 
 namespace SpotLightUWP.Services
 {
@@ -97,17 +98,23 @@ namespace SpotLightUWP.Services
 
             }
 
-            if (ImageDTOList.Count > 0 && _iOManagerParams == IOManagerParams.SpotLight)
+            if (ImageDTOList.Count > 0)
             {
-                await _iOManager.DownloadImages(ImageDTOList, page, IsTemplate);
+                if (_iOManagerParams == IOManagerParams.SpotLight)
+                {
+                    await _iOManager.DownloadImages(ImageDTOList, page, IsTemplate);
 
-                return true;
+                    return true;
+                }             
             }
             else
             {
-                return false;
-                //notif about internet connection
+                //notify about internet connection
+                await _dialogService.ShowAlertAsync("Please Check your internet connection");
+                Application.Current.Exit();
             }
+
+            return false;
         }
 
         public async Task DownloadById(string ID)

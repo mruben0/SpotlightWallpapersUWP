@@ -11,6 +11,7 @@
     DataContext="{Binding ShellViewModel, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
+
     <NavigationView
         x:Name="navigationView"
         Windows10version1803:IsBackButtonVisible="Collapsed"

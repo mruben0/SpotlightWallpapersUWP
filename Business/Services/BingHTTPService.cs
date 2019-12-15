@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Core.Base;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RestSharp;
 using SpotLightUWP.Core.Base;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SpotLightUWP.Core.Services
 {
-    public class BingHTTPService : IBingHTTPService
+    public class BingHTTPService : BaseHttpService, IBingHTTPService
     {
         public List<ImageDTO> imageDTOs;
         private static IConfiguration _configuration;
@@ -31,7 +32,7 @@ namespace SpotLightUWP.Core.Services
 
             request.AddParameter("idx", 1, ParameterType.UrlSegment);
 
-            var queryResult = await ExecuteAsync(request);
+            var queryResult = await ExecuteAsync(_client, request);
             if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var bingImageModel = JsonConvert.DeserializeObject<BingImageModel>(queryResult.Content);
@@ -51,12 +52,6 @@ namespace SpotLightUWP.Core.Services
                 }
             }
             return imageDTOs;
-        }
-
-        private async Task<IRestResponse> ExecuteAsync(RestRequest request)
-        {
-            IRestResponse response = await _client.ExecuteTaskAsync(request);
-            return response;
         }
     }
 }

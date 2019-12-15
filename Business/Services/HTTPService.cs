@@ -1,4 +1,5 @@
-﻿using Core.ResponseModels;
+﻿using Core.Base;
+using Core.ResponseModels;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RestSharp;
@@ -15,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace SpotLightUWP.Core.Services
 {
-    public class HTTPService : IHTTPService
+    public class HTTPService : BaseHttpService, IHTTPService
     {
         private static IConfiguration _configuration;
         private readonly string _albumClientUri;
@@ -159,12 +160,6 @@ namespace SpotLightUWP.Core.Services
                 return photosetInfo.Photoset.CountPhotos;
             }
             else return 0;
-        }
-
-        private async Task<IRestResponse> ExecuteAsync(RestClient client, RestRequest request)
-        {
-            IRestResponse response = await client.ExecuteTaskAsync(request);
-            return response;
-        }
+        }       
     }
 }

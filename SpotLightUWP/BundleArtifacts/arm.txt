@@ -1,6 +1,6 @@
-MainPackage=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\bin\ARM\Release\SpotLightUWP_1.4.0.0_ARM.appx
-SymbolPackage=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\obj\ARM\Release\Symbols\SpotLightUWP_1.4.0.0_ARM.appxsym
-ResourcePack=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\bin\ARM\Release\SpotLightUWP_1.4.0.0_scale-100.appx
-ResourcePack=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\bin\ARM\Release\SpotLightUWP_1.4.0.0_scale-125.appx
-ResourcePack=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\bin\ARM\Release\SpotLightUWP_1.4.0.0_scale-150.appx
-ResourcePack=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\bin\ARM\Release\SpotLightUWP_1.4.0.0_scale-400.appx
+MainPackage=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\bin\ARM\Release\SpotLightUWP_1.4.2.0_ARM.appx
+SymbolPackage=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\obj\ARM\Release\Symbols\SpotLightUWP_1.4.2.0_ARM.appxsym
+ResourcePack=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\bin\ARM\Release\SpotLightUWP_1.4.2.0_scale-100.appx
+ResourcePack=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\bin\ARM\Release\SpotLightUWP_1.4.2.0_scale-125.appx
+ResourcePack=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\bin\ARM\Release\SpotLightUWP_1.4.2.0_scale-150.appx
+ResourcePack=D:\Repos\SpotlightWallpapersUWP\SpotLightUWP\bin\ARM\Release\SpotLightUWP_1.4.2.0_scale-400.appx

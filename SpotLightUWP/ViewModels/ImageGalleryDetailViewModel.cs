@@ -73,29 +73,32 @@ namespace SpotLightUWP.ViewModels
         {
             Source = imageDetailNavigationArgs.Source;
             _count = _hTTPService.GetCount();
-            if (!string.IsNullOrEmpty(imageDetailNavigationArgs.Id) && navigationMode == NavigationMode.New)
+            if (_count != 0)
             {
-                SelectedImage = Source.FirstOrDefault(i => i.Id == imageDetailNavigationArgs.Id);
-            }
-            else if (!string.IsNullOrEmpty(imageDetailNavigationArgs.Name) && navigationMode == NavigationMode.New)
-            {
-                SelectedImage = Source.FirstOrDefault(i => i.Name == imageDetailNavigationArgs.Name);
-            }
-            else
-            {
-                var selectedImageId = await ApplicationData.Current.LocalSettings.ReadAsync<string>(SpotlightViewModel.ImageGallerySelectedIdKey);
-                if (!string.IsNullOrEmpty(selectedImageId))
+                if (!string.IsNullOrEmpty(imageDetailNavigationArgs.Id) && navigationMode == NavigationMode.New)
                 {
-                    SelectedImage
-                        = Source.FirstOrDefault(i => i.Id == selectedImageId);
+                    SelectedImage = Source.FirstOrDefault(i => i.Id == imageDetailNavigationArgs.Id);
                 }
-            }
+                else if (!string.IsNullOrEmpty(imageDetailNavigationArgs.Name) && navigationMode == NavigationMode.New)
+                {
+                    SelectedImage = Source.FirstOrDefault(i => i.Name == imageDetailNavigationArgs.Name);
+                }
+                else
+                {
+                    var selectedImageId = await ApplicationData.Current.LocalSettings.ReadAsync<string>(SpotlightViewModel.ImageGallerySelectedIdKey);
+                    if (!string.IsNullOrEmpty(selectedImageId))
+                    {
+                        SelectedImage
+                            = Source.FirstOrDefault(i => i.Id == selectedImageId);
+                    }
+                }
 
-            SelectedImage.URI = await _hTTPService.DownloadByIdAsync(ImageNameManager.GetId(SelectedImage.Name), SelectedImage.Name, null, _iOManager.DownloadPath);
-            RaisePropertyChanged(nameof(SelectedImage));
+                SelectedImage.URI = await _hTTPService.DownloadByIdAsync(ImageNameManager.GetId(SelectedImage.Name), SelectedImage.Name, null, _iOManager.DownloadPath);
+                RaisePropertyChanged(nameof(SelectedImage));
 
-            var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(SpotlightViewModel.ImageGalleryAnimationOpen);
-            animation?.TryStart(_image);
+                var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation(SpotlightViewModel.ImageGalleryAnimationOpen);
+                animation?.TryStart(_image);
+            }           
         }
 
         public async Task<string> DownLoadSelectedAsync()
