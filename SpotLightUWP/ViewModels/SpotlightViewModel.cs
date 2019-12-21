@@ -117,7 +117,6 @@ namespace SpotLightUWP.ViewModels
             }
             else if (_managerParams == IOManagerParams.Local)
             {
-
             }
             return source;
         }
