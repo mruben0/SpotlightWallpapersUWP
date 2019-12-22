@@ -189,6 +189,10 @@
     <value>Light</value>
     <comment>Light theme text for Settings</comment>
   </data>
+  <data name="ChangeWallpaperDaily.Content" xml:space="preserve">
+    <value>Should Change Wallpaper Daily</value>
+    <comment>Should Change Wallpaper Daily</comment>
+  </data>
   <data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
     <comment>About this application title for Settings</comment>

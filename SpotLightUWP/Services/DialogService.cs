@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using System;
 using System.Threading.Tasks;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
@@ -16,13 +17,66 @@ namespace SpotLightUWP.Services
 
         public void ShowNotification(string title, string message)
         {
-            ToastTemplateType toastTemplate = ToastTemplateType.ToastText02;
-            XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(toastTemplate);
-            XmlNodeList textElements = toastXml.GetElementsByTagName("text");
-            textElements[0].AppendChild(toastXml.CreateTextNode(title));
-            textElements[1].AppendChild(toastXml.CreateTextNode(message));
-            var notif = new ToastNotification(toastXml);
-            notif.ExpirationTime = DateTime.Now.AddSeconds(5);
+            ToastContent content = new ToastContent()
+            {
+                Launch = "app-defined-string",
+
+                Visual = new ToastVisual()
+                {
+                    BindingGeneric = new ToastBindingGeneric()
+                    {
+                        Children =
+                              {
+                                  new AdaptiveText()
+                                  {
+                                      Text = title,
+                                      HintMaxLines = 1
+                                  },
+
+                                  new AdaptiveText()
+                                  {
+                                      Text =message
+                                  }
+                              }
+                    }
+                },
+            };
+            var notif = new ToastNotification(content.GetXml());
+            ToastNotificationManager.CreateToastNotifier().Show(notif);
+        }
+
+        public void ShowNotification(string title, string message, string imagePath)
+        {
+            ToastContent content = new ToastContent()
+            {
+                Launch = "app-defined-string",
+
+                Visual = new ToastVisual()
+                {
+                    BindingGeneric = new ToastBindingGeneric()
+                    {
+                        Children =
+                              {
+                                  new AdaptiveText()
+                                  {
+                                      Text = title,
+                                      HintMaxLines = 1
+                                  },
+
+                                  new AdaptiveText()
+                                  {
+                                      Text =message
+                                  },
+                                  new AdaptiveImage()
+                                  {
+                                      Source = imagePath
+                                  }
+                              }
+                    }
+                },
+            };
+            var notif = new ToastNotification(content.GetXml());
+            notif.ExpirationTime = DateTimeOffset.Now.AddDays(1);
             ToastNotificationManager.CreateToastNotifier().Show(notif);
         }
     }

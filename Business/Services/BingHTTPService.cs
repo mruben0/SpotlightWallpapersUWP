@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using RestSharp;
 using SpotLightUWP.Core.Base;
 using SpotLightUWP.Core.Models;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,9 +13,9 @@ namespace SpotLightUWP.Core.Services
 {
     public class BingHTTPService : BaseHttpService, IBingHTTPService
     {
-        public List<ImageDTO> imageDTOs;
         private static IConfiguration _configuration;
         private RestClient _client;
+
         public BingHTTPService()
         {
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("AppSettings.Json");
@@ -24,11 +23,22 @@ namespace SpotLightUWP.Core.Services
             _client = new RestClient(_configuration.GetSection("BingUri").Value);
         }
 
+        public async Task<List<ImageDTO>> GetImages()
+        {
+            return await URLParserAsync();
+        }
+
+        public async Task<ImageDTO> GetLastImage()
+        {
+            var images = await URLParserAsync();
+            return images.First();
+        }
+
         public async Task<List<ImageDTO>> URLParserAsync()
         {
-            imageDTOs = new List<ImageDTO>();
+            var imageDTOs = new List<ImageDTO>();
             List<string> ImageUrls = new List<string>();
-            var request = new RestRequest("HPImageArchive.aspx?format=js&idx={idx}&n=1000", Method.GET);
+            var request = new RestRequest("HPImageArchive.aspx?format=js&idx={idx}&n=100", Method.GET);
 
             request.AddParameter("idx", 1, ParameterType.UrlSegment);
 

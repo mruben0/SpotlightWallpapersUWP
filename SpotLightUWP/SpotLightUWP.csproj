@@ -141,6 +141,8 @@
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultLaunchActivationHandler.cs" />
+    <Compile Include="Services\BackgroundTaskService.cs" />
+    <Compile Include="Services\Base\IBackgroundTaskService.cs" />
     <Compile Include="Services\Base\IDataService.cs" />
     <Compile Include="Services\Base\IIOManager.cs" />
     <Compile Include="Services\Base\IWallpaperService.cs" />

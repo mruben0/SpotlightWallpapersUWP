@@ -1,10 +1,13 @@
-﻿using SpotLightUWP.Activation;
-using SpotLightUWP.Core.Base;
+﻿using CommonServiceLocator;
+using SpotLightUWP.Activation;
+using SpotLightUWP.Services.Base;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Background;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -21,17 +24,19 @@ namespace SpotLightUWP.Services
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
 
         private NavigationServiceEx NavigationService => Locator.NavigationService;
-
+        private IBackgroundTaskService _backgroundTaskService;
         public ActivationService(App app, Type defaultNavItem, Lazy<UIElement> shell = null)
         {
-            CommonServiceLocator.ServiceLocator.Current.GetInstance<IHTTPService>();
             _app = app;
             _shell = shell;
             _defaultNavItem = defaultNavItem;
+            _backgroundTaskService = ServiceLocator.Current.GetInstance<IBackgroundTaskService>();
         }
 
         public async Task ActivateAsync(object activationArgs)
         {
+            _backgroundTaskService.RegisterBackgroundTask("BingNewImageTrigger", new TimeTrigger(60 * 24, false), true);
+
             if (IsInteractive(activationArgs))
             {
                 await InitializeAsync();
@@ -72,6 +77,7 @@ namespace SpotLightUWP.Services
                 await StartupAsync();
             }
         }
+       
 
         private async Task InitializeAsync()
         {

@@ -90,7 +90,7 @@ namespace SpotLightUWP.Services
             }
             else if(_iOManagerParams == IOManagerParams.Bing)
             {
-                ImageDTOList = await _bingHTTPService.URLParserAsync();
+                ImageDTOList = await _bingHTTPService.GetImages();
                 IsTemplate = false;
             }
             else

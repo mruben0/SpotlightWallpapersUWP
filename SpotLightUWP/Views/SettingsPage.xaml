@@ -2,80 +2,77 @@
     x:Class="SpotLightUWP.Views.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Style="{StaticResource PageStyle}"
-    DataContext="{Binding SettingsViewModel, Source={StaticResource Locator}}"
-    xmlns:helper="using:SpotLightUWP.Helpers"
     xmlns:converters="using:SpotLightUWP.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helper="using:SpotLightUWP.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xaml="using:Windows.UI.Xaml"
+    DataContext="{Binding SettingsViewModel, Source={StaticResource Locator}}"
+    Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Page.Resources>
         <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
     </Page.Resources>
 
     <Grid Margin="{StaticResource MediumLeftRightMargin}">
-        <StackPanel
-            x:Name="ContentArea">
-            <TextBlock
-                x:Uid="Settings_Personalization"
-                Style="{StaticResource SubtitleTextBlockStyle}" />
+        <StackPanel x:Name="ContentArea">
+            <TextBlock x:Uid="Settings_Personalization" Style="{StaticResource SubtitleTextBlockStyle}" />
             <StackPanel Margin="{StaticResource SettingsSubheaderMargin}">
-                <TextBlock
-                    x:Uid="Settings_Theme"
-                    Style="{StaticResource BodyTextStyle}" />
+                <TextBlock x:Uid="Settings_Theme" Style="{StaticResource BodyTextStyle}" />
 
                 <StackPanel Margin="{StaticResource EightTopMargin}">
                     <RadioButton
                         x:Uid="Settings_Theme_Light"
+                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
                         GroupName="AppTheme"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}">
                         <RadioButton.CommandParameter>
                             <xaml:ElementTheme>Light</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
                     </RadioButton>
                     <RadioButton
                         x:Uid="Settings_Theme_Dark"
+                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
                         GroupName="AppTheme"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}">
                         <RadioButton.CommandParameter>
                             <xaml:ElementTheme>Dark</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
                     </RadioButton>
                     <RadioButton
                         x:Uid="Settings_Theme_Default"
+                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
                         GroupName="AppTheme"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}">
                         <RadioButton.CommandParameter>
                             <xaml:ElementTheme>Default</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
                     </RadioButton>
                 </StackPanel>
-            </StackPanel>            
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <CheckBox
+                    x:Uid="ChangeWallpaperDaily"
+                    Command="{x:Bind ViewModel.ShwitchDailyWallpaperModeCommand}"
+                    IsChecked="{x:Bind ViewModel.ShouldUpdateDaily, Mode=TwoWay}" />
+            </StackPanel>
 
             <StackPanel Margin="{StaticResource EightTopMargin}">
-                <TextBlock
-                x:Uid="Settings_About"
-                Style="{StaticResource SubtitleTextBlockStyle}" />
-                
-                <TextBlock x:Uid="Description_Text" TextWrapping="WrapWholeWords"/>
+                <TextBlock x:Uid="Settings_About" Style="{StaticResource SubtitleTextBlockStyle}" />
 
-                <HyperlinkButton
-                    x:Uid="Settings_PrivacyTermsLink"
-                 
-                    Margin="{StaticResource EightTopMargin}" /> 
+                <TextBlock x:Uid="Description_Text" TextWrapping="WrapWholeWords" />
 
-                <TextBlock  Margin="{StaticResource EightTopMargin}">
-                <Span xml:space="preserve"><Run>Icon made by </Run><Hyperlink NavigateUri="https://www.freepik.com/flaticon">flaticon</Hyperlink> from www.freepik.com</Span>
+                <HyperlinkButton x:Uid="Settings_PrivacyTermsLink" Margin="{StaticResource EightTopMargin}" />
+
+                <TextBlock Margin="{StaticResource EightTopMargin}">
+                    <Span xml:space="preserve"><Run>Icon made by </Run><Hyperlink NavigateUri="https://www.freepik.com/flaticon">flaticon</Hyperlink> from www.freepik.com</Span>
                 </TextBlock>
-                
-                <TextBlock  Margin="{StaticResource EightTopMargin}">
-                <Span xml:space="preserve"><Run> Contact us: </Run><Hyperlink NavigateUri="mailto:mruben0@outlook.com">mruben0@outlook.com</Hyperlink></Span>
+
+                <TextBlock Margin="{StaticResource EightTopMargin}">
+                    <Span xml:space="preserve"><Run> Contact us: </Run><Hyperlink NavigateUri="mailto:mruben0@outlook.com">mruben0@outlook.com</Hyperlink></Span>
                 </TextBlock>
             </StackPanel>
         </StackPanel>
-    </Grid>    
+    </Grid>
 </Page>

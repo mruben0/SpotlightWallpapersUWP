@@ -35,7 +35,7 @@ namespace SpotLightUWP.Services
                 {
                     file = image ?? await StorageFile.GetFileFromPathAsync(Uri) ?? throw new ArgumentNullException(nameof(image));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw;
                 }

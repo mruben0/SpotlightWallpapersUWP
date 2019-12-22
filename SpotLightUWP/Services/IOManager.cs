@@ -1,21 +1,16 @@
 ﻿using SpotLightUWP.Core.Helpers;
 using SpotLightUWP.Core.Models;
-using SpotLightUWP.Helpers;
 using SpotLightUWP.Services.Base;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Pickers;
-using Windows.UI.Xaml;
 
 namespace SpotLightUWP.Services
 {
-    
     public class IOManager : IIOManager
     {
         private string _downloadPath;
@@ -23,6 +18,7 @@ namespace SpotLightUWP.Services
         public string _downloadedfolder;
         private string _templateFolder;
         private string _settingsPath;
+        public string DailyWallpaperFolderPath { get; set; }
 
         public IOManager()
         {
@@ -37,7 +33,7 @@ namespace SpotLightUWP.Services
                 _downloadedfolder = "DownloadedFolder";
                 _templateFolder = "Templates";
             }
-            else if(@params == IOManagerParams.Bing)
+            else if (@params == IOManagerParams.Bing)
             {
                 _downloadedfolder = "BingDownloaded";
                 _templateFolder = "BingTemplates";
@@ -47,11 +43,12 @@ namespace SpotLightUWP.Services
                 _downloadedfolder = "LocalDownloaded";
                 _templateFolder = "LocalTemplates";
             }
-            SettingsPath = Path.Combine(appdata.Path, "Settings.s");
-
+            SettingsPath = Path.Combine(appdata.Path, "Settings.json");
 
             DownloadPath = Path.Combine(appdata.Path, _downloadedfolder);
             TemplatePath = Path.Combine(appdata.Path, _templateFolder);
+            DailyWallpaperFolderPath = Path.Combine(appdata.Path, "DailyWallpaperFolderPath");
+
             if (!Directory.Exists(DownloadPath))
             {
                 Directory.CreateDirectory(DownloadPath);
@@ -60,13 +57,17 @@ namespace SpotLightUWP.Services
             {
                 Directory.CreateDirectory(TemplatePath);
             }
+            if (!Directory.Exists(DailyWallpaperFolderPath))
+            {
+                Directory.CreateDirectory(DailyWallpaperFolderPath);
+            }
 
             if (!File.Exists(SettingsPath))
             {
                 var file = File.Create(SettingsPath);
                 file.Dispose();
             }
-        }     
+        }
 
         public async Task DownloadImages(List<ImageDTO> imageDTOs, int page, bool AsTemplate = true)
         {
@@ -176,18 +177,17 @@ namespace SpotLightUWP.Services
             set { _downloadPath = value; }
         }
 
-
         public string SettingsPath
         {
             get { return _settingsPath; }
             set { _settingsPath = value; }
         }
 
-
         public string TemplatePath
         {
             get { return _templatePath; }
             set { _templatePath = value; }
         }
+
     }
 }

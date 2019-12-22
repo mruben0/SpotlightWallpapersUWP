@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.ApplicationModel.Background;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -37,7 +38,9 @@ namespace SpotLightUWP.ViewModels
         private int _maxPagesCount;
         private IOManagerParams _managerParams;
 
-        public SpotlightViewModel(IDataService dataService, IIOManager iOManager, IHTTPService hTTPService)
+        public SpotlightViewModel(IDataService dataService,
+                                  IIOManager iOManager,
+                                  IHTTPService hTTPService)
         {
             IsLoaded = false;
 
@@ -61,7 +64,7 @@ namespace SpotLightUWP.ViewModels
         public ICommand ToRight => new RelayCommand(async () => await MoveRightAsync());
 
         public async Task InitializeAsync(GridView imagesGridView, IOManagerParams managerParams = IOManagerParams.SpotLight)
-        {
+        {        
             _managerParams = managerParams;
             _count = _hTTPService.GetCount();
             _maxPagesCount = (int)Math.Floor((decimal)_count / 14);

@@ -7,5 +7,7 @@ namespace SpotLightUWP.Services
         Task ShowAlertAsync(string title, string message = "");
 
         void ShowNotification(string title, string message);
+
+        void ShowNotification(string title, string message, string imagePath);
     }
 }
