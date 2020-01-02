@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using CommonServiceLocator;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using SpotLightUWP.Core.Base;
 using SpotLightUWP.Core.Models;
@@ -75,6 +76,16 @@ namespace SpotLightUWP.ViewModels
             }
             _imagesGridView = imagesGridView;
             UpdateButtons();
+            var _configsService = ServiceLocator.Current.GetInstance<IConfigsService>();
+            var configs = _configsService.GetConfigs();
+            if (configs.AlertShown != 5)
+            {
+                var dialogService = ServiceLocator.Current.GetInstance<IDialogService>();
+                await dialogService.ShowDailyWallpaperAlertAsync("Did you know?", "You can turn on daily wallpaper changing from settings");
+                configs.AlertShown++;
+                _configsService.SaveConfigs(configs);
+            }
+
             IsLoaded = true;
         }
 

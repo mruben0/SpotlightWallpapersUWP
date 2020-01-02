@@ -9,21 +9,19 @@ namespace SpotLightUWP.Services
         public void RegisterBackgroundTask(string taskName, IBackgroundTrigger trigger, bool shouldUserExist)
         {
             var tasks = BackgroundTaskRegistration.AllTasks;
-            foreach (var t in tasks.Where(e => e.Value.Name == taskName))
+            if (!tasks.Any(e => e.Value.Name == taskName))
             {
-                t.Value.Unregister(true);
+                var builder = new BackgroundTaskBuilder
+                {
+                    Name = taskName
+                };
+                builder.SetTrigger(trigger);
+                if (shouldUserExist)
+                {
+                    builder.AddCondition(new SystemCondition(SystemConditionType.UserPresent));
+                }
+                BackgroundTaskRegistration task = builder.Register();
             }
-
-            var builder = new BackgroundTaskBuilder
-            {
-                Name = taskName
-            };
-            builder.SetTrigger(trigger);
-            if (shouldUserExist)
-            {
-                builder.AddCondition(new SystemCondition(SystemConditionType.UserPresent));
-            }
-            BackgroundTaskRegistration task = builder.Register();
         }
 
         public void UnRegisterBackgroundTask(string taskName, bool cancel)

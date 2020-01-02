@@ -145,6 +145,7 @@
     <Compile Include="Services\Base\IBackgroundTaskService.cs" />
     <Compile Include="Services\Base\IDataService.cs" />
     <Compile Include="Services\Base\IIOManager.cs" />
+    <Compile Include="Services\Base\IConfigsService.cs" />
     <Compile Include="Services\Base\IWallpaperService.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\FirstRunDisplayService.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Services\IOManager.cs" />
     <Compile Include="Services\NavigationServiceEx.cs" />
     <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\ConfigsService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="Services\WallpaperService.cs" />
     <Compile Include="ViewModels\BingImageViewModel.cs" />

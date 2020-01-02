@@ -24,6 +24,7 @@ namespace SpotLightUWP.ViewModels
             SimpleIoc.Default.Register<IDialogService, DialogService>();
             SimpleIoc.Default.Register<IDataService, DataService>();
             SimpleIoc.Default.Register<IBackgroundTaskService, BackgroundTaskService>();
+            SimpleIoc.Default.Register<IConfigsService, ConfigsService>();
 
             SimpleIoc.Default.Register<ShellViewModel>();
             Register<SpotlightViewModel, SpotlightPage>();

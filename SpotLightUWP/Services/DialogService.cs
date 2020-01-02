@@ -1,17 +1,36 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
+﻿using GalaSoft.MvvmLight.Command;
+using Microsoft.Toolkit.Uwp.Notifications;
+using SpotLightUWP.ViewModels;
 using System;
 using System.Threading.Tasks;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
+using Windows.UI.Popups;
 
 namespace SpotLightUWP.Services
 {
     public class DialogService : IDialogService
     {
+       
+
         public async Task ShowAlertAsync(string title, string message = "")
         {
             var dialog = new Windows.UI.Popups.MessageDialog(message, title);
 
+            await dialog.ShowAsync();
+        }
+
+        public async Task ShowDailyWallpaperAlertAsync(string title, string message = "")
+        {
+            var navigationService = CommonServiceLocator.ServiceLocator.Current.GetInstance<NavigationServiceEx>();
+            var dialog = new Windows.UI.Popups.MessageDialog(message, title);
+            var settingscommand = new UICommandInvokedHandler((command) =>
+            {
+                navigationService.Navigate(typeof(SettingsViewModel).FullName, null);
+
+            });
+            dialog.Commands.Add(new UICommand("Go", settingscommand));
+            dialog.Commands.Add(new UICommand("Close", null));
             await dialog.ShowAsync();
         }
 

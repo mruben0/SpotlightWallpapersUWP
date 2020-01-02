@@ -16,6 +16,14 @@
 
     <Grid Margin="{StaticResource MediumLeftRightMargin}">
         <StackPanel x:Name="ContentArea">
+
+            <StackPanel Orientation="Horizontal">
+                <CheckBox
+                    x:Uid="ChangeWallpaperDaily"
+                    Command="{x:Bind ViewModel.ShwitchDailyWallpaperModeCommand}"
+                    IsChecked="{x:Bind ViewModel.ShouldUpdateDaily, Mode=TwoWay}" />
+            </StackPanel>
+
             <TextBlock x:Uid="Settings_Personalization" Style="{StaticResource SubtitleTextBlockStyle}" />
             <StackPanel Margin="{StaticResource SettingsSubheaderMargin}">
                 <TextBlock x:Uid="Settings_Theme" Style="{StaticResource BodyTextStyle}" />
@@ -49,13 +57,6 @@
                         </RadioButton.CommandParameter>
                     </RadioButton>
                 </StackPanel>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
-                <CheckBox
-                    x:Uid="ChangeWallpaperDaily"
-                    Command="{x:Bind ViewModel.ShwitchDailyWallpaperModeCommand}"
-                    IsChecked="{x:Bind ViewModel.ShouldUpdateDaily, Mode=TwoWay}" />
             </StackPanel>
 
             <StackPanel Margin="{StaticResource EightTopMargin}">

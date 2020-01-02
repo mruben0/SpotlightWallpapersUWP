@@ -1,4 +1,5 @@
 ﻿using CommonServiceLocator;
+using Core.Models;
 using SpotLightUWP.Core.Base;
 using SpotLightUWP.Services;
 using SpotLightUWP.Services.Base;
@@ -15,6 +16,8 @@ namespace SpotLightUWP
     public sealed partial class App : Application
     {
         private Lazy<ActivationService> _activationService;
+        private IConfigsService _configsService;
+        private Configs configs;
 
         private ActivationService ActivationService
         {
@@ -25,6 +28,9 @@ namespace SpotLightUWP
         {
             base.OnBackgroundActivated(args);
             IBackgroundTaskInstance taskInstance = args.TaskInstance;
+            _configsService = ServiceLocator.Current.GetInstance<IConfigsService>();
+            configs = _configsService.GetConfigs();
+
             if (taskInstance.Task.Name == "BingDaily")
             {
                 await ChangeDailyWallpaperAsync();
@@ -37,21 +43,33 @@ namespace SpotLightUWP
 
         private async Task NewImageNotifyAsync()
         {
-            var dialogService = ServiceLocator.Current.GetInstance<IDialogService>();
-            var bingService = ServiceLocator.Current.GetInstance<IBingHTTPService>();
-            var lastImage = await bingService.GetLastImage();
-            dialogService.ShowNotification("Spotlight Wallpapers", "Hey, There are new images, click to see them", lastImage.URI);
+            if (!configs.IsNotifShowed)
+            {
+                var dialogService = ServiceLocator.Current.GetInstance<IDialogService>();
+                var bingService = ServiceLocator.Current.GetInstance<IBingHTTPService>();
+                var lastImage = await bingService.GetLastImage();
+                dialogService.ShowNotification("Spotlight Wallpapers", "Hey, There are new images, click to see them", lastImage.URI);
+                configs.LastNotificationDate = DateTime.Today;
+                _configsService.SaveConfigs(configs);
+            }
         }
 
         private async Task ChangeDailyWallpaperAsync()
         {
-            var wallpaperService = ServiceLocator.Current.GetInstance<IWallpaperService>();
-            var bingService = ServiceLocator.Current.GetInstance<IBingHTTPService>();
-            var httpService = ServiceLocator.Current.GetInstance<IHTTPService>();
-            var ioManager = ServiceLocator.Current.GetInstance<IIOManager>();
-            var lastImage = await bingService.GetLastImage();
-            var lasImagePath = await httpService.DownLoadAsync(new Uri(lastImage.URI), ioManager.DailyWallpaperFolderPath);
-            await wallpaperService.SetAsAsync(lasImagePath);
+            if (!configs.IsPictureChanged)
+            {
+                var wallpaperService = ServiceLocator.Current.GetInstance<IWallpaperService>();
+                var bingService = ServiceLocator.Current.GetInstance<IBingHTTPService>();
+                var httpService = ServiceLocator.Current.GetInstance<IHTTPService>();
+                var dialogService = ServiceLocator.Current.GetInstance<IDialogService>();
+                var ioManager = ServiceLocator.Current.GetInstance<IIOManager>();
+                var lastImage = await bingService.GetLastImage();
+                var lasImagePath = await httpService.DownLoadAsync(new Uri(lastImage.URI), ioManager.DailyWallpaperFolderPath);
+                await wallpaperService.SetAsAsync(lasImagePath);
+                dialogService.ShowNotification("Spotlight Wallpapers", "Hey, Your wallpaper has been changed, you can turn off this from settings", lastImage.URI);
+                configs.LastPicChangeDate = DateTime.Today;
+                _configsService.SaveConfigs(configs);
+            }
         }
 
         public App()

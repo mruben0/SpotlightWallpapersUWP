@@ -18,54 +18,60 @@ namespace SpotLightUWP.Services
         public string _downloadedfolder;
         private string _templateFolder;
         private string _settingsPath;
+        private bool isinitialized;
         public string DailyWallpaperFolderPath { get; set; }
 
         public IOManager()
         {
+            isinitialized = false;
         }
 
         public void Initialize(IOManagerParams @params = IOManagerParams.SpotLight)
         {
-            var appdata = ApplicationData.Current.LocalFolder;
+            if (!isinitialized)
+            {
+                var appdata = ApplicationData.Current.LocalFolder;
 
-            if (@params == IOManagerParams.SpotLight)
-            {
-                _downloadedfolder = "DownloadedFolder";
-                _templateFolder = "Templates";
-            }
-            else if (@params == IOManagerParams.Bing)
-            {
-                _downloadedfolder = "BingDownloaded";
-                _templateFolder = "BingTemplates";
-            }
-            else
-            {
-                _downloadedfolder = "LocalDownloaded";
-                _templateFolder = "LocalTemplates";
-            }
-            SettingsPath = Path.Combine(appdata.Path, "Settings.json");
+                if (@params == IOManagerParams.SpotLight)
+                {
+                    _downloadedfolder = "DownloadedFolder";
+                    _templateFolder = "Templates";
+                }
+                else if (@params == IOManagerParams.Bing)
+                {
+                    _downloadedfolder = "BingDownloaded";
+                    _templateFolder = "BingTemplates";
+                }
+                else
+                {
+                    _downloadedfolder = "LocalDownloaded";
+                    _templateFolder = "LocalTemplates";
+                }
+                SettingsPath = Path.Combine(appdata.Path, "Settings.json");
 
-            DownloadPath = Path.Combine(appdata.Path, _downloadedfolder);
-            TemplatePath = Path.Combine(appdata.Path, _templateFolder);
-            DailyWallpaperFolderPath = Path.Combine(appdata.Path, "DailyWallpaperFolderPath");
+                DownloadPath = Path.Combine(appdata.Path, _downloadedfolder);
+                TemplatePath = Path.Combine(appdata.Path, _templateFolder);
+                DailyWallpaperFolderPath = Path.Combine(appdata.Path, "DailyWallpaperFolderPath");
 
-            if (!Directory.Exists(DownloadPath))
-            {
-                Directory.CreateDirectory(DownloadPath);
-            }
-            if (!Directory.Exists(TemplatePath))
-            {
-                Directory.CreateDirectory(TemplatePath);
-            }
-            if (!Directory.Exists(DailyWallpaperFolderPath))
-            {
-                Directory.CreateDirectory(DailyWallpaperFolderPath);
-            }
+                if (!Directory.Exists(DownloadPath))
+                {
+                    Directory.CreateDirectory(DownloadPath);
+                }
+                if (!Directory.Exists(TemplatePath))
+                {
+                    Directory.CreateDirectory(TemplatePath);
+                }
+                if (!Directory.Exists(DailyWallpaperFolderPath))
+                {
+                    Directory.CreateDirectory(DailyWallpaperFolderPath);
+                }
 
-            if (!File.Exists(SettingsPath))
-            {
-                var file = File.Create(SettingsPath);
-                file.Dispose();
+                if (!File.Exists(SettingsPath))
+                {
+                    var file = File.Create(SettingsPath);
+                    file.Dispose();
+                }
+                isinitialized = true;
             }
         }
 
@@ -120,9 +126,16 @@ namespace SpotLightUWP.Services
             return File.ReadAllText(SettingsPath);
         }
 
-        public void SaveToFile(string content)
+        public void SaveConfigsToFile(string content)
         {
             File.WriteAllText(SettingsPath, content);
+        }
+
+        public string GetSavedConfigs()
+        {
+            string text = File.ReadAllText(SettingsPath);
+
+            return text;
         }
 
         public async Task SaveImageAs(string imageUri)
@@ -188,6 +201,5 @@ namespace SpotLightUWP.Services
             get { return _templatePath; }
             set { _templatePath = value; }
         }
-
     }
 }

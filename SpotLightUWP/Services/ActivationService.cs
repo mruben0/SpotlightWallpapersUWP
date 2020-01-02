@@ -1,9 +1,9 @@
 ﻿using CommonServiceLocator;
+using Core.Models;
 using SpotLightUWP.Activation;
 using SpotLightUWP.Services.Base;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
@@ -20,23 +20,24 @@ namespace SpotLightUWP.Services
         private readonly App _app;
         private readonly Lazy<UIElement> _shell;
         private readonly Type _defaultNavItem;
-
         private ViewModels.ViewModelLocator Locator => Application.Current.Resources["Locator"] as ViewModels.ViewModelLocator;
 
         private NavigationServiceEx NavigationService => Locator.NavigationService;
         private IBackgroundTaskService _backgroundTaskService;
+
         public ActivationService(App app, Type defaultNavItem, Lazy<UIElement> shell = null)
         {
             _app = app;
             _shell = shell;
             _defaultNavItem = defaultNavItem;
-            _backgroundTaskService = ServiceLocator.Current.GetInstance<IBackgroundTaskService>();
+            _backgroundTaskService = ServiceLocator.Current.GetInstance<IBackgroundTaskService>();         
+
         }
 
         public async Task ActivateAsync(object activationArgs)
         {
-            _backgroundTaskService.RegisterBackgroundTask("BingNewImageTrigger", new TimeTrigger(60 * 24, false), true);
-
+            _backgroundTaskService.RegisterBackgroundTask("BingNewImageTrigger", new TimeTrigger(60, false), false);
+         
             if (IsInteractive(activationArgs))
             {
                 await InitializeAsync();
@@ -77,7 +78,6 @@ namespace SpotLightUWP.Services
                 await StartupAsync();
             }
         }
-       
 
         private async Task InitializeAsync()
         {

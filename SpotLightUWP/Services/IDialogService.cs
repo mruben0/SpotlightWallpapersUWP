@@ -9,5 +9,7 @@ namespace SpotLightUWP.Services
         void ShowNotification(string title, string message);
 
         void ShowNotification(string title, string message, string imagePath);
+
+        Task ShowDailyWallpaperAlertAsync(string title, string message = "");
     }
 }

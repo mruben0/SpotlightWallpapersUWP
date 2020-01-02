@@ -21,8 +21,10 @@ namespace SpotLightUWP.Services.Base
 
         string GetSavedDTOS();
 
-        void SaveToFile(string content);
-        string DailyWallpaperFolderPath { get; }
+        void SaveConfigsToFile(string content);
 
+        string GetSavedConfigs();
+
+        string DailyWallpaperFolderPath { get; }
     }
 }
