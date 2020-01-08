@@ -28,6 +28,8 @@ namespace SpotLightUWP.ViewModels
         private readonly IDataService _dataService;
         private readonly IIOManager _iOManager;
         private readonly IHTTPService _hTTPService;
+        private readonly IDialogService _dialogService;
+        private readonly IBackgroundTaskService _backgroundTaskService;
         private object _selected;
         private bool _isLoaded;
         private static string _downloadPath;
@@ -41,13 +43,17 @@ namespace SpotLightUWP.ViewModels
 
         public SpotlightViewModel(IDataService dataService,
                                   IIOManager iOManager,
-                                  IHTTPService hTTPService)
+                                  IHTTPService hTTPService,
+                                  IDialogService dialogService,
+                                  IBackgroundTaskService backgroundTaskService)
         {
             IsLoaded = false;
 
             _dataService = dataService ?? throw new ArgumentNullException(nameof(dataService));
             _iOManager = iOManager ?? throw new ArgumentNullException(nameof(iOManager));
             _hTTPService = hTTPService ?? throw new ArgumentNullException(nameof(hTTPService));
+            _dialogService = dialogService ?? throw new ArgumentNullException(nameof(dialogService));
+            _backgroundTaskService = backgroundTaskService ?? throw new ArgumentNullException(nameof(backgroundTaskService));
             _downloadPath = _iOManager.DownloadPath;
             _templatePath = _iOManager.TemplatePath;
         }
@@ -63,6 +69,11 @@ namespace SpotLightUWP.ViewModels
         public ICommand ToLeft => new RelayCommand(async () => await MoveLeftAsync());
 
         public ICommand ToRight => new RelayCommand(async () => await MoveRightAsync());
+
+        public ICommand ShowJobs => new RelayCommand(async () =>
+        {
+           await _dialogService.ShowAlertAsync(_backgroundTaskService.GetRegisteredTasks());
+        });
 
         public async Task InitializeAsync(GridView imagesGridView, IOManagerParams managerParams = IOManagerParams.SpotLight)
         {        

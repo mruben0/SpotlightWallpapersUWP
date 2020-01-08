@@ -23,8 +23,9 @@ namespace SpotLightUWP.Services
                 var configs = new Configs()
                 {
                     AlertShown = 0,
-                    LastNotificationDate = DateTime.MinValue,
-                    LastPicChangeDate = DateTime.MinValue
+                    LastNotifiedImageUri = string.Empty,
+                    LastChangedImageUri = string.Empty,
+                    LastBackgroundJobDate = DateTimeOffset.MinValue
                 };
                 SaveConfigs(configs);
                 return configs;

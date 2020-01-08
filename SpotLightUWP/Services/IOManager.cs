@@ -47,7 +47,7 @@ namespace SpotLightUWP.Services
                     _downloadedfolder = "LocalDownloaded";
                     _templateFolder = "LocalTemplates";
                 }
-                SettingsPath = Path.Combine(appdata.Path, "Settings.json");
+                SettingsPath = Path.Combine(appdata.Path, "Configs.json");
 
                 DownloadPath = Path.Combine(appdata.Path, _downloadedfolder);
                 TemplatePath = Path.Combine(appdata.Path, _templateFolder);

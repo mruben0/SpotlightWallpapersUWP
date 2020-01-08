@@ -36,7 +36,7 @@ namespace SpotLightUWP.Services
 
         public async Task ActivateAsync(object activationArgs)
         {
-            _backgroundTaskService.RegisterBackgroundTask("BingNewImageTrigger", new TimeTrigger(60, false), false);
+            _backgroundTaskService.RegisterBackgroundTask("BingNewImageTrigger", new TimeTrigger(15, false), false);
          
             if (IsInteractive(activationArgs))
             {

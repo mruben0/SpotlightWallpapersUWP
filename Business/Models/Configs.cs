@@ -1,19 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 
 namespace Core.Models
 {
     public class Configs
     {
         public int AlertShown { get; set; }
-        public DateTime LastNotificationDate { get; set; }
-
-        public DateTime LastPicChangeDate { get; set; }
-
-        [JsonIgnore]
-        public bool IsNotifShowed => LastNotificationDate == DateTime.Today;
-
-        [JsonIgnore]
-        public bool IsPictureChanged => LastPicChangeDate == DateTime.Today;
+        public string LastNotifiedImageUri { get; set; }
+        public string LastChangedImageUri { get; set; }
+        public DateTimeOffset LastBackgroundJobDate { get; set; }
     }
 }

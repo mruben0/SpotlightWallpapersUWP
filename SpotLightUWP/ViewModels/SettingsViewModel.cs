@@ -60,7 +60,7 @@ namespace SpotLightUWP.ViewModels
         {
             if (ShouldUpdateDaily)
             {
-                _backgroundTaskService.RegisterBackgroundTask("BingDaily", new TimeTrigger(60, false),false);
+                _backgroundTaskService.RegisterBackgroundTask("BingDaily", new TimeTrigger(15, false),false);
          
                 var lastImage = await _bingHTTPService.GetLastImage();
                 var lasImagePath = await _hTTPService.DownLoadAsync(new Uri(lastImage.URI), _iOManager.DailyWallpaperFolderPath);

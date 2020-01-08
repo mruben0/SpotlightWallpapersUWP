@@ -54,6 +54,9 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Orientation="Horizontal">
+                <Button Margin="5" Command="{x:Bind ViewModel.ShowJobs}">
+                    ShowJobs
+                </Button>
                 <Button
                     Margin="5"
                     Command="{x:Bind ViewModel.ToLeft}"

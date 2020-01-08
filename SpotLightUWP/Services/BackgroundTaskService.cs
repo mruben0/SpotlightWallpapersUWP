@@ -6,6 +6,11 @@ namespace SpotLightUWP.Services
 {
     public class BackgroundTaskService : IBackgroundTaskService
     {
+        public string GetRegisteredTasks()
+        {
+            var tasks = BackgroundTaskRegistration.AllTasks;
+            return string.Join(',', tasks.Values.Select(t => t.Name));
+        }
         public void RegisterBackgroundTask(string taskName, IBackgroundTrigger trigger, bool shouldUserExist)
         {
             var tasks = BackgroundTaskRegistration.AllTasks;

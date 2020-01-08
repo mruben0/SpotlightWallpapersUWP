@@ -9,6 +9,7 @@ namespace SpotLightUWP.Services.Base
 {
     public interface IBackgroundTaskService
     {
+        string GetRegisteredTasks();
         void RegisterBackgroundTask(string taskName, IBackgroundTrigger trigger, bool shouldUserExist);
         void UnRegisterBackgroundTask(string taskName, bool cancel);
         void UnregisterAllTasks();
